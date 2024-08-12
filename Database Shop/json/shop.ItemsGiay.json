@@ -1,0 +1,190 @@
+[{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f779"
+  },
+  "id": "1",
+  "description": "Loại sản phẩm giày thể thao\nPhong cách ' Giản dị\nPhong cách ' Giản dị\nChất liệu giày | PU\nChất liệu sàn - cao su\nMàu đen , xanh lá cây\nChân 'Đầu tròn\nChức năng \" Chống trượt và thoải mái\nChân 'Đầu trò ",
+  "oldPrice": 300000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_1_1.jfif?alt=media&token=b13ac4ba-752c-4057-ab7a-7952037f60e5",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_1_2.jfif?alt=media&token=6830037d-b3ad-4f76-abcf-6cc6d3031e7d",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_1_3.jfif?alt=media&token=592cb175-3b5e-40a3-93dc-b99767120b7d",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_1_4.jfif?alt=media&token=135a2177-b6be-4fb1-9acd-7764f184df6b"
+  ],
+  "des": "Giày Thể Thao Đế Bằng Chống Trượt Thoải Mái Thời Trang Hàn Quốc Cho Nữ ",
+  "price": 249000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Thể Thao Đế Bằng "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f77a"
+  },
+  "id": "2",
+  "description": "Kích thước: 35 36 37 38 39 40\nMô hình: Màu rắn\nPhong cách: Giản dị\nChiều cao gót: Gót thấp (Dưới 3 cm)\nPhân loại màu sắc: Kaki, Nâu vàng, Màu be\nDịp thích hợp: hàng ngày\nKiểu đáy gót: Đáy phẳng\nChất liệu đế: cao su\nVật liệu lót: PU ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_2_!.jfif?alt=media&token=1af9d832-d10c-48ab-8746-cc0441432dc0",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_2_2.jfif?alt=media&token=12ed2e56-a565-43da-a4a4-53f4a5c3a26f",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_2_3.jfif?alt=media&token=92b5b937-e7d6-43c9-be4d-d0bde33d78d8",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_2_4.jfif?alt=media&token=52aaf366-328e-4994-8169-03fcf5ebcd75"
+  ],
+  "des": "Giày Lười Da Mềm Đế Bằng Chống Trượt Thời Trang 2023 Cho Nữ ",
+  "price": 199000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Lười Da Mềm "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f77b"
+  },
+  "id": "3",
+  "description": " FULL BOX + ViDeo thật⚡ Giày Thể Thao Nam - Phong Cách Cực Ngầu Thời Trang Trẻ Trung Avi 129 CHÀO MỪNG BẠN GHÉ THĂM SHOP",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_3_1.jfif?alt=media&token=9f32c2d9-3cd2-4e80-bf6c-b6fc89c653a3",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_3_2.jfif?alt=media&token=055357c7-ff6c-43b7-b8c6-08cac5350cc7",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_3_3.jfif?alt=media&token=06801cdf-7915-4836-8cab-ae937e9d4599",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_3_4.jfif?alt=media&token=2e024fd2-5cc0-410f-a53d-3b0421537866"
+  ],
+  "des": " Giày Thể Thao Nam - Phong Cách Cực Ngầu Thời Trang Trẻ Trung Avi 129",
+  "price": 159000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Thể Thao Nam "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f77c"
+  },
+  "id": "4",
+  "description": " Giày nữ mới Giày bệt Giày vải ngoại thương ",
+  "oldPrice": 400000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_4_!.jfif?alt=media&token=4828ba12-c544-4d2b-8962-ae072ffed2dd",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_4_2.jfif?alt=media&token=53a43a89-79d1-444d-9aa8-34a4c5d9b7a1",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_4_3.jfif?alt=media&token=287186ad-d672-4b07-8299-bf5b6ffa3a3c",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_4_4.jfif?alt=media&token=b03434bd-0afa-4f4f-8111-023c70d11222"
+  ],
+  "des": "Giày Nữ Mới Đế Phẳng ",
+  "price": 319000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Nữ Mới Đế Phẳng "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f77d"
+  },
+  "id": "5",
+  "description": "Danh mục sản phẩm: Dép xỏ ngón\nNhóm tuổi áp dụng: Thanh niên (18-40 tuổi)\nCảnh thích hợp: Trong nhà, Ngoài trời, Bãi biển, Lướt sóng, Giải trí, Văn phòng\nPhong cách: Giản dị\nSố mặt hàng: A21004\nChất liệu trên: Da sợi nhỏ\nChất liệu duy nhất: PU\nPhong cách: Mở ngón chân ",
+  "oldPrice": 300000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_5_1.jfif?alt=media&token=0dc4e371-36c3-4b39-a955-8a797be6d10a",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_5_2.jfif?alt=media&token=03a1088c-4d45-44d7-af32-4783559221c2",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_5_3.jfif?alt=media&token=046ae030-ddea-4172-9090-61e27fe12884",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_5_4.jfif?alt=media&token=102011db-753c-40cc-b4ee-f28b1bc1b099"
+  ],
+  "des": "Giày Đi Biển Sandal Nam Mặc Ngoài Trời ",
+  "price": 259000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Đi Biển Sandal "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f77e"
+  },
+  "id": "6",
+  "description": "  size 36-43 - Chất lượng tốt nhất trong tầm giá - Form đẹp chuẩn : Màu sắc giống đến 98 °/ₒ ; - Chất liệu da + da lộn + vải mesh - Logo Mông in dập chìm. - Lưỡi gà cao dày dặn; swoosh sắc nét; Mông mũi làm đẹp - Tem QR CODE Có thể check mã 2D - Đế 2 lớp khâu chỉ đều - Full box + accessories",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_6_1.jfif?alt=media&token=e324ed06-fe64-447e-93e2-26e9c3fb7dbb",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_6_2.jfif?alt=media&token=19a2af8d-b468-44ed-924a-e299295035da",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_6_3.jfif?alt=media&token=29fe70c7-74b9-4325-beb0-90857becf742",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_6_4.jfif?alt=media&token=03ea3c9d-1d9b-46d3-92de-1f333093fa6e"
+  ],
+  "des": "Giày Adidas Samba Classic White Nam Nữ buộc dây ",
+  "price": 119000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Adidas Samba Classic "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f77f"
+  },
+  "id": "7",
+  "description": " ✔️𝐇𝐚̀𝐧𝐠 𝐛𝐞̂𝐧 𝐦𝐢̀𝐧𝐡 𝐛𝐚́𝐧 𝐫𝐞̉ 𝐧𝐞̂𝐧 𝐤𝐡𝐨̂𝐧𝐠 𝐛𝐨𝐱(𝐡𝐨̣̂𝐩).𝐀𝐞 𝐧𝐚̀𝐨 𝐦𝐮𝐨̂́𝐧 𝐦𝐮𝐚 𝐭𝐡𝐞̂𝐦 𝐡𝐨̣̂𝐩 𝐯𝐚̀𝐨 𝐦𝐮𝐚 𝐤𝐞̀𝐦 𝐝𝐞𝐚𝐥 𝐬𝐨̂́𝐜 𝐦𝐮𝐚 𝐭𝐡𝐞̂𝐦 𝐛𝐨𝐱(𝐡𝐨̣̂𝐩) 𝐠𝐢𝐮́𝐩 𝐦𝐢̀𝐧𝐡 𝐧𝐡𝐞́ MÔ TẢ SẢN PHẨM 💥 THÔNG TIN SẢN PHẨM ✔️ Đến với Shop bạn hoàn toàn có thể yên tâm hàng đảm bảo chất lượng, tốt nhất trong tầm giá.( không có hàng lỗi, hàng thứ cấp ) ✔️ Chất liệu: Giày được",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_7_!.jfif?alt=media&token=77385222-0f2d-4d7a-9cfc-9b2a8d3614fe",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_7_2.jfif?alt=media&token=7b9a62e6-2f28-4c22-8c22-3f8424dfc255",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_7_3.jfif?alt=media&token=84d73f52-c20f-4975-8908-3426da3b7ba3",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_7_4.jfif?alt=media&token=c97eff36-c4e4-411c-939b-505b2a309d9c"
+  ],
+  "des": "Giày sneaker Adifom Superstar White Black, Sneaker Adifom Trắng Đen",
+  "price": 119000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày sneaker "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f780"
+  },
+  "id": "8",
+  "description": "Cam Kết : ✔️Hàng thật 100% như hình . ✔️ Quý khách được đổi trả thoải mái nếu sản phẩm có vấn đề cũng như chuyện lỡ đặt không vừa size. ✔️Nhận hàng hàng TRƯỚC - Thu tiền SAU.. cho kiểm hàng thoải mái khi nhận hàng nếu liên hệ . ✔️Giao hàng Toàn Quốc 🎁 [HÌNH ẢNH và MÔ TẢ] ✔️ 100% ảnh thật được chúng tôi chụp bằng điện thoại cá nhân, chỉ có các cơ sở khác của shop là duti Store, duti store sneaker, nguyễn tình sneaker ✔️ Giày đẹp, nhẹ, bền. Giá phải chăng phù hợp với các bạn học sinh, sinh viên. Có thể làm giày đôi, giày nhóm. Thích hợp đi chơi, du lịch, chạy bộ, gym, đi học, đi làm... ✔️ Dễ phối đồ, có thể kết hợp với váy, jeans, sooc…. Phù hợp với mọi thời tiết từ đông sang hè. ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_8_1.jfif?alt=media&token=c112b1e2-b0bd-42db-a3e0-8539caaf1cf5",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_8_2.jfif?alt=media&token=518523a2-c1e4-4ee2-a135-a724a97109e9",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_8_3.jfif?alt=media&token=7e36b3ef-1430-4f50-a2d6-2e321f2ddba3",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_8_4.jfif?alt=media&token=83c8540e-5593-492f-8f6f-8c9405a22776"
+  ],
+  "des": " Giày Thể Thao LV Louis Vuitton Trainer Black White Nam Nữ,",
+  "price": 159000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày Thể Thao LV Louis "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f781"
+  },
+  "id": "9",
+  "description": " Shop cam kết bán sản phẩm chất lượng, giá cả rẻ nhất thị trường - Tất cả giầy shop bán xuất trực tiếp từ kho nên không chăm chút được cẩn thận. Cũng hy hữu có thể xảy ra khi giày bị méo form, nhưng khi nhận giầy anh/chị đi lên chân 5' là giầy vào lại form ạ. -Tất cả sản phẩm mình đều hỗ trợ cho khách xem hàng, quý khách cứ bảo là shop cho kiểm tra hàng rồi shiper sẽ gọi cho shop. Nhưng nhiều shiper khó tính họ theo đúng quy định của shopee là không được đồng kiểm. Nên quý khách thông cảm ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_9_1.jfif?alt=media&token=1366fca9-1951-4492-91f3-28d4386b91a6",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_9_2.jfif?alt=media&token=0cdc2d0e-1e5e-4c9a-ade7-70311331f5f8",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_9_3.jfif?alt=media&token=403f6838-28af-47d8-b326-2059b35de48c",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_9_4.jfif?alt=media&token=0c901626-5b16-4d02-9e4c-b0b1b7bdfb0c"
+  ],
+  "des": "Giày MLB boston, Giày thể thao nam nữ MLB boston đế độn bản cao cấp ",
+  "price": 119000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày MLB boston "
+},
+{
+  "_id": {
+    "$oid": "66b9f577bc5595a4d344f782"
+  },
+  "id": "10",
+  "description": "Danh mục sản phẩm: Giày thể thao thông thường\nĐộ tuổi thích hợp: Thanh niên (18-40 tuổi)\nPhong cách: Phiên bản Hàn Quốc\nChức năng: Thoáng khí\nChức năng: Ánh sáng\nChức năng: Chống mài mòn\nSố sản phẩm: Giày thời trang \nMùa thích hợp: Mùa hè\nMùa thích hợp: Mùa xuân\nMùa thích hợp: Mùa thu\nThích hợp cho: unisex / cả nam và nữ\nHoa văn: màu trơn\nChất liệu mặt trên: Dệt bay\nChất liệu đế: Nhựa ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_10_1.jfif?alt=media&token=6f3fcefa-527a-4f40-ab1a-35ad8f853527",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_10_2.jfif?alt=media&token=73922742-eb9c-47b5-8436-2e27bf203d7a",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_10_3.jfif?alt=media&token=1a3f424a-34b7-477c-bdaf-aef7d17b9c67",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_giay_10_4.jfif?alt=media&token=20cb1c2b-7ee7-428f-be57-56a4a7d40452"
+  ],
+  "des": "Giày thể thao phong cách đường phố đơn giản thời trang dành cho nam ",
+  "price": 119000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Giày thể thao phong cách đường phố "
+}]

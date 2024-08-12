@@ -1,0 +1,190 @@
+[{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f735"
+  },
+  "id": "1",
+  "description": "Học sinh rơi vào quần tây thẳng và chất vải mềm mại, thoải mái. ",
+  "oldPrice": 190000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_1_1.jfif?alt=media&token=3ee1a736-6b69-42e0-a3da-daea9561b544",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_1_2.jfif?alt=media&token=d48b75d6-0f54-4848-af0f-463f42460452",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_1_3.jfif?alt=media&token=94a9f475-5480-4ba7-9ccf-f2309fa3b60b",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_1_4.jfif?alt=media&token=1781c261-d309-4812-9161-e00d8cec5ed1"
+  ],
+  "des": "Học sinh rơi vào quần tây thẳng và chất vải mềm mại, thoải mái.",
+  "price": 121000,
+  "rating": 4.9,
+  "review": 10,
+  "title": "Quần crop mỏng nam"
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f736"
+  },
+  "id": "2",
+  "description": "Khuyến nghị kích thước\n\nSize M: Vòng eo: 54 ~ 94cm; Vòng hông: 94cm;\n\nSize L: Vòng eo: 58 ~ 98cm; Vòng hông: 98cm;\n\nSize XL: Vòng eo: 62 ~ 102cm; Vòng hông: 102cm;\n\nSize 2XL: Vòng eo: 66 ~ 106cm; Vòng hông: 106cm;\n\nSize 3XL: Vòng eo: 70 ~ 110cm; Vòng hông: 110cm;\n\nSize 4XL: Vòng eo: 74 ~ 114cm; Vòng hông: 114cm;\n\nSize 5XL: Vòng eo: 78 ~ 118cm; Vòng hông: 118cm; ",
+  "oldPrice": 180000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_2_1.jfif?alt=media&token=bf3f4eec-f573-42b3-b1ea-8106c6b0ad34",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_2_2.jfif?alt=media&token=4deae817-942a-4a41-80a1-bb671c4ee831",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_2_3.jfif?alt=media&token=220a5508-73ec-4096-ba7c-edbd12620938",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_2_4.jfif?alt=media&token=13f8655c-3bc7-4a33-a747-8d15a309f617"
+  ],
+  "des": "Thoải Mái Quá Khổ Năm Điểm Quần Nam Nữ Có Thể Mặc Xanh ",
+  "price": 135000,
+  "rating": 4.1,
+  "review": 10,
+  "title": "Quần Short Rời "
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f737"
+  },
+  "id": "3",
+  "description": "Sản phẩm: Quần Jogger Nam \n\nChất liệu: Vải mềm mại, thoáng mát dễ thấm hút mồ hôi\n\nKiểu dáng đơn giản nhưng không kém phần thời trang, phong cách\n\nPhù hợp khi đi chơi, dạo phố cùng bạn bè…\n\nSize S: cho người từ 50kg trở xuống tùy chiều cao\n\nSize M: cho người từ 55kg trở xuống tùy chiều cao\n\nSize L: cho người từ 60kg trở xuống tùy chiều cao\n\nSize XL: Dành cho người từ 65kg trở xuống tùy chiều cao ",
+  "oldPrice": 80000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_3_1.jfif?alt=media&token=4fc48a8a-fd17-46aa-bea7-d640873ff4c2",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_3_2.jfif?alt=media&token=7ed69260-002f-4f66-a72f-9a1dad4d26cd",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_3_3.jfif?alt=media&token=92053831-f553-4f31-bfc1-d61ed53b9e3e",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_3_4.jfif?alt=media&token=36042b5e-91f3-4ecc-aea6-bdff773f83bd"
+  ],
+  "des": "Kiểu Dáng Thời Trang Tinh Tế Bo Chun Ống Chân Zenkocs3 MEN QUAN 068 ",
+  "price": 69000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Quần Jogger Nam "
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f738"
+  },
+  "id": "4",
+  "description": "Màu sắc: Đen Trắng 90% Chọn hai gói [Tóc thứ hai tại chỗ] Xám Đen A Xám A Kaki A Xanh A Đen + Xám Đen + Trắng Đen + Đen A Đen + Xám A Đen + Kaki A Đen + Xanh A Đen + 210G Áo thun Cotton trắng đen + 210G Cotton Matcha xanh Áo thun đen + 210G Cotton đen tuyền Áo thun đen + 210G Cotton hồng tinh khiết Áo thun đen + 210G Cotton tinh khiết Gạo mơ Áo thun vui lòng nhìn về phía nó, xin vui lòng nhìn Chuyển tiếp đến nó, xin vui lòng chuyển tiếp đến nó 1, xin vui lòng chuyển tiếp đến nó 2, xin vui lòng chuyển tiếp đến nó 3 ",
+  "oldPrice": 90000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_4_1.jfif?alt=media&token=e4b0cadc-199b-4714-8a60-dbd9a02e5342",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_4_2.jfif?alt=media&token=c313fe06-80d2-4959-ac31-0df40eebb7f4",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_4_3.jfif?alt=media&token=b0da930f-9951-45c1-a1ac-151b18922d83",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_4_4.jfif?alt=media&token=be507296-f033-4c96-b800-b28ef8bb120f"
+  ],
+  "des": "Phong Cách Mùa Hè Năng Động ",
+  "price": 59000,
+  "rating": 4.5,
+  "review": 10,
+  "title": "Quần Short Thể Thao "
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f739"
+  },
+  "id": "5",
+  "description": "Sản Phẩm: Quần ống rộng thể thao nam\n\n- Chất liệu: Vải thun trơn dày dặn, co giãn tốt thất hút mồ hôi, mặc thoáng mát\n\n- Thiết kế : Quần ống rộng thể thao nam basic đơn giản dễ mặc….\n\n- Kiểu dáng gọn nhẹ, thể thao, năng động và đầy cá tính.\n\nPhù hợp nhiều hoàn cảnh: mặc nhà, đi học, đi chơi, du lịch...\n\n- Xuất xứ: Việt Na ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_5_1.jfif?alt=media&token=6925bd6b-5c06-4236-90a0-aa0cee2d5090",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_5_2.jfif?alt=media&token=700cb693-4cfd-450d-80c6-cfe8a09a1477",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_5_3.jfif?alt=media&token=883b6575-0b87-4178-9879-2bc9654690f6",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_5_4.jfif?alt=media&token=db023898-e31b-461d-bbe9-3e29568d2b9a"
+  ],
+  "des": "Mặc 2 Kiểu Có Thể Rút Dây Thành Jogger Bo Gấu Lưng Thun Co Giãn JOGGER NAM 9000064C4 ",
+  "price": 119000,
+  "rating": 4.7,
+  "review": 10,
+  "title": "Quần Culottes Ống Rộng "
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f73a"
+  },
+  "id": "6",
+  "description": "😘 Quần Kaki Ống Suôn May Chuẩn Hàng Xuất, Quần Kaki Baggy Nam Nữ chất Kaki mềm HK1970  Ống Đứng Mềm Q179 ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_6_1.jfif?alt=media&token=152677a6-e2c0-4ffe-b877-4b297ace22ae",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_6_2.jfif?alt=media&token=4e7a6167-eaab-4ae8-a896-596760917449",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_6_3.jfif?alt=media&token=7458202e-22c4-4bc9-a458-35ba4a1b7953",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_6_4.jfif?alt=media&token=d889d7be-b112-4f7b-b502-3418bb5f956f"
+  ],
+  "des": "May Chuẩn Hàng Xuất, Quần Kaki Baggy Nam Nữ chất Kaki mềm, Ống Đứng Mềm Q179 ",
+  "price": 159000,
+  "rating": 4.6,
+  "review": 10,
+  "title": " Quần Kaki Ống Suông"
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f73b"
+  },
+  "id": "7",
+  "description": "Quần Short Unisex Essentials Phong Cách Thể Thao Chất Cotton Mặc Thoáng Mátư\n✔️ Xuất xứ: Việt Nam\n✔️ Chất liệu: Vải Cotton",
+  "oldPrice": 100000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_7_1.jfif?alt=media&token=f1c87e3c-817d-47d6-a9bf-31b1113c13a7",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_7_2.jfif?alt=media&token=077239e8-0677-4b8d-b2bf-0382527caeb9",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_7_3.jfif?alt=media&token=db3bd1b5-8307-4cf9-8fdf-c7b9c9446a98",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_7_4.jfif?alt=media&token=b3bd6383-3560-4a65-94d7-a254161ee94c"
+  ],
+  "des": "Phong Cách Thể Thao Chất Cotton Mặc Thoáng Mát ",
+  "price": 79000,
+  "rating": 4.5,
+  "review": 10,
+  "title": "Quần Short Unisex Basic "
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f73c"
+  },
+  "id": "8",
+  "description": "Thương hiệu：INCERUN\n\nKích thước: S, M, L, XL, 2XL, 3XL, 4XL,5XL\n\nChất Liệu vải: 100%Polyester\n\nMàu sắc: Đen, Trắng, Xám\n\nPhong cách:Cơ Bản\n\nDịp sử dụng: Giải trí\n\nHoa văn: Màu trơn\n\nĐộ dày: Vừa phải\n\nMô tả sản phẩm : Quần dài nam màu trơn.\n\nNhãn mác: CÓ ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_8_1.jfif?alt=media&token=0b3c3667-f7d0-45cf-8cdc-ce8d5c01f7ce",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_8_2.jfif?alt=media&token=916a4ac3-838c-425d-ab01-38bef38f27ca",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_8_3.jfif?alt=media&token=aceb12c4-0b11-413a-ba3d-83d433864c9a",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_8_4.jfif?alt=media&token=4d13f076-530a-4e6f-ad77-6f83bae6fa72"
+  ],
+  "des": "thẳng rộng rãi dành cho nam có túi bên ",
+  "price": 188000,
+  "rating": 4.1,
+  "review": 10,
+  "title": "Incerun Quần xếp ly"
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f73d"
+  },
+  "id": "9",
+  "description": "Mô tả sản phẩm : Quần jean nam ống suông vải đẹp form chuẩn không phai màu cao cấp\n\nHƯNG PHƯỚC FASHION giới thiệu đến các bạn style thời trang năng động trong hè này với Quần Jean Nam dài ống suông vải dày dặn không co giãn form chuẩn với thiết kế đơn giản. Điểm nổi bật của item này là dạng trơn chỉ với 03 màu, không quá cầu kỳ và đơn giản ở mọi góc nhìn tuy nhiên không kém phần sang trọng. Những đường chỉ phá cách, tinh tế dưới túi quần chính là nét tạo nên vẻ đẹp nam tính của anh chàng mạnh mẽ.\nForm quần thiết kế mới nhất theo xu thế thời trang hiện đại. ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_9_1.jfif?alt=media&token=e03bc799-da78-4efe-bf31-fe1c0556a254",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_9_2.jfif?alt=media&token=b7f13f5a-0a66-4ee4-876d-351e456583fd",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_9_3.jfif?alt=media&token=b7e94ff7-1dc3-4531-87c7-c94ad97706a2",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_9_4.jfif?alt=media&token=6611ad40-22e6-43d6-9a37-a70f4429eb1e"
+  ],
+  "des": "Ống Suông Cotton Mền Mịn Vải Dày Dặn Form Chuẩn Không Phai Màu ",
+  "price": 119000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Quần Jean Nam Quần Bò Nam "
+},
+{
+  "_id": {
+    "$oid": "66b9f4ecbc5595a4d344f73e"
+  },
+  "id": "10",
+  "description": "Phong cách: Hàn Quốc\n\nLoại quần: thẳng\n\nChiều dài quần: quần chín điểm\n\nLoại eo: giữa eo\n\nCho dù có thắt lưng: Với thắt lưng\n\nQuần Placket: đóng dây buộc\n\nĐộ dày: Phần mỏng\n\nMô hình: trơn\n\nCho mùa: Mùa hè\n\nPhù hợp với đám đông: thanh thiếu niên ",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_10_1.jfif?alt=media&token=c4008c45-0a44-4f89-b1de-df77db82c165",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_10_2.jfif?alt=media&token=5bb905b2-60e2-4e35-85cd-0eb81a947680",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_10_3.jfif?alt=media&token=23600ad8-2e73-437d-8962-bca5ecbf2b19",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_quan_nam_10_4.jfif?alt=media&token=80238e56-a781-4cca-a3bf-67fe12eff073"
+  ],
+  "des": "okang dành cho nam giới Retro của Nhật Bản Quần ống rộng mềm mại thoáng khí nhiều túi ",
+  "price": 139000,
+  "rating": 4.8,
+  "review": 10,
+  "title": "Quần ống rộng Aokang "
+}]
