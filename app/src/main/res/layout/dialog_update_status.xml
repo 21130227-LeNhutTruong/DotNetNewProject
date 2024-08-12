@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_edittext"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/spinnerStatus"
+        android:layout_width="match_parent"
+        android:background="@drawable/background_button_login"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUpdate"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/background_button_login"
+        android:layout_height="wrap_content"
+        android:text="Cập nhật" />
+</LinearLayout>
