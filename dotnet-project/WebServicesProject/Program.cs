@@ -1,23 +1,41 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System.ServiceModel;
+﻿using CoreWCF;
+using CoreWCF.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Thêm dịch vụ SOAP
+// Đăng ký dịch vụ CoreWCF
 builder.Services.AddServiceModelServices();
 
 var app = builder.Build();
 
-// Cấu hình endpoint SOAP
-app.UseEndpoints(endpoints =>
+if (builder.Environment.IsDevelopment())
 {
-    endpoints.UseServiceModel(serviceBuilder =>
+    app.UseDeveloperExceptionPage();
+}
+
+// Cấu hình dịch vụ CoreWCF
+app.UseServiceModel(serviceBuilder =>
+{
+    serviceBuilder.AddService<ECommerceService>();
+    serviceBuilder.AddServiceEndpoint<ECommerceService, IECommerceService>(new BasicHttpBinding(), "/ECommerceService.svc");
+});
+
+app.Use(async (context, next) =>
+{
+    try
     {
-        serviceBuilder.AddService<ECommerceService>();
-        serviceBuilder.AddServiceEndpoint<ECommerceService, IECommerceService>(new BasicHttpBinding(), "/ECommerceService");
-    });
+        await next.Invoke();
+    }
+    catch (Exception ex)
+    {
+        await context.Response.WriteAsync($"Error: {ex.Message}");
+    }
+});
+
+
+app.Run(async (context) =>
+{
+    await context.Response.WriteAsync("Service is running...");
 });
 
 app.Run();
