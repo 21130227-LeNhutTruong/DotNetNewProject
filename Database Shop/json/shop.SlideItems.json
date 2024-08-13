@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f714"
+  },
+  "description": "This light .",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_2.png?alt=media&token=c5e7de9c-e3e7-4fd2-a4de-7ef7086703a1"
+  ],
+  "price": 55,
+  "title": "Jean Coat"
+},
+{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f715"
+  },
+  "description": "This light and airy pi.",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_3.png?alt=media&token=ed69dbba-3483-48d7-892b-2fc060fe7d8f"
+  ],
+  "price": 99,
+  "title": "Jean Coat"
+},
+{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f716"
+  },
+  "description": "This light and airy pink shir.",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_2.png?alt=media&token=c5e7de9c-e3e7-4fd2-a4de-7ef7086703a1"
+  ],
+  "price": 69,
+  "title": "Jean Coat"
+},
+{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f717"
+  },
+  "description": "This light and airy pi.",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_3.png?alt=media&token=ed69dbba-3483-48d7-892b-2fc060fe7d8f"
+  ],
+  "price": 99,
+  "title": "Jean Coat"
+},
+{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f718"
+  },
+  "description": "This light and airy pink shir.",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_2.png?alt=media&token=c5e7de9c-e3e7-4fd2-a4de-7ef7086703a1"
+  ],
+  "price": 69,
+  "title": "Jean Coat"
+},
+{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f719"
+  },
+  "description": "This light and airy pi.",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_3.png?alt=media&token=ed69dbba-3483-48d7-892b-2fc060fe7d8f"
+  ],
+  "price": 99,
+  "title": "Jean Coat"
+},
+{
+  "_id": {
+    "$oid": "66b9f46bbc5595a4d344f71a"
+  },
+  "description": "This light and airy pink shir.",
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/project175-f1c13.appspot.com/o/item_2.png?alt=media&token=c5e7de9c-e3e7-4fd2-a4de-7ef7086703a1"
+  ],
+  "price": 69,
+  "title": "Jean Coat"
+}]
