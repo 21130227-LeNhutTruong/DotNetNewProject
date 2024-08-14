@@ -31,9 +31,9 @@ namespace WcfService1
             return result;
         }
 
-        public string GetData(int value)
+        public string hello()
         {
-            return "OK: "+value;
+            return "OK: hello";
         }
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)

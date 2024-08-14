@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,6 +30,7 @@ import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityMainBinding;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +50,8 @@ public class MainActivity extends BaseActivity {
     private WindowManager.LayoutParams adParams;
     private static final int OVERLAY_PERMISSION_REQUEST_CODE = 1234;
 
+    private TextView textView4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,12 @@ public class MainActivity extends BaseActivity {
         initGiay();
         initSliderImage3();
 //        navigationView.findViewById(R.id.navigationview);
+
+
+
+        test();
+
+
         binding.btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +83,50 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
 checkAd();
+    }
+
+    public void test() {
+        textView4 = findViewById(R.id.textView4);
+        SoapClient soapClient = new SoapClient();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final List<SoapClient.Banner> banners = soapClient.callGetBannersService();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (banners != null && !banners.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (SoapClient.Banner banner : banners) {
+//                                    response.append("ID: ").append(banner.getId()).append("\n");
+                                    response.append("URL: ").append(banner.getUrl()).append("\n\n");
+                                }
+                                textView4.setText(response.toString());
+                            } else {
+                                textView4.setText("No banners found");
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText("Error fetching banners");
+                        }
+                    });
+                }
+            }
+        }).start();
+
+
+
+
+
+
     }
 
 
