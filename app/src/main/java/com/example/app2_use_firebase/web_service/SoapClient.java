@@ -2,7 +2,11 @@ package com.example.app2_use_firebase.web_service;
 
 import android.util.Log;
 
+import com.example.app2_use_firebase.model.Banner;
+import com.example.app2_use_firebase.model.ItemsPopular;
+
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
@@ -14,12 +18,16 @@ import java.util.List;
 public class SoapClient {
 
     private static final String NAMESPACE = "http://tempuri.org/";
-    private static final String URL = "https://8822-2001-ee0-51b8-8f60-812f-9f09-8903-33f0.ngrok-free.app/Service1.svc";
+//    ngrok http 55685 --host-header="localhost:55685"
+    private static final String URL = "https://2dea-2001-ee0-51b8-8f60-e51b-e85b-a750-c2b1.ngrok-free.app/Service1.svc";
 
     private static final String HELLO_METHOD_NAME = "hello";
     private static final String HELLO_SOAP_ACTION = "http://tempuri.org/IService1/hello";
     private static final String GET_BANNERS_METHOD_NAME = "GetBanners";
     private static final String GET_BANNERS_SOAP_ACTION = "http://tempuri.org/IService1/GetBanners";
+
+    private static final String GET_ItemsPopular_METHOD_NAME = "GetItemsPopulars";
+    private static final String GET_ItemsPopular_SOAP_ACTION = "http://tempuri.org/IService1/GetItemsPopulars";
 
     public String callHelloService() {
         try {
@@ -78,24 +86,70 @@ public class SoapClient {
         return banners;
     }
 
+    public List<ItemsPopular> getItemsPopular() {
+        List<ItemsPopular> itemsPopulars = new ArrayList<>();
+
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, GET_ItemsPopular_METHOD_NAME);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(GET_ItemsPopular_SOAP_ACTION, envelope);
 
 
 
-    public static class Banner {
-        private String id;
-        private String url;
+            Object objectResponse = envelope.bodyIn;
+            if (objectResponse instanceof SoapFault) {
+                SoapFault fault = (SoapFault) objectResponse;
+                Log.e("SoapClient", "SOAP Fault: " + fault.getMessage());
+                return itemsPopulars;
+            }
 
-        public Banner(String id, String url) {
-            this.id = id;
-            this.url = url;
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            Log.d("SOAP Response", response.toString());
+
+            SoapObject getResultItemsPopular = (SoapObject) response.getProperty("GetItemsPopularsResult");
+
+            for (int i = 0; i < getResultItemsPopular.getPropertyCount(); i++) {
+                SoapObject itemsPopularObject = (SoapObject) getResultItemsPopular.getProperty(i);
+                SoapObject idObject = (SoapObject) itemsPopularObject.getProperty("_id");
+                String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+                String des = itemsPopularObject.getProperty("des").toString();
+                String description = itemsPopularObject.getProperty("description").toString();
+                String id = itemsPopularObject.getProperty("id").toString();
+                double oldPrice = Double.parseDouble(itemsPopularObject.getProperty("oldPrice").toString());
+
+                ArrayList<String> picUrl = new ArrayList<>();
+                SoapObject picUrlObject = (SoapObject) itemsPopularObject.getProperty("picUrl");
+                for (int j = 0; j < picUrlObject.getPropertyCount(); j++) {
+                    picUrl.add(picUrlObject.getProperty(j).toString());
+                }
+
+                int price = Integer.parseInt(itemsPopularObject.getProperty("price").toString());
+                double rating = Double.parseDouble(itemsPopularObject.getProperty("rating").toString());
+                int review = Integer.parseInt(itemsPopularObject.getProperty("review").toString());
+                String title = itemsPopularObject.getProperty("title").toString();
+
+                ItemsPopular itemsPopular = new ItemsPopular(_id, id, description, oldPrice, picUrl, des, price, rating, review, title);
+
+                itemsPopulars.add(itemsPopular);
+            }
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
         }
 
-        public String getId() {
-            return id;
-        }
 
-        public String getUrl() {
-            return url;
-        }
+
+        return itemsPopulars;
     }
+
+
+
+
+
+
 }

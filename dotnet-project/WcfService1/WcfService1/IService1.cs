@@ -21,6 +21,9 @@ namespace WcfService1
         [OperationContract]
         List<Banner> GetBanners();
 
+        [OperationContract]
+        List<ItemsPopular> GetItemsPopulars();
+
 
     }
 

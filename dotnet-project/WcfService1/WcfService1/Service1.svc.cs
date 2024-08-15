@@ -16,18 +16,27 @@ namespace WcfService1
     public class Service1 : IService1
     {
         private readonly IMongoCollection<Banner> _banner;
+        private readonly IMongoCollection<ItemsPopular> _itemsPopular;
 
         public Service1()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("shop");
             _banner = database.GetCollection<Banner>("Banner");
+            _itemsPopular = database.GetCollection<ItemsPopular>("ItemsPopular");
         }
 
         public List<Banner> GetBanners()
         {
             var filter = Builders<Banner>.Filter.Empty;
             var result = _banner.Find(filter).ToList();
+            return result;
+        }
+
+        public List<ItemsPopular> GetItemsPopulars()
+        {
+            var filter = Builders<ItemsPopular>.Filter.Empty;
+            var result = _itemsPopular.Find(filter).ToList();
             return result;
         }
 
