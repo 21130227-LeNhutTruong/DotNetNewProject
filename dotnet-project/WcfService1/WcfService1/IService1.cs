@@ -16,10 +16,13 @@ namespace WcfService1
     {
 
         [OperationContract]
-        string GetData(int value);
+        string hello();
 
         [OperationContract]
         List<Banner> GetBanners();
+
+        [OperationContract]
+        List<ItemsPopular> GetItemsPopulars();
 
 
     }

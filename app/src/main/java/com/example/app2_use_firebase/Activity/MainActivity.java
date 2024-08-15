@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +31,8 @@ import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityMainBinding;
+import com.example.app2_use_firebase.model.ItemsPopular;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +52,8 @@ public class MainActivity extends BaseActivity {
     private WindowManager.LayoutParams adParams;
     private static final int OVERLAY_PERMISSION_REQUEST_CODE = 1234;
 
+    private TextView textView4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +72,12 @@ public class MainActivity extends BaseActivity {
         initGiay();
         initSliderImage3();
 //        navigationView.findViewById(R.id.navigationview);
+
+
+
+//        test();
+
+
         binding.btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +85,51 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
 checkAd();
+    }
+
+    public void test() {
+        textView4 = findViewById(R.id.textView4);
+        SoapClient soapClient = new SoapClient();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+//                    final List<Banner> banners = soapClient.callGetBannersService();
+                    final List<ItemsPopular> itemsPopulars = soapClient.getItemsPopular();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsPopulars != null && !itemsPopulars.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsPopular : itemsPopulars) {
+//                                    response.append("ID: ").append(banner.getId()).append("\n");
+                                    response.append("URL: ").append(itemsPopular.getDes()).append("\n\n");
+                                }
+                                textView4.setText(response.toString());
+                            } else {
+                                textView4.setText("No banners found");
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText("Error fetching banners");
+                        }
+                    });
+                }
+            }
+        }).start();
+
+
+
+
+
+
     }
 
 
@@ -121,33 +176,82 @@ checkAd();
 
 
     private void initPopular() {
-        DatabaseReference myRef = database.getReference("ItemsPopular");
+//        DatabaseReference myRef = database.getReference("ItemsPopular");
         binding.progressBarPopular.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    for (DataSnapshot issue : snapshot.getChildren()) {
+//                        items.add(issue.getValue(ItemsDomain.class));
+//
+//                    }
+//                    if (!items.isEmpty()) {
+//                        binding.recyclerViewPopularProduct.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
+//                        binding.recyclerViewPopularProduct.setAdapter(new PopularAdapter(items));
+//
+//
+//                    }
+//                    binding.progressBarPopular.setVisibility(View.GONE);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+//                    final List<Banner> banners = soapClient.callGetBannersService();
+                    final List<ItemsPopular> itemsPopulars = soapClient.getItemsPopular();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsPopulars != null && !itemsPopulars.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsPopular : itemsPopulars) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.getDes(), itemsPopular.getId(),
+                                            itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),
+                                            itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
+                                            itemsPopular.getRating());
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewPopularProduct.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
-                        binding.recyclerViewPopularProduct.setAdapter(new PopularAdapter(items));
+                                    items.add(itemsDomain);
+                                }
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewPopularProduct.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
+                                    binding.recyclerViewPopularProduct.setAdapter(new PopularAdapter(items));
+                                }
 
 
-                    }
-                    binding.progressBarPopular.setVisibility(View.GONE);
-
+                                binding.progressBarPopular.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText("Error fetching banners");
+                        }
+                    });
                 }
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+
     }
     private void initClothes() {
         DatabaseReference myRef = database.getReference("ItemsClothes");
