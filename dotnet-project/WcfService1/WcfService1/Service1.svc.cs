@@ -3,11 +3,13 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using WcfService1.Models;
+using WcfService1.Services;
 
 namespace WcfService1
 {
@@ -15,35 +17,25 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        private readonly IMongoCollection<Banner> _banner;
-        private readonly IMongoCollection<ItemsPopular> _itemsPopular;
-
-        public Service1()
+        
+        public List<Banner> GetAllBanners()
         {
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("shop");
-            _banner = database.GetCollection<Banner>("Banner");
-            _itemsPopular = database.GetCollection<ItemsPopular>("ItemsPopular");
+            return BannerService.GetInstance().GetAllBanners();
         }
 
-        public List<Banner> GetBanners()
+        public List<ItemsPopular> GetAllItemsPopulars()
         {
-            var filter = Builders<Banner>.Filter.Empty;
-            var result = _banner.Find(filter).ToList();
-            return result;
+            return ItemsPopularService.GetInstance().GetAllItemsPopulars();
         }
 
-        public List<ItemsPopular> GetItemsPopulars()
+        public bool AddUser(User user)
         {
-            var filter = Builders<ItemsPopular>.Filter.Empty;
-            var projection = Builders<ItemsPopular>.Projection.Exclude("id");
-            var result = _itemsPopular.Find(filter).Project<ItemsPopular>(projection).ToList();
-            return result;
+            return UserService.GetInstance().AddUser(user);
         }
 
-        public string hello()
+        public bool SendEmail(string to, string subject, string body)
         {
-            return "OK: hello";
+           return EmailService.GetInstance().SendEmail(to, subject, body);
         }
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)

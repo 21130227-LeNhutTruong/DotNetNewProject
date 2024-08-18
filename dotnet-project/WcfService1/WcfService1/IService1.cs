@@ -16,13 +16,16 @@ namespace WcfService1
     {
 
         [OperationContract]
-        string hello();
+        List<Banner> GetAllBanners();
 
         [OperationContract]
-        List<Banner> GetBanners();
+        List<ItemsPopular> GetAllItemsPopulars();
 
         [OperationContract]
-        List<ItemsPopular> GetItemsPopulars();
+        bool AddUser(User user);
+
+        [OperationContract]
+        bool SendEmail(string to, string subject, string body);
 
 
     }
