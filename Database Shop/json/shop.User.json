@@ -1,11 +1,12 @@
 [{
   "_id": {
-    "$oid": "66c1a8b124e4d81c2016abc0"
+    "$oid": "66c1b5216137044977003a94"
   },
   "email": "21130035@st.hcmuaf.edu.vn",
   "pass": "123456",
   "name": "Duy Nguyen",
   "age": 21,
   "avatar": "",
-  "sex": 1
+  "sex": 1,
+  "role": 0
 }]
