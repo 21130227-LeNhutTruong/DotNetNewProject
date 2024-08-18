@@ -18,8 +18,9 @@ import java.util.List;
 public class SoapClient {
 
     private static final String NAMESPACE = "http://tempuri.org/";
+    
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://2dea-2001-ee0-51b8-8f60-e51b-e85b-a750-c2b1.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://2498-2001-ee0-51b8-8f60-e51b-e85b-a750-c2b1.ngrok-free.app/Service1.svc";
 
     private static final String HELLO_METHOD_NAME = "hello";
     private static final String HELLO_SOAP_ACTION = "http://tempuri.org/IService1/hello";

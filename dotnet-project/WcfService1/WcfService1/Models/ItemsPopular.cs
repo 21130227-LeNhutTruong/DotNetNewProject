@@ -8,7 +8,7 @@ namespace WcfService1.Models
     {
         [BsonId]
         public ObjectId _id { get; set; }
-        public string id { get; set; }
+        //public string id { get; set; }    
         public string description { get; set; }
         public double oldPrice { get; set; }
         public List<string> picUrl { get; set; }
