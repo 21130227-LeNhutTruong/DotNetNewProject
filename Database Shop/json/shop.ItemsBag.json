@@ -1,0 +1,93 @@
+[{
+  "_id": {
+    "$oid": "66b9f441bc5595a4d344f70d"
+  },
+  "id": "3",
+  "description": "- Kích thước 10-30-40(+-3cm) dây đai cực kỳ chắc chắn có thể chịu sức nặng lớn\n - Chất liệu: vải canvas\n - Style: hàn quốc gồm 1 ngăn chính 1 ngăn ngoài và bên trong gồm 2 ngăn phụ\n",
+  "oldPrice": 200000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_3_1.jpg?alt=media&token=4e0c46ca-e809-40fe-b1ab-42ba004bc084",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_3_2.jpg?alt=media&token=37c28d88-92ac-4059-929a-57d5f809780e",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_3_3.jpg?alt=media&token=0044c274-6d47-4b23-a477-db7d98fae978"
+  ],
+  "des": "Túi Vải Túi Đeo Chéo Unisex Uzzang Canvas 100% Mã 08",
+  "price": 119000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Túi Vải Túi Đeo Chéo"
+},
+{
+  "_id": {
+    "$oid": "66b9f441bc5595a4d344f70e"
+  },
+  "id": "2",
+  "description": "- Kích thước 10-30-40(+-3cm) dây đai cực kỳ chắc chắn",
+  "oldPrice": 199999,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_1_1.jpg?alt=media&token=de136c09-de2c-4ea3-80b7-7da704a544ca",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_1_2.jpg?alt=media&token=129de440-21e7-4338-8305-4757c683be47",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_1_3.jpg?alt=media&token=bd8fdfea-15f1-4a71-b516-49e3f48673d2"
+  ],
+  "des": "Túi Vải Túi Đeo Chéo Unisex Uzzang Canvas 100% Mã 08",
+  "price": 99999,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Túi Vải Túi Đeo Chéo"
+},
+{
+  "_id": {
+    "$oid": "66b9f441bc5595a4d344f70f"
+  },
+  "id": "1",
+  "description": "Kết cấu: Vải\nChế độ đóng: khóa từ tính\nPhong cách: Nhật Bản và Hàn Quốc\nHình dạng: Hình vuông dọc\nPhong cách: Túi đeo vai\nTên phong cách phổ biến: Túi Tote\nKích thước: 38 * 33 cm\n",
+  "oldPrice": 399999,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_2_1.jpg?alt=media&token=97c80cf4-b8fc-4fff-8015-748a6b00c032",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_2_2.jpg?alt=media&token=4633d8e4-b479-4062-8bae-3075fdfe53b7",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_2_3.jpg?alt=media&token=486e472c-df60-4a4f-942a-a55cd1af23f0",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_2_4.jpg?alt=media&token=09a08d5b-2d1a-470b-be98-ff35338bf1e9"
+  ],
+  "des": "Sức Chứa Lớn Thiết Kế Mới",
+  "price": 300000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Túi Xách Canvas"
+},
+{
+  "_id": {
+    "$oid": "66b9f441bc5595a4d344f710"
+  },
+  "id": "4",
+  "description": "- Sản phẩm: Túi tote cao cấp\n- Chất liệu: Vải canvas (65% Cotton, 35% Poly) \n- Chất vải thân thiện với môi trường và người dùng\n- Kích thước túi tote:30x10x29cm\n",
+  "oldPrice": 299000,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_4_1.jpg?alt=media&token=220b9b14-241e-4d32-9dde-33aad85cc007",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_4_2.jpg?alt=media&token=2edf157f-4e00-44ac-991b-54ba4c576b92",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_4_3.jpg?alt=media&token=c9c956a5-31c8-416d-ad82-370e37a79563",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_4_4.jpg?alt=media&token=26adda24-bc46-4438-8222-90ad33323c7a",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_4_5.jpg?alt=media&token=95c38fdd-2188-4e98-b77a-ddae909f53e4"
+  ],
+  "des": "có ngăn phụ túi đeo vai đi học đi chơi ",
+  "price": 199000,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Túi tote túi vải canvas"
+},
+{
+  "_id": {
+    "$oid": "66b9f441bc5595a4d344f711"
+  },
+  "id": "5",
+  "description": "- Kích thước 10-30-40(+-3cm) dây đai cực kỳ chắc chắn có thể chịu sức nặng lớn\n - Chất liệu: vải canvas\n - Style: hàn quốc gồm 1 ngăn chính 1 ngăn ngoài và bên trong gồm 2 ngăn phụ\n",
+  "oldPrice": 399999,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_5_1.jpg?alt=media&token=5b7440d3-26c5-4cd1-bb66-bc48e27d213a",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_5_2.jpg?alt=media&token=e8ea4377-bb85-4065-a9d3-b290368fb435",
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/img_bags_5_3.jpg?alt=media&token=0c5105a7-7749-4655-a093-25c413726b78"
+  ],
+  "des": "Túi Vải Túi Đeo Chéo Unisex Uzzang Canvas 100% Mã 08",
+  "price": 299999,
+  "rating": 4.6,
+  "review": 10,
+  "title": "Túi Vải Túi Đeo Chéo"
+}]

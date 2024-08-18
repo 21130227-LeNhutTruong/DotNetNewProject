@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebServicesProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe6ba30be2192e997e1d6a340f133af5b4810c26")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+243ddecce1a839560aa1e3df0b278adc41670210")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebServicesProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebServicesProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "66b9f2ebbc5595a4d344f6e3"
+  },
+  "id": 0,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/quan_nam.png?alt=media&token=c606d0b3-1b22-479f-a81a-b097c36ab597"
+  ],
+  "title": "Quần Nam"
+},
+{
+  "_id": {
+    "$oid": "66b9f2ebbc5595a4d344f6e4"
+  },
+  "id": 1,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/ao_nam.png?alt=media&token=075172f7-b19b-43d9-b505-0be91dd018a5"
+  ],
+  "title": "Áo Nam"
+},
+{
+  "_id": {
+    "$oid": "66b9f2ebbc5595a4d344f6e5"
+  },
+  "id": 2,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/giay.png?alt=media&token=c51941ee-504d-4d9d-8713-384e6e9079ce"
+  ],
+  "title": "Giày"
+},
+{
+  "_id": {
+    "$oid": "66b9f2ebbc5595a4d344f6e6"
+  },
+  "id": 3,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/quan_nu.png?alt=media&token=4d5f3e88-aa63-4366-a778-4bafa6fc2e6e"
+  ],
+  "title": "Quần Nữ"
+},
+{
+  "_id": {
+    "$oid": "66b9f2ebbc5595a4d344f6e7"
+  },
+  "id": 4,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/ao_nu.png?alt=media&token=98d72c4f-1f3d-40e2-92f9-4179b2276a7e"
+  ],
+  "title": "Áo Nữ"
+},
+{
+  "_id": {
+    "$oid": "66b9f2ebbc5595a4d344f6e8"
+  },
+  "id": 5,
+  "picUrl": [
+    "https://firebasestorage.googleapis.com/v0/b/appmobileshop-b7ca3.appspot.com/o/bags.png?alt=media&token=cdb12a4f-21ce-4f48-afca-257ea6f4b3df"
+  ],
+  "title": "Túi Xách"
+}]

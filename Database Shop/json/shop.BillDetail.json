@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "66c1b30324e4d81c2016abf7"
+  },
+  "billId": {
+    "$oid": "66c1ac3d24e4d81c2016abc9"
+  },
+  "product": [
+    {
+      "productID": {
+        "$oid": "66b9f49ebc5595a4d344f71d"
+      },
+      "quantity": 3,
+      "price": 50000
+    }
+  ]
+}]
