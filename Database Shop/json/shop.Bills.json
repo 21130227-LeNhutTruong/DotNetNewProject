@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "66c1ac3d24e4d81c2016abc9"
+  },
+  "date": "18/8/2024",
+  "address": "Đồng Nai",
+  "fullName": "Nguyễn Ngọc Khánh Duy",
+  "payment": "Thanh toán khi nhận hàng",
+  "phone": "083951003",
+  "totalAmount": 200000,
+  "userId": {
+    "$oid": "66c1a8b124e4d81c2016abc0"
+  }
+}]

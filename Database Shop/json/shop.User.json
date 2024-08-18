@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "66c1a8b124e4d81c2016abc0"
+  },
+  "email": "21130035@st.hcmuaf.edu.vn",
+  "pass": "123456",
+  "name": "Duy Nguyen",
+  "age": 21,
+  "avatar": "",
+  "sex": 1
+}]

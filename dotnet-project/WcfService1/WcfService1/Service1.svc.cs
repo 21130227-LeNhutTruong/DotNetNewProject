@@ -36,7 +36,8 @@ namespace WcfService1
         public List<ItemsPopular> GetItemsPopulars()
         {
             var filter = Builders<ItemsPopular>.Filter.Empty;
-            var result = _itemsPopular.Find(filter).ToList();
+            var projection = Builders<ItemsPopular>.Projection.Exclude("id");
+            var result = _itemsPopular.Find(filter).Project<ItemsPopular>(projection).ToList();
             return result;
         }
 
