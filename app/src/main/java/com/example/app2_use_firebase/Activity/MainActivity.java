@@ -97,7 +97,7 @@ checkAd();
             public void run() {
                 try {
 //                    final List<Banner> banners = soapClient.callGetBannersService();
-                    final List<ItemsPopular> itemsPopulars = soapClient.getItemsPopular();
+                    final List<ItemsPopular> itemsPopulars = soapClient.getAllItemsPopular();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -211,14 +211,14 @@ checkAd();
             public void run() {
                 try {
 //                    final List<Banner> banners = soapClient.callGetBannersService();
-                    final List<ItemsPopular> itemsPopulars = soapClient.getItemsPopular();
+                    final List<ItemsPopular> itemsPopulars = soapClient.getAllItemsPopular();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (itemsPopulars != null && !itemsPopulars.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
                                 for (ItemsPopular itemsPopular : itemsPopulars) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.getDes(), itemsPopular.getId(),
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.getDes(), itemsPopular.get_id(),
                                             itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),
                                             itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
                                             itemsPopular.getRating());
