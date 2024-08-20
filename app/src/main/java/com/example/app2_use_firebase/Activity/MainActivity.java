@@ -195,8 +195,8 @@ checkAd();
                             if (itemsPopulars != null && !itemsPopulars.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
                                 for (ItemsPopular itemsPopular : itemsPopulars) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.getDes(), itemsPopular.get_id(),
-                                            itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.get_id(),
+                                            itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),itemsPopular.getDes(),
                                             itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
                                             itemsPopular.getRating());
 
@@ -275,8 +275,8 @@ checkAd();
                             if (itemsGiays != null && !itemsGiays.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
                                 for (ItemsPopular itemsgiay : itemsGiays) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.getDes(), itemsgiay.get_id(),
-                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.get_id(),
+                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),itemsgiay.getDes(),
                                             itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
                                             itemsgiay.getRating());
 
@@ -323,8 +323,8 @@ checkAd();
                             if (itemsBags != null && !itemsBags.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
                                 for (ItemsPopular itemsBag : itemsBags) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsBag.getDes(), itemsBag.get_id(),
-                                            itemsBag.getTitle(), itemsBag.getDescription(), itemsBag.getPicUrl(),
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsBag.get_id(),
+                                            itemsBag.getTitle(), itemsBag.getDescription(), itemsBag.getPicUrl(),itemsBag.getDes(),
                                             itemsBag.getPrice(), itemsBag.getOldPrice(), itemsBag.getReview(),
                                             itemsBag.getRating());
 
