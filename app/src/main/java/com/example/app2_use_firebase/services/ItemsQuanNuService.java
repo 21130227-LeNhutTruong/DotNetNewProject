@@ -15,8 +15,8 @@ import java.util.List;
 
 public class ItemsQuanNuService {
     private static ItemsQuanNuService instance;
-    private static final String GET_ItemsQuanNu_METHOD_NAME = "GetSliderItems";
-    private static final String GET_ItemsQuanNu_SOAP_ACTION = "http://tempuri.org/IService1/GetSliderItems";
+    private static final String GET_ItemsQuanNu_METHOD_NAME = "GetItemsQuanNu";
+    private static final String GET_ItemsQuanNu_SOAP_ACTION = "http://tempuri.org/IService1/GetItemsQuanNu";
 
     public static ItemsQuanNuService getInstance() {
         if (instance == null) instance = new ItemsQuanNuService();
