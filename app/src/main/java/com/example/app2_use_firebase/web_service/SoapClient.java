@@ -9,6 +9,9 @@ import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.ItemsBagService;
 import com.example.app2_use_firebase.services.ItemsGiayService;
 import com.example.app2_use_firebase.services.ItemsPopularService;
+import com.example.app2_use_firebase.services.ItemsQuanNamService;
+import com.example.app2_use_firebase.services.ItemsQuanNuService;
+import com.example.app2_use_firebase.services.ItemsQuanService;
 import com.example.app2_use_firebase.services.SliderItemsService;
 import com.example.app2_use_firebase.services.UserService;
 
@@ -61,7 +64,15 @@ public class SoapClient {
     public List<SliderItems> getSliderItems() {
         return SliderItemsService.getInstance().getSliderItems(NAMESPACE, URL);
     }
-
+    public List<ItemsDomain> getItemsQuan() {
+       return ItemsQuanService.getInstance().getItemsQuan(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getItemsQuanNam() {
+        return ItemsQuanNamService.getInstance().getItemsQuanNam(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getItemsQuanNu() {
+        return ItemsQuanNuService.getInstance().getItemsQuanNu(NAMESPACE, URL);
+    }
 
     public List<ItemsPopular> getItemsGiay() {
         return ItemsGiayService.getInstance().getItemsGiayService(NAMESPACE, URL);

@@ -23,7 +23,7 @@ namespace WcfService1
             return BannerService.GetInstance().GetAllBanners();
         }
 
-        public List<ItemsPopular> GetAllItemsPopulars()
+        public List<ItemsDomain> GetAllItemsPopulars()
         {
             return ItemsPopularService.GetInstance().GetAllItemsPopulars();
         }
@@ -31,7 +31,19 @@ namespace WcfService1
         {
             return SliderItemService.GetInstance().GetSliderItems();
         }
-        
+        public List<ItemsDomain> GetItemsQuan()
+        {
+            return ItemsQuanService.GetInstance().GetItemsQuan();
+        }
+        public List<ItemsDomain> GetItemsQuanNam()
+        {
+            return ItemsQuanNamService.GetInstance().GetItemsQuanNam();
+        }
+        public List<ItemsDomain> GetItemsQuanNu()
+        {
+            return ItemsQuanNuService.GetInstance().GetItemsQuanNu();
+        }
+
         public bool AddUser(User user)
         {
             return UserService.GetInstance().AddUser(user);
@@ -62,17 +74,19 @@ namespace WcfService1
             return UserService.GetInstance().isExistUser(email);   
         }
 
-        public List<ItemsPopular> GetAllItemsGiay()
+
+        public List<ItemsDomain> GetAllItemsGiay()
         {
             return ItemsGiayService.GetInstance().GetAllItemsGiay();
 
 
         }
 
-        public List<ItemsPopular> GetAllItemsBag()
+        public List<ItemsDomain> GetAllItemsBag()
         {
             return ItemsTuiXachService.GetInstanceBag().GetAllItemsBag();
         }
+
 
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WcfService1.Models
 {
-    public class ItemsPopular
+    public class ItemsDomain
     {
         [BsonId]
         public ObjectId _id { get; set; }

@@ -7,32 +7,28 @@
       "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\service1.svc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\itemspopularservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\itemspopularservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\wcfservice1\\iservice1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\iservice1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\objectidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\objectidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\itemsquannamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\itemsquannamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\itemsquannuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\itemsquannuservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\models\\slideritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\models\\slideritem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\itemsquanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\itemsquanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\models\\itemsdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\models\\itemsdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\wcfservice1\\services\\slideritemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\slideritemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\wcfservice1\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\wcfservice1\\iservice1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\iservice1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,20 +38,64 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IService1.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs",
-              "RelativeDocumentMoniker": "WcfService1\\IService1.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs",
-              "RelativeToolTip": "WcfService1\\IService1.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAQwBoAAAAbAAAA",
+              "DocumentIndex": 4,
+              "Title": "ItemsQuanService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsQuanService.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Services\\ItemsQuanService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsQuanService.cs",
+              "RelativeToolTip": "WcfService1\\Services\\ItemsQuanService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAkwBUAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T05:06:51.655Z",
-              "IsPinned": true
+              "WhenOpened": "2024-08-20T11:25:12.018Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ItemsQuanNuService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsQuanNuService.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Services\\ItemsQuanNuService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsQuanNuService.cs",
+              "RelativeToolTip": "WcfService1\\Services\\ItemsQuanNuService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvyQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T13:58:02.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ItemsQuanNamService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsQuanNamService.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Services\\ItemsQuanNamService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsQuanNamService.cs",
+              "RelativeToolTip": "WcfService1\\Services\\ItemsQuanNamService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAkwBwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T13:55:55.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ItemsDomain.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\ItemsDomain.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Models\\ItemsDomain.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\ItemsDomain.cs",
+              "RelativeToolTip": "WcfService1\\Models\\ItemsDomain.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T11:56:58.489Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -65,91 +105,35 @@
               "RelativeDocumentMoniker": "WcfService1\\Service1.svc.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Service1.svc.cs",
               "RelativeToolTip": "WcfService1\\Service1.svc.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAcwBwAAAAJAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAxwCQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T05:11:54.282Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-08-20T11:27:47.042Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ItemsPopularService.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsPopularService.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Services\\ItemsPopularService.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ItemsPopularService.cs",
-              "RelativeToolTip": "WcfService1\\Services\\ItemsPopularService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "IService1.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs",
+              "RelativeDocumentMoniker": "WcfService1\\IService1.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs",
+              "RelativeToolTip": "WcfService1\\IService1.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAwB4AAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:02:22.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ObjectIdService.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ObjectIdService.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Services\\ObjectIdService.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ObjectIdService.cs",
-              "RelativeToolTip": "WcfService1\\Services\\ObjectIdService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:02:20.188Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\UserService.cs",
-              "RelativeToolTip": "WcfService1\\Services\\UserService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T10:02:14.851Z",
+              "WhenOpened": "2024-08-20T05:06:51.655Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Properties\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Properties\\AssemblyInfo.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Properties\\AssemblyInfo.cs",
-              "RelativeToolTip": "WcfService1\\Properties\\AssemblyInfo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T05:13:04.666Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "SliderItemService.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\SliderItemService.cs",
               "RelativeDocumentMoniker": "WcfService1\\Services\\SliderItemService.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\SliderItemService.cs",
               "RelativeToolTip": "WcfService1\\Services\\SliderItemService.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAYwCIAAAABAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T05:06:04.311Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SliderItem.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\SliderItem.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Models\\SliderItem.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\SliderItem.cs",
-              "RelativeToolTip": "WcfService1\\Models\\SliderItem.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T05:04:29.384Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T11:32:25.745Z"
             }
           ]
         }

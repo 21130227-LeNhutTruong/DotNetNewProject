@@ -38,41 +38,45 @@ public class QuanNuActivity extends BaseActivity{
         binding = ActivityListQuanNuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         super.onCreate(savedInstanceState);
-        initBags();
+        initQuanNu();
         initSliderImage();
         initSliderImage2();
         setClickAction();
 
 
     }
-    private void initBags() {
-        DatabaseReference myRef = database.getReference("ItemsQuanNu");
+    private void initQuanNu() {
         binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsDomain> itemsQuanList = soapClient.getItemsQuanNu();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsQuanList != null && !itemsQuanList.isEmpty()) {
+                                items.addAll(itemsQuanList);
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewListQuanNu.setLayoutManager(new GridLayoutManager(QuanNuActivity.this, 2));
-                        binding.recyclerViewListQuanNu.setAdapter(new PopularAdapter(items));
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewListQuanNu.setLayoutManager(new GridLayoutManager(QuanNuActivity.this, 2));
+                                    binding.recyclerViewListQuanNu.setAdapter(new PopularAdapter(items));
+                                }
 
-
-                    }
-                    binding.progressAo.setVisibility(View.GONE);
-
+                                binding.progressAo.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(QuanNuActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
                 }
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }).start();
     }
     private void initSliderImage(){
         binding.progressAo.setVisibility(View.VISIBLE);
