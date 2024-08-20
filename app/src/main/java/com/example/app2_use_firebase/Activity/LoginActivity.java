@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,8 @@ import androidx.annotation.Nullable;
 
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityLoginBinding;
+import com.example.app2_use_firebase.model.User;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -32,7 +35,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -193,45 +195,79 @@ public class LoginActivity extends BaseActivity {
             return;
         }
 
-        auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
+//        auth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        progressDialog.dismiss();
+//                        if (task.isSuccessful()) {
+//                            // Successful login, proceed to MainActivity
+//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                            startActivity(intent);
+//                            finishAffinity();
+//                            saveLoginState(auth.getCurrentUser().getUid());
+//
+//                        } else {
+//                            // Handle potential exceptions
+//                            try {
+//                                Exception e = task.getException();
+//                                if (e instanceof FirebaseAuthInvalidCredentialsException) {
+//                                    // Handle invalid email format or non-existent email
+//                                    String message = "Invalid email or password.";
+//                                    if (e.getMessage().contains("invalid email format")) {
+//                                        message = "Invalid email format. Please check and try again.";
+//                                    } else if (e.getMessage().contains("user-not-found")) {
+//                                        message = "Email not found. Please check your email address or create an account.";
+//                                    }
+//                                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+//                                } else {
+//                                    // Handle other unexpected exceptions
+//                                    Toast.makeText(LoginActivity.this, "Authentication failed: " + e.getMessage(),
+//                                            Toast.LENGTH_SHORT).show();
+//                                }
+//                            } catch (Exception e) {
+//                                // Catch any other unexpected errors
+//                                Toast.makeText(LoginActivity.this, "An unexpected error occurred. Please try again later.",
+//                                        Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    }
+//                });
 
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if (task.isSuccessful()) {
-                            // Successful login, proceed to MainActivity
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finishAffinity();
-                            saveLoginState(auth.getCurrentUser().getUid());
-
-                        } else {
-                            // Handle potential exceptions
-                            try {
-                                Exception e = task.getException();
-                                if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                                    // Handle invalid email format or non-existent email
-                                    String message = "Invalid email or password.";
-                                    if (e.getMessage().contains("invalid email format")) {
-                                        message = "Invalid email format. Please check and try again.";
-                                    } else if (e.getMessage().contains("user-not-found")) {
-                                        message = "Email not found. Please check your email address or create an account.";
-                                    }
-                                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
-                                } else {
-                                    // Handle other unexpected exceptions
-                                    Toast.makeText(LoginActivity.this, "Authentication failed: " + e.getMessage(),
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (Exception e) {
-                                // Catch any other unexpected errors
-                                Toast.makeText(LoginActivity.this, "An unexpected error occurred. Please try again later.",
-                                        Toast.LENGTH_SHORT).show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    User user = SoapClient.getInstance().checkLogin(email.trim(), password.trim());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (user != null) {
+                                progressDialog.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finishAffinity();
+                                saveLoginState(user.get_id());
+                            }else  {
+                                Log.e("Login Fail", "Fail: "+email+", "+password);
+                                progressDialog.dismiss();
+                                Toast.makeText(LoginActivity.this, "Invalid email or password.", Toast.LENGTH_LONG).show();
                             }
                         }
-                    }
-                });
+                    });
+                }catch (Exception e) {
+                    Log.e("Login Fail", "Error during SOAP call", e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, "Error occurred", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 
     private void signUpOnClick() {

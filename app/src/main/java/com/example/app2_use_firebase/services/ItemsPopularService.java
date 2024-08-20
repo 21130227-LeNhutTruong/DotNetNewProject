@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemsPopularService {
     private static ItemsPopularService instance;
     private static final String GET_ItemsPopular_METHOD_NAME = "GetAllItemsPopulars";
-    private static final String GET_ItemsPopular_SOAP_ACTION = "http://tempuri.org/IService1/GetAllItemsPopulars";
+    private static final String GET_ItemsPopular_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_ItemsPopular_METHOD_NAME;
 
     public static ItemsPopularService getInstance() {
         if (instance == null) instance = new ItemsPopularService();
