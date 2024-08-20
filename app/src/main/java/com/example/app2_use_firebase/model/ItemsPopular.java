@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class ItemsPopular {
     private String _id;
-    private String id;
     private String description;
     private double oldPrice;
     private ArrayList<String> picUrl;
@@ -14,9 +13,8 @@ public class ItemsPopular {
     private int review;
     private String title;
 
-    public ItemsPopular(String _id, String id, String description, double oldPrice, ArrayList<String> picUrl, String des, int price, double rating, int review, String title) {
+    public ItemsPopular(String _id, String description, double oldPrice, ArrayList<String> picUrl, String des, int price, double rating, int review, String title) {
         this._id = _id;
-        this.id = id;
         this.description = description;
         this.oldPrice = oldPrice;
         this.picUrl = picUrl;
@@ -33,14 +31,6 @@ public class ItemsPopular {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDescription() {
@@ -111,7 +101,6 @@ public class ItemsPopular {
     public String toString() {
         return "ItemsPopular{" +
                 "_id='" + _id + '\'' +
-                ", id=" + id +
                 ", description='" + description + '\'' +
                 ", oldPrice=" + oldPrice +
                 ", picUrl=" + picUrl +

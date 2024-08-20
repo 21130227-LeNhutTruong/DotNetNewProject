@@ -300,10 +300,8 @@ private void displayUserCart(Context context) {
     private void initSliderImage2(){
         viewPager3 = binding.viewPager3;
 // Thêm danh sách các hình ảnh cho slide
-        List<Integer> slideItems   = Arrays.asList(
-                R.drawable.imgslide_4,
-                R.drawable.imgslide_5,
-                R.drawable.imgslide_6
+        List<String> slideItems   = Arrays.asList(
+
 
         );
         SliderImgAdapter  slideAdapter = new SliderImgAdapter(this, slideItems);

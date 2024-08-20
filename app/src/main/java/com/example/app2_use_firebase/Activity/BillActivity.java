@@ -74,13 +74,8 @@ public class BillActivity extends BaseActivity {
     private void initSliderImage(){
         viewPager2 = binding.viewPager2;
 // Thêm danh sách các hình ảnh cho slide
-        List<Integer> slideItems   = Arrays.asList(
-                R.drawable.imgslide_2,
-                R.drawable.imgslide_4,
-                R.drawable.imgslide_5,
-                R.drawable.imgslide_6,
-                R.drawable.imgslide_9,
-                R.drawable.imgslide_7
+        List<String> slideItems   = Arrays.asList(
+
         );
         SliderImgAdapter slideAdapter = new SliderImgAdapter(this, slideItems);
         viewPager2.setAdapter(slideAdapter);

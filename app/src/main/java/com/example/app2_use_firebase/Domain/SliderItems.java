@@ -4,21 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SliderItems implements Serializable {
-    private String title;
     private String description;
     private ArrayList<String> picUrl;
     private double price;
-  public SliderItems(){
+    private String title;
 
-  }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+    public SliderItems(String description, ArrayList<String> picUrl, double price, String title) {
+        this.description = description;
+        this.picUrl = picUrl;
+        this.price = price;
         this.title = title;
     }
+
 
     public String getDescription() {
         return description;
@@ -42,5 +39,13 @@ public class SliderItems implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
