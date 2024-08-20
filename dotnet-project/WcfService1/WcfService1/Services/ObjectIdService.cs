@@ -17,9 +17,11 @@ namespace WcfService1.Services
 
         public ObjectId ChangeIdStringToObjectId(string id)
         {
-            string a = id.Substring(0, 10);
-            string c = id.Substring(id.Length - 9);
-            string b = id.Substring(10, id.Length - 19);
+            string[] parts = id.Split('*');
+
+            string a = parts[0];
+            string b = parts[1];
+            string c = parts[2];
 
             string partA = int.Parse(a).ToString("x8"); 
             string partB = int.Parse(b).ToString("x8");

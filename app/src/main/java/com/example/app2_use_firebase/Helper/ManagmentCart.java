@@ -1,11 +1,16 @@
 package com.example.app2_use_firebase.Helper;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.app2_use_firebase.Domain.ItemsDomain;
+import com.example.app2_use_firebase.model.Cart;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -210,11 +215,75 @@ public void insertProduct(ItemsDomain item) {
     }
 
     public void plusItem(ArrayList<ItemsDomain> listProduct, int position, ChangeNumberItemsListener changeNumberItemsListener) {
-        // Tăng số lượng sản phẩm trong giỏ hàng
-        listProduct.get(position).setNumberinCart(listProduct.get(position).getNumberinCart() + 1);
-        // Lưu danh sách sản phẩm vào SharedPreferences
-        tinyDB.putListObject("CartList", listProduct);
-        changeNumberItemsListener.changed();
+
+        int quantity = listProduct.get(position).getNumberinCart() + 1;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    SharedPreferences sharedPref = context.getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                    String userId = sharedPref.getString("userId", null);
+                    Log.d("SOAP", "Cart: "+userId);
+                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
+
+                    if (context instanceof Activity) {
+                        ((Activity) context).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (cart != null) {
+                                    for (int i = 0; i < cart.getProducts().size(); i++) {
+                                        final String productId = cart.getProducts().get(i).get_id();
+                                        new Thread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                   boolean updateCart = SoapClient.getInstance().updateCartQuantity(cart.get_id(), productId, quantity);
+                                                    Log.d("SOAP", "UPDATE CART = "+updateCart);
+                                                }catch (Exception e) {
+                                                    Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                                }
+                                            }
+                                        }).start();
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1000);
+                                if (context instanceof Activity) {
+                                    ((Activity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            // Tăng số lượng sản phẩm trong giỏ hàng
+                                            listProduct.get(position).setNumberinCart(listProduct.get(position).getNumberinCart() + 1);
+                                            // Lưu danh sách sản phẩm vào SharedPreferences
+                                            tinyDB.putListObject("CartList", listProduct);
+                                            changeNumberItemsListener.changed();
+                                            Log.d("SOAP", "UPDATE CART QUANTITY");
+                                        }
+                                    });
+                                }
+
+                            } catch (InterruptedException e) {
+                                Log.d("SOAP", "Thread interrupted", e);
+                            }
+                        }
+                    }).start();
+
+
+
+
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                }
+
+            }
+        }).start();
     }
 
     public Double getTotalFee() {

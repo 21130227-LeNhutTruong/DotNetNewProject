@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\UserService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:WcfService1\\Services\\UserService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ObjectIdService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:WcfService1\\Services\\ObjectIdService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Service1.svc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:WcfService1\\Service1.svc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:WcfService1\\IService1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\wcfservice1\\wcfservice1\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:wcfservice1\\services\\cartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\ProductBuy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E35411D4-60E5-4F01-830C-50AB44688D24}|WcfService1\\WcfService1.csproj|solutionrelative:WcfService1\\Models\\ProductBuy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,73 +29,58 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\User.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Models\\User.cs",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\User.cs",
-              "RelativeToolTip": "WcfService1\\Models\\User.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAswBwAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T07:17:42.395Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Service1.svc.cs",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Service1.svc.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Service1.svc.cs",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Service1.svc.cs",
-              "RelativeToolTip": "WcfService1\\Service1.svc.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAuwCUAAAA1AAAA",
+              "DocumentIndex": 3,
+              "Title": "ProductBuy.cs",
+              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\ProductBuy.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Models\\ProductBuy.cs",
+              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Models\\ProductBuy.cs",
+              "RelativeToolTip": "WcfService1\\Models\\ProductBuy.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T13:36:22.676Z",
+              "WhenOpened": "2024-08-20T12:31:08.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartService.cs",
+              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\CartService.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Services\\CartService.cs",
+              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\CartService.cs",
+              "RelativeToolTip": "WcfService1\\Services\\CartService.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAIwGMAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T08:08:21.182Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ObjectIdService.cs",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ObjectIdService.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Services\\ObjectIdService.cs",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\ObjectIdService.cs",
-              "RelativeToolTip": "WcfService1\\Services\\ObjectIdService.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwB4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T12:16:35.451Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "WcfService1\\Services\\UserService.cs",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Services\\UserService.cs",
-              "RelativeToolTip": "WcfService1\\Services\\UserService.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAgwEIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T07:15:51.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "IService1.cs",
               "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs",
               "RelativeDocumentMoniker": "WcfService1\\IService1.cs",
               "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\IService1.cs",
               "RelativeToolTip": "WcfService1\\IService1.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAowCYAAAAMAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAqwDIAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T13:36:55.442Z",
+              "WhenOpened": "2024-08-20T07:53:19.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Service1.svc.cs",
+              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Service1.svc.cs",
+              "RelativeDocumentMoniker": "WcfService1\\Service1.svc.cs",
+              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WcfService1\\WcfService1\\Service1.svc.cs",
+              "RelativeToolTip": "WcfService1\\Service1.svc.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAUwFIAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T08:20:23.275Z",
               "EditorCaption": ""
             }
           ]

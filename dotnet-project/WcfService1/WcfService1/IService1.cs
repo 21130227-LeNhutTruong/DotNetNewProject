@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using WcfService1.Models;
+using ZstdSharp.Unsafe;
 
 namespace WcfService1
 {
@@ -20,6 +21,8 @@ namespace WcfService1
 
         [OperationContract]
         List<ItemsPopular> GetAllItemsPopulars();
+        [OperationContract]
+        ItemsPopular GetItemsPopularById(string id);
 
         [OperationContract]
         bool AddUser(User user);
@@ -38,6 +41,14 @@ namespace WcfService1
         [OperationContract]
         bool isExistUser(string email);
 
+        [OperationContract]
+        Cart GetCartByUser(string id);
+        [OperationContract]
+        bool UpdateCartQuantity(string id, string idProduct, int quantity);
+        [OperationContract]
+        bool AddCart(string id, string idProduct, int quantity, string type);
+        [OperationContract]
+        bool RemoveCart(string id, string idProduct);
 
     }
 

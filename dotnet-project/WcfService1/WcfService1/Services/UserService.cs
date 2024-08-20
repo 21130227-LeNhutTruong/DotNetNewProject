@@ -66,7 +66,7 @@ namespace WcfService1.Services
         {
             var objectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
             var filter = Builders<User>.Filter.Eq(u => u._id, objectId);
-            
+
             var result = _user.Find<User>(filter).ToList();
 
             if (result.Count == 1) return result[0];

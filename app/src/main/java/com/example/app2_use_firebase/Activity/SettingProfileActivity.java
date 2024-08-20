@@ -59,6 +59,7 @@ public class SettingProfileActivity extends BaseActivity{
                     SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
                     String userId = sharedPref.getString("userId", null);
 
+
                     User user = SoapClient.getInstance().getUserById(userId);
                     runOnUiThread(new Runnable() {
                         @Override

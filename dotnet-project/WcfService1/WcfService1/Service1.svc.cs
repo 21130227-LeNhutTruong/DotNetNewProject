@@ -28,6 +28,11 @@ namespace WcfService1
             return ItemsPopularService.GetInstance().GetAllItemsPopulars();
         }
 
+        public ItemsPopular GetItemsPopularById(string id)
+        {
+            return ItemsPopularService.GetInstance().GetItemsPopularById(id);
+        }
+
         public bool AddUser(User user)
         {
             return UserService.GetInstance().AddUser(user);
@@ -50,12 +55,32 @@ namespace WcfService1
 
         public User GetUserById(string id)
         {
-            return UserService.GetInstance().GetUserById(id);  
+            return UserService.GetInstance().GetUserById(id);
         }
 
         public bool isExistUser(string email)
         {
             return UserService.GetInstance().isExistUser(email);   
+        }
+
+        public Cart GetCartByUser(string id)
+        {
+            return CartService.GetInstance().GetCartByUser(id);
+        }
+
+        public bool UpdateCartQuantity(string id, string idProduct, int quantity)
+        {
+            return CartService.GetInstance().UpdateCartQuantity(id, idProduct, quantity);
+        }
+
+        public bool AddCart(string id, string idProduct, int quantity, string type)
+        {
+            return CartService.GetInstance().AddCart(id, idProduct, quantity, type);
+        }
+
+        public bool RemoveCart(string id, string idProduct)
+        {
+            return CartService.GetInstance().RemoveCart(id, idProduct);
         }
 
 

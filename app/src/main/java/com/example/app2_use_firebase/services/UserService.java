@@ -157,7 +157,7 @@ public class UserService {
 
             SoapObject idObject = (SoapObject) checkLoginResult.getProperty("_id");
 
-            String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+            String _id = idObject.getProperty("_a").toString()+"*"+idObject.getProperty("_b").toString() +"*"+ idObject.getProperty("_c").toString();
             int age = Integer.parseInt(checkLoginResult.getProperty("age").toString());
             String avatar = checkLoginResult.getProperty("avatar").toString();
             String email = checkLoginResult.getProperty("email").toString();
@@ -213,10 +213,10 @@ public class UserService {
         }
     }
 
-    public User getUserById(String NAMESPACE, String URL, String idSend) {
+    public User getUserById(String NAMESPACE, String URL, String userId) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, GetUserById_METHOD_NAME);
-            request.addProperty("id", idSend);
+            request.addProperty("id", userId);
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.setOutputSoapObject(request);
@@ -249,7 +249,7 @@ public class UserService {
 
             SoapObject idObject = (SoapObject) getUserByIdResult.getProperty("_id");
 
-            String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+            String _id = idObject.getProperty("_a").toString()+"*"+idObject.getProperty("_b").toString()+"*"+idObject.getProperty("_c").toString();
             int age = Integer.parseInt(getUserByIdResult.getProperty("age").toString());
             String avatar = getUserByIdResult.getProperty("avatar").toString();
             String email = getUserByIdResult.getProperty("email").toString();
