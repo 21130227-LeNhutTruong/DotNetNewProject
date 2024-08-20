@@ -35,11 +35,32 @@ namespace WcfService1
         {
             return UserService.GetInstance().AddUser(user);
         }
+        
+        public bool Register(User user)
+        {
+            return UserService.GetInstance().Register(user);
+        }
 
         public bool SendEmail(string to, string subject, string body)
         {
            return EmailService.GetInstance().SendEmail(to, subject, body);
         }
+
+        public User CheckLogin(string email, string password)
+        {
+            return UserService.GetInstance().CheckLogin(email, password);
+        }
+
+        public User GetUserById(string id)
+        {
+            return UserService.GetInstance().GetUserById(id);  
+        }
+
+        public bool isExistUser(string email)
+        {
+            return UserService.GetInstance().isExistUser(email);   
+        }
+
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)
         //{

@@ -186,6 +186,7 @@
     <Compile Include="Services\BannerService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ItemsPopularService.cs" />
+    <Compile Include="Services\ObjectIdService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

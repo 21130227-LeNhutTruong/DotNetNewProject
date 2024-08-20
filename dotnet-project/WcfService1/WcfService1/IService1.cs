@@ -26,9 +26,20 @@ namespace WcfService1
 
         [OperationContract]
         bool AddUser(User user);
+        [OperationContract]
+        bool Register(User user);
 
         [OperationContract]
         bool SendEmail(string to, string subject, string body);
+
+        [OperationContract]
+        User CheckLogin(string email, string password);
+
+        [OperationContract]
+        User GetUserById(string id);
+
+        [OperationContract]
+        bool isExistUser(string email);
 
 
     }
