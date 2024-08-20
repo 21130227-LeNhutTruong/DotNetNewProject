@@ -22,6 +22,11 @@ namespace WcfService1
         List<ItemsPopular> GetAllItemsPopulars();
 
         [OperationContract]
+        List<ItemsPopular> GetAllItemsGiay();
+        [OperationContract]
+        List<ItemsPopular> GetAllItemsBag();
+
+        [OperationContract]
         List<SliderItems> GetSliderItems();
 
         [OperationContract]

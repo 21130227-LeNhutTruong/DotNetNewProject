@@ -31,6 +31,7 @@ namespace WcfService1
         {
             return SliderItemService.GetInstance().GetSliderItems();
         }
+        
         public bool AddUser(User user)
         {
             return UserService.GetInstance().AddUser(user);
@@ -59,6 +60,18 @@ namespace WcfService1
         public bool isExistUser(string email)
         {
             return UserService.GetInstance().isExistUser(email);   
+        }
+
+        public List<ItemsPopular> GetAllItemsGiay()
+        {
+            return ItemsGiayService.GetInstance().GetAllItemsGiay();
+
+
+        }
+
+        public List<ItemsPopular> GetAllItemsBag()
+        {
+            return ItemsTuiXachService.GetInstanceBag().GetAllItemsBag();
         }
 
 
