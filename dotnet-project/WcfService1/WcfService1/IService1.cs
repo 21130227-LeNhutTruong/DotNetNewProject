@@ -22,6 +22,9 @@ namespace WcfService1
         List<ItemsPopular> GetAllItemsPopulars();
 
         [OperationContract]
+        List<SliderItems> GetSliderItems();
+
+        [OperationContract]
         bool AddUser(User user);
         [OperationContract]
         bool Register(User user);

@@ -65,10 +65,7 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.makeramen:roundedimageview:2.3.0")
     implementation("com.google.firebase:firebase-auth")
-
-
     implementation ("com.google.code.ksoap2-android:ksoap2-android:3.6.4")
-
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-simplexml:2.9.0") {
         exclude (group= "xpp3", module= "xpp3")

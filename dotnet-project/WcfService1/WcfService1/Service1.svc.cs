@@ -27,7 +27,10 @@ namespace WcfService1
         {
             return ItemsPopularService.GetInstance().GetAllItemsPopulars();
         }
-
+        public List<SliderItems> GetSliderItems()
+        {
+            return SliderItemService.GetInstance().GetSliderItems();
+        }
         public bool AddUser(User user)
         {
             return UserService.GetInstance().AddUser(user);
