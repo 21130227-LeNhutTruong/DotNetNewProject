@@ -1,11 +1,15 @@
 package com.example.app2_use_firebase.web_service;
 
+import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.model.Banner;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.ItemsPopularService;
+import com.example.app2_use_firebase.services.ItemsQuanNamService;
+import com.example.app2_use_firebase.services.ItemsQuanNuService;
+import com.example.app2_use_firebase.services.ItemsQuanService;
 import com.example.app2_use_firebase.services.SliderItemsService;
 import com.example.app2_use_firebase.services.UserService;
 
@@ -58,7 +62,15 @@ public class SoapClient {
     public List<SliderItems> getSliderItems() {
         return SliderItemsService.getInstance().getSliderItems(NAMESPACE, URL);
     }
-
+    public List<ItemsDomain> getItemsQuan() {
+       return ItemsQuanService.getInstance().getItemsQuan(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getItemsQuanNam() {
+        return ItemsQuanNamService.getInstance().getItemsQuanNam(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getItemsQuanNu() {
+        return ItemsQuanNuService.getInstance().getItemsQuanNu(NAMESPACE, URL);
+    }
 
 
 

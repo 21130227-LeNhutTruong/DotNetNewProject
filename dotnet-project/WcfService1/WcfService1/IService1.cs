@@ -19,11 +19,17 @@ namespace WcfService1
         List<Banner> GetAllBanners();
 
         [OperationContract]
-        List<ItemsPopular> GetAllItemsPopulars();
+        List<ItemsDomain> GetAllItemsPopulars();
 
         [OperationContract]
         List<SliderItems> GetSliderItems();
 
+        [OperationContract]
+        List<ItemsDomain> GetItemsQuan();
+        [OperationContract]
+        List<ItemsDomain> GetItemsQuanNam();
+        [OperationContract]
+        List<ItemsDomain> GetItemsQuanNu();
         [OperationContract]
         bool AddUser(User user);
         [OperationContract]

@@ -46,33 +46,37 @@ public class QuanActivity extends BaseActivity{
 
     }
     private void initQuan() {
-        DatabaseReference myRef = database.getReference("ItemsQuan");
         binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsDomain> itemsQuanList = soapClient.getItemsQuan();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsQuanList != null && !itemsQuanList.isEmpty()) {
+                                items.addAll(itemsQuanList);
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewListQuan.setLayoutManager(new GridLayoutManager(QuanActivity.this, 2));
-                        binding.recyclerViewListQuan.setAdapter(new PopularAdapter(items));
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewListQuan.setLayoutManager(new GridLayoutManager(QuanActivity.this, 2));
+                                    binding.recyclerViewListQuan.setAdapter(new PopularAdapter(items));
+                                }
 
-
-                    }
-                    binding.progressAo.setVisibility(View.GONE);
-
+                                binding.progressAo.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(QuanActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
                 }
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }).start();
     }
     private void initSliderImage(){
         binding.progressAo.setVisibility(View.VISIBLE);
