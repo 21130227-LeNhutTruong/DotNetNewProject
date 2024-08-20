@@ -1,11 +1,11 @@
 package com.example.app2_use_firebase.web_service;
 
+import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.model.Banner;
 import com.example.app2_use_firebase.model.ItemsPopular;
-import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.ItemsPopularService;
-import com.example.app2_use_firebase.services.UserService;
+import com.example.app2_use_firebase.services.SliderItemsService;
 
 import java.util.List;
 
@@ -14,11 +14,14 @@ public class SoapClient {
     private static final String NAMESPACE = "http://tempuri.org/";
     
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://abb4-2001-ee0-51b8-8f60-2cb6-8982-f8c9-ea09.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://5599-14-230-205-81.ngrok-free.app/Service1.svc";
 
-    private static SoapClient instance;
+    private static final String HELLO_METHOD_NAME = "hello";
+    private static final String HELLO_SOAP_ACTION = "http://tempuri.org/IService1/hello";
 
-    public static SoapClient getInstance() {
+
+
+   public static SoapClient getInstance() {
         if (instance == null) instance = new SoapClient();
         return instance;
     }
@@ -51,4 +54,12 @@ public class SoapClient {
         return UserService.getInstance().isExistUser(NAMESPACE, URL, email);
     }
 
+    public List<SliderItems> getSliderItems() {
+        return SliderItemsService.getInstance().getSliderItems(NAMESPACE, URL);
+    }
+
+
+
+
 }
+
