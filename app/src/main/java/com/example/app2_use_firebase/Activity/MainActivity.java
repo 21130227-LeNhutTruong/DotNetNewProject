@@ -181,30 +181,6 @@ checkAd();
         binding.progressBarPopular.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
 
-//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.exists()) {
-//                    for (DataSnapshot issue : snapshot.getChildren()) {
-//                        items.add(issue.getValue(ItemsDomain.class));
-//
-//                    }
-//                    if (!items.isEmpty()) {
-//                        binding.recyclerViewPopularProduct.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false));
-//                        binding.recyclerViewPopularProduct.setAdapter(new PopularAdapter(items));
-//
-//
-//                    }
-//                    binding.progressBarPopular.setVisibility(View.GONE);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
 
         SoapClient soapClient = new SoapClient();
         new Thread(new Runnable() {
@@ -284,62 +260,101 @@ checkAd();
         });
     }
     private void initGiay() {
-        DatabaseReference myRef = database.getReference("ItemsGiay");
         binding.progressBargiay.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsPopular> itemsGiays = soapClient.getItemsGiay();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsGiays != null && !itemsGiays.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsgiay : itemsGiays) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.getDes(), itemsgiay.get_id(),
+                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),
+                                            itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
+                                            itemsgiay.getRating());
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewGiay.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.HORIZONTAL,false));
-                        binding.recyclerViewGiay.setAdapter(new PopularAdapter(items));
+                                    items.add(itemsDomain);
+                                }
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewGiay.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.HORIZONTAL,false));
+                                    binding.recyclerViewGiay.setAdapter(new PopularAdapter(items));
+                                }
 
 
-                    }
-                    binding.progressBargiay.setVisibility(View.GONE);
-
+                                binding.progressBargiay.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText("Error fetching banners");
+                        }
+                    });
                 }
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
     private void initBags() {
-        DatabaseReference myRef = database.getReference("ItemsBags");
         binding.progressBarBag.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsPopular> itemsBags = soapClient.getItemsBag();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsBags != null && !itemsBags.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsBag : itemsBags) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsBag.getDes(), itemsBag.get_id(),
+                                            itemsBag.getTitle(), itemsBag.getDescription(), itemsBag.getPicUrl(),
+                                            itemsBag.getPrice(), itemsBag.getOldPrice(), itemsBag.getReview(),
+                                            itemsBag.getRating());
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewBag.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.HORIZONTAL,false));
-                        binding.recyclerViewBag.setAdapter(new PopularAdapter(items));
+                                    items.add(itemsDomain);
+                                }
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewBag.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.HORIZONTAL,false));
+                                    binding.recyclerViewBag.setAdapter(new PopularAdapter(items));
+                                }
 
 
-                    }
-                    binding.progressBarBag.setVisibility(View.GONE);
-
+                                binding.progressBarBag.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText("Error fetching banners");
+                        }
+                    });
                 }
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     private void initSliderImage(){

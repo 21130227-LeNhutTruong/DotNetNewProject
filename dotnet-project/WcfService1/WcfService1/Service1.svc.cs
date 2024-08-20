@@ -43,6 +43,7 @@ namespace WcfService1
         {
             return ItemsQuanNuService.GetInstance().GetItemsQuanNu();
         }
+
         public bool AddUser(User user)
         {
             return UserService.GetInstance().AddUser(user);
@@ -73,7 +74,19 @@ namespace WcfService1
             return UserService.GetInstance().isExistUser(email);   
         }
 
-        
+
+        public List<ItemsDomain> GetAllItemsGiay()
+        {
+            return ItemsGiayService.GetInstance().GetAllItemsGiay();
+
+
+        }
+
+        public List<ItemsDomain> GetAllItemsBag()
+        {
+            return ItemsTuiXachService.GetInstanceBag().GetAllItemsBag();
+        }
+
 
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)

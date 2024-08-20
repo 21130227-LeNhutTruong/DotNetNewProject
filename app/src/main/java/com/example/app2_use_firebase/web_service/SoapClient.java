@@ -6,6 +6,8 @@ import com.example.app2_use_firebase.model.Banner;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.services.BannerService;
+import com.example.app2_use_firebase.services.ItemsBagService;
+import com.example.app2_use_firebase.services.ItemsGiayService;
 import com.example.app2_use_firebase.services.ItemsPopularService;
 import com.example.app2_use_firebase.services.ItemsQuanNamService;
 import com.example.app2_use_firebase.services.ItemsQuanNuService;
@@ -20,7 +22,7 @@ public class SoapClient {
     private static final String NAMESPACE = "http://tempuri.org/";
     
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://9b48-14-230-205-81.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://0644-118-68-85-242.ngrok-free.app/Service1.svc";
 
     private static final String HELLO_METHOD_NAME = "hello";
     private static final String HELLO_SOAP_ACTION = "http://tempuri.org/IService1/hello";
@@ -72,7 +74,12 @@ public class SoapClient {
         return ItemsQuanNuService.getInstance().getItemsQuanNu(NAMESPACE, URL);
     }
 
-
+    public List<ItemsPopular> getItemsGiay() {
+        return ItemsGiayService.getInstance().getItemsGiayService(NAMESPACE, URL);
+    }
+    public List<ItemsPopular> getItemsBag() {
+        return ItemsBagService.getInstance().getItemsBagService(NAMESPACE, URL);
+    }
 
 }
 
