@@ -17,6 +17,7 @@ import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityListBagsBinding;
+import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,33 +47,50 @@ public class BagsActivity extends BaseActivity{
 
     }
     private void initBags() {
-        DatabaseReference myRef = database.getReference("ItemsTuiXach");
-        binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsPopular> itemsTuiXachs = soapClient.getItemsTuiXach();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsTuiXachs != null && !itemsTuiXachs.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsTuiXach : itemsTuiXachs) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsTuiXach.get_id(),
+                                            itemsTuiXach.getTitle(), itemsTuiXach.getDescription(), itemsTuiXach.getPicUrl(),itemsTuiXach.getDes(),
+                                            itemsTuiXach.getPrice(), itemsTuiXach.getOldPrice(), itemsTuiXach.getReview(),
+                                            itemsTuiXach.getRating());
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewListBags.setLayoutManager(new GridLayoutManager(BagsActivity.this, 2));
-                        binding.recyclerViewListBags.setAdapter(new PopularAdapter(items));
+                                    items.add(itemsDomain);
+                                }
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewListBags.setLayoutManager(new GridLayoutManager(BagsActivity.this, 2));
+                                    binding.recyclerViewListBags.setAdapter(new PopularAdapter(items));
+                                }
 
 
-                    }
-                    binding.progressAo.setVisibility(View.GONE);
-
+                            } else {
+                                Toast.makeText(BagsActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ;
+                        }
+                    });
                 }
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
     private void initSliderImage(){
         binding.progressAo.setVisibility(View.VISIBLE);

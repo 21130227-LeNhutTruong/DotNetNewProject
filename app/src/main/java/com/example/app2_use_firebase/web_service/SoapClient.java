@@ -9,11 +9,13 @@ import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.CartService;
 import com.example.app2_use_firebase.services.ItemsBagService;
+import com.example.app2_use_firebase.services.ItemsClothesService;
 import com.example.app2_use_firebase.services.ItemsGiayService;
 import com.example.app2_use_firebase.services.ItemsPopularService;
 import com.example.app2_use_firebase.services.ItemsQuanNamService;
 import com.example.app2_use_firebase.services.ItemsQuanNuService;
 import com.example.app2_use_firebase.services.ItemsQuanService;
+import com.example.app2_use_firebase.services.ItemsTuiXachService;
 import com.example.app2_use_firebase.services.SliderItemsService;
 import com.example.app2_use_firebase.services.UserService;
 
@@ -22,9 +24,9 @@ import java.util.List;
 public class SoapClient {
 
     private static final String NAMESPACE = "http://tempuri.org/";
-    
+
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://b777-2001-ee0-51b8-8f60-c8d8-a8c0-19d1-939f.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://1767-42-118-185-52.ngrok-free.app/Service1.svc";
 
 
     private static final String HELLO_METHOD_NAME = "hello";
@@ -103,7 +105,11 @@ public class SoapClient {
     public List<ItemsPopular> getItemsBag() {
         return ItemsBagService.getInstance().getItemsBagService(NAMESPACE, URL);
     }
-
-
+    public List<ItemsPopular> getItemsClothes() {
+        return ItemsClothesService.getInstance().getItemsClothes(NAMESPACE, URL);
+    }
+    public List<ItemsPopular> getItemsTuiXach() {
+        return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
+    }
 }
 

@@ -28,6 +28,10 @@ namespace WcfService1
         List<ItemsDomain> GetAllItemsGiay();
         [OperationContract]
         List<ItemsDomain> GetAllItemsBag();
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsTuiXach();
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsClothes();
 
         [OperationContract]
         List<SliderItems> GetSliderItems();
