@@ -18,7 +18,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -32,13 +31,10 @@ import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityCartBinding;
 import com.example.app2_use_firebase.model.AModel;
 import com.example.app2_use_firebase.model.Cart;
+import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.services.TypeClassService;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
@@ -238,10 +234,9 @@ private void displayUserCart(Context context) {
 //                                                ItemsPopular itemsPopular = SoapClient.getInstance().getItemsPopularsById(productId);
                                                 if (model != null) {
 
-                                                    ItemsDomain itemsDomain = new ItemsDomain(model.getDes(), model.get_id(),
-                                                            model.getTitle(), model.getDescription(), model.getPicUrl(),
-                                                            model.getPrice(), model.getOldPrice(), model.getReview(),
-                                                            model.getRating());
+                                                    ItemsDomain itemsDomain = new ItemsDomain(model.get_id(), model.getTitle(), model.getDescription(),
+                                                            model.getPicUrl(), model.getDes(), model.getPrice(), model.getOldPrice(),
+                                                            model.getReview(), model.getRating());
                                                     itemsDomain.setNumberinCart(quantity);
                                                     synchronized (cartItems) {
                                                         cartItems.add(itemsDomain);
@@ -347,30 +342,77 @@ private void displayUserCart(Context context) {
     }
 
     private void initPopular() {
-        DatabaseReference myRef = database.getReference("ItemsPopular");
+//        DatabaseReference myRef = database.getReference("ItemsPopular");
+//        ArrayList<ItemsDomain> items = new ArrayList<>();
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    for (DataSnapshot issue : snapshot.getChildren()) {
+//                        items.add(issue.getValue(ItemsDomain.class));
+//
+//                    }
+//                    if (!items.isEmpty()) {
+//                        binding.itemsPopular.setLayoutManager(new GridLayoutManager(CartActivity.this, 2));
+//                        binding.itemsPopular.setAdapter(new PopularAdapter(items));
+//
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+//                    final List<Banner> banners = soapClient.callGetBannersService();
+                    final List<ItemsPopular> itemsPopulars = soapClient.getAllItemsPopular();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsPopulars != null && !itemsPopulars.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsPopular : itemsPopulars) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.get_id(),
+                                            itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),itemsPopular.getDes(),
+                                            itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
+                                            itemsPopular.getRating());
+                                    itemsDomain.setType("ItemsPopular");
+                                    items.add(itemsDomain);
+                                }
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.itemsPopular.setLayoutManager(new GridLayoutManager(CartActivity.this, 2));
-                        binding.itemsPopular.setAdapter(new PopularAdapter(items));
+                                if (!items.isEmpty()) {
+                                    binding.itemsPopular.setLayoutManager(new GridLayoutManager(CartActivity.this, 2));
+                                    binding.itemsPopular.setAdapter(new PopularAdapter(items));
+                                }
 
 
-                    }
+                            } else {
+                                Toast.makeText(CartActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                        }
+                    });
                 }
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }).start();
     }
 
 

@@ -24,7 +24,7 @@ public class SoapClient {
     private static final String NAMESPACE = "http://tempuri.org/";
     
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://338e-2001-ee0-51b8-8f60-c8d8-a8c0-19d1-939f.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://b777-2001-ee0-51b8-8f60-c8d8-a8c0-19d1-939f.ngrok-free.app/Service1.svc";
 
 
     private static final String HELLO_METHOD_NAME = "hello";

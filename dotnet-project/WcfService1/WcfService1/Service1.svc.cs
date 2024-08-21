@@ -44,7 +44,7 @@ namespace WcfService1
             return ItemsQuanNuService.GetInstance().GetItemsQuanNu();
         }
 
-        public ItemsPopular GetItemsPopularById(string id)
+        public ItemsDomain GetItemsPopularById(string id)
         {
             return ItemsPopularService.GetInstance().GetItemsPopularById(id);
         }
