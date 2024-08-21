@@ -109,7 +109,17 @@ namespace WcfService1
 
         public List<ItemsDomain> GetAllItemsBag()
         {
-            return ItemsTuiXachService.GetInstanceBag().GetAllItemsBag();
+            return ItemsBagService.GetInstanceBag().GetAllItemsBag();
+        }
+
+        public List<ItemsDomain> GetAllItemsTuiXach()
+        {
+            return ItemsTuiXachService.GetInstanceTuiXach().GetAllItemsTuiXach();
+        }
+
+        public List<ItemsDomain> GetAllItemsClothes()
+        {
+            return ItemsClothesService.GetInstance().GetAllItemsClothes();
         }
 
 

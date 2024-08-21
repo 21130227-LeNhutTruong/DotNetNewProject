@@ -7,28 +7,28 @@ using WcfService1.Models;
 
 namespace WcfService1.Services
 {
-    public class ItemsTuiXachService
+    public class ItemsBagService
     {
-        private readonly IMongoCollection<ItemsDomain> _itemTuiXach;
-        private static ItemsTuiXachService instance;
-        public ItemsTuiXachService()
+        private readonly IMongoCollection<ItemsDomain> _itemsBag;
+        private static ItemsBagService instance;
+        public ItemsBagService()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("shop");
-            _itemTuiXach = database.GetCollection<ItemsDomain>("ItemsTuiXach");
+            _itemsBag = database.GetCollection<ItemsDomain>("ItemsBag");
         }
 
-        public static ItemsTuiXachService GetInstanceTuiXach()
+        public static ItemsBagService GetInstanceBag()
         {
-            if (instance == null) instance = new ItemsTuiXachService();
+            if (instance == null) instance = new ItemsBagService();
             return instance;
         }
 
-        public List<ItemsDomain> GetAllItemsTuiXach()
+        public List<ItemsDomain> GetAllItemsBag()
         {
             var filter = Builders<ItemsDomain>.Filter.Empty;
             var projection = Builders<ItemsDomain>.Projection.Exclude("id");
-            var result = _itemTuiXach.Find(filter).Project<ItemsDomain>(projection).ToList();
+            var result = _itemsBag.Find(filter).Project<ItemsDomain>(projection).ToList();
             return result;
         }
     }

@@ -19,7 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -32,8 +34,13 @@ import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityMainBinding;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
@@ -58,7 +65,7 @@ public class MainActivity extends BaseActivity {
         initPopular();
         bottomNavigation();
         initBags();
-//        initClothes();
+        initClothes();
         setonclicksearch();
         initSliderImage();
         initSliderImage2();
@@ -79,7 +86,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-checkAd();
+        checkAd();
     }
 
     public void test() {
@@ -173,8 +180,6 @@ checkAd();
 //        DatabaseReference myRef = database.getReference("ItemsPopular");
         binding.progressBarPopular.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-
-
         SoapClient soapClient = new SoapClient();
         new Thread(new Runnable() {
             @Override
@@ -192,7 +197,7 @@ checkAd();
                                             itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),itemsPopular.getDes(),
                                             itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
                                             itemsPopular.getRating());
-                                    itemsDomain.setType("ItemsPopular");
+
                                     items.add(itemsDomain);
                                 }
 
@@ -223,39 +228,59 @@ checkAd();
 
 
     }
-//    private void initClothes() {
-//        DatabaseReference myRef = database.getReference("ItemsClothes");
-//        binding.progressBarClothes.setVisibility(View.VISIBLE);
-//        ArrayList<ItemsDomain> items = new ArrayList<>();
-//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.exists()) {
-//                    for (DataSnapshot issue : snapshot.getChildren()) {
-//                        items.add(issue.getValue(ItemsDomain.class));
-//
-//                    }
-//                    if (!items.isEmpty()) {
-//                        binding.recyclerViewClothes.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
-//                        binding.recyclerViewClothes.setAdapter(new PopularAdapter(items));
-//
-//
-//                    }
-//                    binding.progressBarClothes.setVisibility(View.GONE);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+
+    private void initClothes() {
+        binding.progressBarClothes.setVisibility(View.VISIBLE);
+        ArrayList<ItemsDomain> items = new ArrayList<>();
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final List<ItemsPopular> itemsClothes = soapClient.getItemsClothes();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsClothes != null && !itemsClothes.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsClothe : itemsClothes) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsClothe.get_id(),
+                                            itemsClothe.getTitle(), itemsClothe.getDescription(), itemsClothe.getPicUrl(),itemsClothe.getDes(),
+                                            itemsClothe.getPrice(), itemsClothe.getOldPrice(), itemsClothe.getReview(),
+                                            itemsClothe.getRating());
+
+                                    items.add(itemsDomain);
+                                }
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewClothes.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
+                                    binding.recyclerViewClothes.setAdapter(new PopularAdapter(items));
+                                }
+
+
+                                binding.progressBarClothes.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText("Error fetching banners");
+                        }
+                    });
+                }
+            }
+        }).start();
+
+    }
+
     private void initGiay() {
         binding.progressBargiay.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-
         SoapClient soapClient = new SoapClient();
         new Thread(new Runnable() {
             @Override
@@ -369,8 +394,8 @@ checkAd();
                         public void run() {
                             if (itemsSliderItems != null && !itemsSliderItems.isEmpty()) {
 
-                                    SliderItems sliderItem = itemsSliderItems.get(0);
-                                    imageUrls.addAll(sliderItem.getPicUrl());
+                                SliderItems sliderItem = itemsSliderItems.get(0);
+                                imageUrls.addAll(sliderItem.getPicUrl());
 
                                 if (!imageUrls.isEmpty()) {
                                     SliderImgAdapter slideAdapter = new SliderImgAdapter(MainActivity.this, imageUrls);
@@ -658,7 +683,7 @@ checkAd();
     @SuppressLint("WrongConstant")
     private void initializeAdView() {
 // Khởi tạo WindowManager
-windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
         // Inflate the ad view layout
         adView = View.inflate(this, R.layout.ad_view, null);

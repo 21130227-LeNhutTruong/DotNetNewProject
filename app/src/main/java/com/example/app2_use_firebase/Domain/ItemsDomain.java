@@ -18,6 +18,8 @@ public class ItemsDomain implements Serializable {
     private String type;
 
 
+    public ItemsDomain(){}
+
     public ItemsDomain(String id, String title, String description, ArrayList<String> picUrl, String des, double price, double oldPrice, int review, double rating) {
         this.id = id;
         this.title = title;
