@@ -19,9 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -34,13 +32,8 @@ import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityMainBinding;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
@@ -65,7 +58,7 @@ public class MainActivity extends BaseActivity {
         initPopular();
         bottomNavigation();
         initBags();
-        initClothes();
+//        initClothes();
         setonclicksearch();
         initSliderImage();
         initSliderImage2();
@@ -230,35 +223,35 @@ checkAd();
 
 
     }
-    private void initClothes() {
-        DatabaseReference myRef = database.getReference("ItemsClothes");
-        binding.progressBarClothes.setVisibility(View.VISIBLE);
-        ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
-
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewClothes.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
-                        binding.recyclerViewClothes.setAdapter(new PopularAdapter(items));
-
-
-                    }
-                    binding.progressBarClothes.setVisibility(View.GONE);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+//    private void initClothes() {
+//        DatabaseReference myRef = database.getReference("ItemsClothes");
+//        binding.progressBarClothes.setVisibility(View.VISIBLE);
+//        ArrayList<ItemsDomain> items = new ArrayList<>();
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    for (DataSnapshot issue : snapshot.getChildren()) {
+//                        items.add(issue.getValue(ItemsDomain.class));
+//
+//                    }
+//                    if (!items.isEmpty()) {
+//                        binding.recyclerViewClothes.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
+//                        binding.recyclerViewClothes.setAdapter(new PopularAdapter(items));
+//
+//
+//                    }
+//                    binding.progressBarClothes.setVisibility(View.GONE);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
     private void initGiay() {
         binding.progressBargiay.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();

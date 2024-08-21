@@ -31,12 +31,12 @@ namespace WcfService1.Services
             return result;
         }
 
-        public ItemsPopular GetItemsPopularById(string id)
+        public ItemsDomain GetItemsPopularById(string id)
         {
             var objectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
-            var filter = Builders<ItemsPopular>.Filter.Eq(ip => ip._id, objectId);
-            var projection = Builders<ItemsPopular>.Projection.Exclude("id");
-            var result = _itemsPopular.Find(filter).Project<ItemsPopular>(projection).FirstOrDefault();
+            var filter = Builders<ItemsDomain>.Filter.Eq(ip => ip._id, objectId);
+            var projection = Builders<ItemsDomain>.Projection.Exclude("id");
+            var result = _itemsPopular.Find(filter).Project<ItemsDomain>(projection).FirstOrDefault();
             return result;
         }
     }

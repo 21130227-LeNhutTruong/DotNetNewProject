@@ -20,14 +20,14 @@ namespace WcfService1
         List<Banner> GetAllBanners();
 
         [OperationContract]
-        List<ItemsPopular> GetAllItemsPopulars();
+        List<ItemsDomain> GetAllItemsPopulars();
         [OperationContract]
-        ItemsPopular GetItemsPopularById(string id);
+        ItemsDomain GetItemsPopularById(string id);
 
         [OperationContract]
-        List<ItemsPopular> GetAllItemsGiay();
+        List<ItemsDomain> GetAllItemsGiay();
         [OperationContract]
-        List<ItemsPopular> GetAllItemsBag();
+        List<ItemsDomain> GetAllItemsBag();
 
         [OperationContract]
         List<SliderItems> GetSliderItems();

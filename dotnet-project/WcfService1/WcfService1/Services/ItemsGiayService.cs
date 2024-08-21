@@ -9,25 +9,26 @@ namespace WcfService1.Services
 {
     public class ItemsGiayService
     {
-        private readonly IMongoCollection<ItemsPopular> _itemsGiay;
+        private readonly IMongoCollection<ItemsDomain> _itemsGiay;
         private static ItemsGiayService instance;
-        public ItemsGiayService() {
+        public ItemsGiayService()
+        {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("shop");
-            _itemsGiay = database.GetCollection<ItemsPopular>("ItemsGiay");
+            _itemsGiay = database.GetCollection<ItemsDomain>("ItemsGiay");
         }
 
         public static ItemsGiayService GetInstance()
         {
             if (instance == null) instance = new ItemsGiayService();
-            return instance;       
+            return instance;
         }
 
-        public List<ItemsPopular> GetAllItemsGiay()
+        public List<ItemsDomain> GetAllItemsGiay()
         {
-            var filter = Builders<ItemsPopular>.Filter.Empty;
-            var projection = Builders<ItemsPopular>.Projection.Exclude("id");
-            var result = _itemsGiay.Find(filter).Project<ItemsPopular>(projection).ToList();
+            var filter = Builders<ItemsDomain>.Filter.Empty;
+            var projection = Builders<ItemsDomain>.Projection.Exclude("id");
+            var result = _itemsGiay.Find(filter).Project<ItemsDomain>(projection).ToList();
             return result;
         }
     }
