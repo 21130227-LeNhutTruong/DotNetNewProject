@@ -1,9 +1,12 @@
 package com.example.app2_use_firebase.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -16,15 +19,15 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.app2_use_firebase.Adapter.BillAdapter;
 import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.Bill;
-import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Helper.TinyDB;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityBillListBinding;
+import com.example.app2_use_firebase.model.User;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -105,35 +108,68 @@ public class BillActivity extends BaseActivity {
     }
 private void loadBillsFromFirebase() {
         // lấy thông tin người dùng hiện tại
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    // Kiểm tra xem người dùng có đăng nhập hay không
-    String userId = currentUser != null ? currentUser.getUid() : null;
-    if (userId != null) {
-        // Lấy danh sách hóa đơn từ Firestore
-        db.collection("users").document(userId).collection("bills")
-                // Lọc ra các hóa đơn của người dùng hiện tại
-                .whereEqualTo("userId", userId)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        // Xử lý kết quả lấy dữ liệu
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            // Tạo đối tượng Bill từ document
-                            Bill bill = document.toObject(Bill.class);
-                            bill.setId(document.getId()); // Thiết lập id từ document ID
-                            // Thêm đối tượng Bill vào danh sách
-                            billList.add(bill);
-                        }
-                        // Cập nhật dữ liệu vào adapter
-                        billAdapter.notifyDataSetChanged();
+//    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//    // Kiểm tra xem người dùng có đăng nhập hay không
+//    String userId = currentUser != null ? currentUser.getUid() : null;
+//    if (userId != null) {
+//        // Lấy danh sách hóa đơn từ Firestore
+//        db.collection("users").document(userId).collection("bills")
+//                // Lọc ra các hóa đơn của người dùng hiện tại
+//                .whereEqualTo("userId", userId)
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        // Xử lý kết quả lấy dữ liệu
+//                        for (QueryDocumentSnapshot document : task.getResult()) {
+//                            // Tạo đối tượng Bill từ document
+//                            Bill bill = document.toObject(Bill.class);
+//                            bill.setId(document.getId()); // Thiết lập id từ document ID
+//                            // Thêm đối tượng Bill vào danh sách
+//                            billList.add(bill);
+//                        }
+//                        // Cập nhật dữ liệu vào adapter
+//                        billAdapter.notifyDataSetChanged();
+//
+//                    } else {
+//                        Toast.makeText(BillActivity.this, "Lỗi khi tải hóa đơn", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    } else {
+//        Toast.makeText(BillActivity.this, "Không thể xác định người dùng hiện tại", Toast.LENGTH_SHORT).show();
+//    }
 
-                    } else {
-                        Toast.makeText(BillActivity.this, "Lỗi khi tải hóa đơn", Toast.LENGTH_SHORT).show();
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                String userId = sharedPref.getString("userId", null);
+                List<com.example.app2_use_firebase.model.Bill> bills = SoapClient.getInstance().getBillByUser(userId);
+                User user = SoapClient.getInstance().getUserById(userId);
+//                BillDetail billDetail = SoapClient.getInstance().getBillDetail(bill.get_id());
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        for (int i = 0; i < bills.size(); i++) {
+                            com.example.app2_use_firebase.model.Bill bill = bills.get(i);
+                            Bill bill1 = new Bill(user.getName(), userId, bill.get_id(), bill.getDate().toString(),
+                                    bill.getFullName(), bill.getAddress(), bill.getPhone(), bill.getPayment(),
+                                    bill.getTotalAmount(), null, bill.getStatus());
+                            billList.add(bill1);
+                        }
+
+                        billAdapter.notifyDataSetChanged();
+//                        Log.d("SOAP", "BILL DETAIL: "+billDetail);
                     }
                 });
-    } else {
-        Toast.makeText(BillActivity.this, "Không thể xác định người dùng hiện tại", Toast.LENGTH_SHORT).show();
-    }
+
+            }catch (Exception e) {
+                Log.d("SOAP ERROR", "ERROR CONNECT SOAP", e);
+            }
+        }
+    }).start();
 
 }
 

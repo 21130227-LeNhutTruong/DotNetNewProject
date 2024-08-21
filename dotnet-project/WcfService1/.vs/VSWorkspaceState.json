@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WcfService1",
+    "\\WcfService1\\Models",
     "\\WcfService1\\Services"
   ],
-  "SelectedNode": "\\WcfService1.sln",
+  "SelectedNode": "\\WcfService1\\Services\\BillDetailService.cs",
   "PreviewInSolutionExplorer": false
 }

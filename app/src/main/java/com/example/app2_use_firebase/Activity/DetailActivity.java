@@ -108,7 +108,7 @@ public class DetailActivity extends BaseActivity {
         // xét sự kiện click vào button thêm vào giỏ hàng
         binding.addToCartBtn.setOnClickListener(v -> {
             object.setNumberinCart(numberOrder);
-            managmentCart.insertProduct(object, color);
+            managmentCart.insertProduct(object);
         });
         ImageView btnback = findViewById(R.id.btnBack);
         btnback.setOnClickListener(v ->  finish());

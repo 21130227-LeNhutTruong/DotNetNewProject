@@ -111,6 +111,39 @@ namespace WcfService1.Services
             }
         }
 
+        public bool AddNewCart(string idUser, string idProduct, string type)
+        {
+            try
+            {
+                var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
+                var productObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idProduct);
+
+                List<ProductBuy> products = new List<ProductBuy>();
+                ProductBuy productBuy = new ProductBuy{
+                    _id = productObjectId,
+                    quantity = 1,
+                    type = type
+                };
+
+                products.Add(productBuy);
+
+                var newCart = new Cart
+                {
+                    _id = ObjectId.GenerateNewId(),
+                    userId = userObjectId,
+                    products = products
+                };
+                _cart.InsertOne(newCart);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            
+        }
+
 
         public bool RemoveCart(string id, string idProduct)
         {
@@ -136,6 +169,25 @@ namespace WcfService1.Services
                 return true;
             }
         }
+
+        public bool DeleteCart(string id)
+        {
+            var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
+
+            var filter = Builders<Cart>.Filter.Eq(c => c.userId, userObjectId);
+
+            var result = _cart.DeleteOne(filter);
+
+            if (result.DeletedCount > 0)
+            {
+                return true; 
+            }
+            else
+            {
+                return false; 
+            }
+        }
+
 
     }
 }
