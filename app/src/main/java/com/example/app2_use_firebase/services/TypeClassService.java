@@ -15,7 +15,8 @@ public class TypeClassService {
         switch (type) {
             case "ItemsPopular":
                 return SoapClient.getInstance().getItemsPopularsById(id);
-
+            case "ItemsQuan":
+                return SoapClient.getInstance().getItemsQuanById(id);
             default:
                 return null;
         }

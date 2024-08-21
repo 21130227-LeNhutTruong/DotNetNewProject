@@ -49,6 +49,9 @@ public class SoapClient {
     public ItemsPopular getItemsPopularsById(String id) {
         return ItemsPopularService.getInstance().getItemsPopularsById(NAMESPACE, URL, id);
     }
+    public ItemsDomain getItemsQuanById(String id) {
+        return ItemsQuanService.getInstance().getItemsQuanById(NAMESPACE, URL, id);
+    }
 
     public boolean addUser(User user) {
         return UserService.getInstance().addUser(NAMESPACE, URL, user);
