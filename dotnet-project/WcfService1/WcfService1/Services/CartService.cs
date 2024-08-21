@@ -69,7 +69,26 @@ namespace WcfService1.Services
             var cartObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
             var productObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idProduct);
 
-            var filter = Builders<Cart>.Filter.Eq(c => c._id, cartObjectId);
+            var filter = Builders<Cart>.Filter.And(
+                Builders<Cart>.Filter.Eq(c => c._id, cartObjectId),
+                Builders<Cart>.Filter.ElemMatch(c => c.products, p => p._id == productObjectId)
+            );
+
+            var existingCart = _cart.Find(filter).FirstOrDefault();
+
+            if (existingCart != null)
+            {
+                int quantityStore = 0;
+                for(int i = 0; i < existingCart.products.Count; i++)
+                {
+                    if (productObjectId == existingCart.products[i]._id)
+                    {
+                        quantityStore = existingCart.products[i].quantity;
+                        break;
+                    }
+                }
+                return UpdateCartQuantity(id, idProduct, quantityStore + quantity);
+            }
 
             var newProduct = new ProductBuy
             {
@@ -80,22 +99,18 @@ namespace WcfService1.Services
 
             var update = Builders<Cart>.Update.Push("products", newProduct);
 
-            var result = _cart.UpdateOne(filter, update);
+            var result = _cart.UpdateOne(Builders<Cart>.Filter.Eq(c => c._id, cartObjectId), update);
 
-            if (result.MatchedCount == 0)
+            if (result.ModifiedCount > 0)
             {
-                return false; 
-            }
-            else if (result.ModifiedCount == 0)
-            {
-                return false; 
+                return true; 
             }
             else
             {
-                return true;
+                return false;
             }
-
         }
+
 
         public bool RemoveCart(string id, string idProduct)
         {

@@ -16,7 +16,7 @@ public class SoapClient {
     private static final String NAMESPACE = "http://tempuri.org/";
     
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://338d-2001-ee0-51b8-8f60-2cb6-8982-f8c9-ea09.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://338e-2001-ee0-51b8-8f60-c8d8-a8c0-19d1-939f.ngrok-free.app/Service1.svc";
 
     private static SoapClient instance;
 
@@ -63,5 +63,13 @@ public class SoapClient {
 
     public boolean updateCartQuantity(String id, String idProduct, int quantity) {
         return CartService.getInstance().updateCartQuantity(NAMESPACE,URL, id, idProduct, quantity);
+    }
+
+    public boolean removeCart(String id, String idProduct) {
+        return CartService.getInstance().removeCart(NAMESPACE, URL, id, idProduct);
+    }
+
+    public boolean addCart(String id, String idProduct, int quantity, String type) {
+        return CartService.getInstance().addCart(NAMESPACE, URL, id, idProduct, quantity, type);
     }
 }

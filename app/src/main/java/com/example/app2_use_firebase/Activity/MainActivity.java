@@ -222,7 +222,7 @@ checkAd();
                                             itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),
                                             itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
                                             itemsPopular.getRating());
-
+                                    itemsDomain.setType("ItemsPopular");
                                     items.add(itemsDomain);
                                 }
 

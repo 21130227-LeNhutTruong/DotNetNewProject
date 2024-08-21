@@ -19,8 +19,12 @@ public class CartService {
     private static  CartService instance;
     private static final String GetCartByUser_METHOD_NAME = "GetCartByUser";
     private static final String UpdateCartQuantity_METHOD_NAME = "UpdateCartQuantity";
+    private static final String RemoveCart_METHOD_NAME = "RemoveCart";
+    private static final String AddCart_METHOD_NAME = "AddCart";
     private static final String GetCartByUser_SOAP_ACTION = "http://tempuri.org/IService1/"+GetCartByUser_METHOD_NAME;
     private static final String UpdateCartQuantity_SOAP_ACTION = "http://tempuri.org/IService1/"+UpdateCartQuantity_METHOD_NAME;
+    private static final String RemoveCart_SOAP_ACTION = "http://tempuri.org/IService1/"+RemoveCart_METHOD_NAME;
+    private static final String AddCartt_SOAP_ACTION = "http://tempuri.org/IService1/"+AddCart_METHOD_NAME;
 
     public static CartService getInstance() {
         if (instance == null) instance = new CartService();
@@ -109,6 +113,76 @@ public class CartService {
 
             HttpTransportSE transport = new HttpTransportSE(URL);
             transport.call(UpdateCartQuantity_SOAP_ACTION, envelope);
+
+            Object response = envelope.getResponse();
+            if (response instanceof SoapPrimitive) {
+                String responseString = response.toString();
+                return Boolean.parseBoolean(responseString);
+            } else {
+                Log.e("SoapClient", "Unexpected response type: " + response.getClass().getSimpleName());
+                return false;
+            }
+
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return false;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return false;
+        }
+    }
+
+    public boolean removeCart(String NAMESPACE, String URL, String id, String idProduct) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, RemoveCart_METHOD_NAME);
+            request.addProperty("id", id);
+            request.addProperty("idProduct", idProduct);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(RemoveCart_SOAP_ACTION, envelope);
+
+            Object response = envelope.getResponse();
+            if (response instanceof SoapPrimitive) {
+                String responseString = response.toString();
+                return Boolean.parseBoolean(responseString);
+            } else {
+                Log.e("SoapClient", "Unexpected response type: " + response.getClass().getSimpleName());
+                return false;
+            }
+
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return false;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return false;
+        }
+    }
+
+    public boolean addCart(String NAMESPACE, String URL, String id, String idProduct, int quantity, String type) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, AddCart_METHOD_NAME);
+            request.addProperty("id", id);
+            request.addProperty("idProduct", idProduct);
+            request.addProperty("quantity", quantity);
+            request.addProperty("type", type);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(AddCartt_SOAP_ACTION, envelope);
 
             Object response = envelope.getResponse();
             if (response instanceof SoapPrimitive) {

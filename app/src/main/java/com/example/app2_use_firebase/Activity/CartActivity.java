@@ -30,8 +30,9 @@ import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Helper.ManagmentCart;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityCartBinding;
+import com.example.app2_use_firebase.model.AModel;
 import com.example.app2_use_firebase.model.Cart;
-import com.example.app2_use_firebase.model.ItemsPopular;
+import com.example.app2_use_firebase.services.TypeClassService;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -226,17 +227,21 @@ private void displayUserCart(Context context) {
                                 for (int i = 0; i < cart.getProducts().size(); i++) {
                                     final String productId = cart.getProducts().get(i).get_id();
                                     final int quantity = cart.getProducts().get(i).getQuantity();
+                                    final String type = cart.getProducts().get(i).getType();
                                     new Thread(new Runnable() {
 
                                         @Override
                                         public void run() {
                                             try {
-                                                ItemsPopular itemsPopular = SoapClient.getInstance().getItemsPopularsById(productId);
-                                                if (itemsPopular != null) {
-                                                    ItemsDomain itemsDomain = new ItemsDomain(itemsPopular.getDes(), itemsPopular.get_id(),
-                                                            itemsPopular.getTitle(), itemsPopular.getDescription(), itemsPopular.getPicUrl(),
-                                                            itemsPopular.getPrice(), itemsPopular.getOldPrice(), itemsPopular.getReview(),
-                                                            itemsPopular.getRating());
+                                                AModel model = TypeClassService.getInstance().selectType(type, productId);
+                                                Log.d("SOAP", "Model: " + model);
+//                                                ItemsPopular itemsPopular = SoapClient.getInstance().getItemsPopularsById(productId);
+                                                if (model != null) {
+
+                                                    ItemsDomain itemsDomain = new ItemsDomain(model.getDes(), model.get_id(),
+                                                            model.getTitle(), model.getDescription(), model.getPicUrl(),
+                                                            model.getPrice(), model.getOldPrice(), model.getReview(),
+                                                            model.getRating());
                                                     itemsDomain.setNumberinCart(quantity);
                                                     synchronized (cartItems) {
                                                         cartItems.add(itemsDomain);
