@@ -25,6 +25,20 @@ namespace WcfService1
         ItemsPopular GetItemsPopularById(string id);
 
         [OperationContract]
+        List<ItemsPopular> GetAllItemsGiay();
+        [OperationContract]
+        List<ItemsPopular> GetAllItemsBag();
+
+        [OperationContract]
+        List<SliderItems> GetSliderItems();
+
+        [OperationContract]
+        List<ItemsDomain> GetItemsQuan();
+        [OperationContract]
+        List<ItemsDomain> GetItemsQuanNam();
+        [OperationContract]
+        List<ItemsDomain> GetItemsQuanNu();
+        [OperationContract]
         bool AddUser(User user);
         [OperationContract]
         bool Register(User user);

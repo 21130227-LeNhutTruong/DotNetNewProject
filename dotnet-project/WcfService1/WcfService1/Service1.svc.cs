@@ -23,9 +23,25 @@ namespace WcfService1
             return BannerService.GetInstance().GetAllBanners();
         }
 
-        public List<ItemsPopular> GetAllItemsPopulars()
+        public List<ItemsDomain> GetAllItemsPopulars()
         {
             return ItemsPopularService.GetInstance().GetAllItemsPopulars();
+        }
+        public List<SliderItems> GetSliderItems()
+        {
+            return SliderItemService.GetInstance().GetSliderItems();
+        }
+        public List<ItemsDomain> GetItemsQuan()
+        {
+            return ItemsQuanService.GetInstance().GetItemsQuan();
+        }
+        public List<ItemsDomain> GetItemsQuanNam()
+        {
+            return ItemsQuanNamService.GetInstance().GetItemsQuanNam();
+        }
+        public List<ItemsDomain> GetItemsQuanNu()
+        {
+            return ItemsQuanNuService.GetInstance().GetItemsQuanNu();
         }
 
         public ItemsPopular GetItemsPopularById(string id)
@@ -82,6 +98,20 @@ namespace WcfService1
         {
             return CartService.GetInstance().RemoveCart(id, idProduct);
         }
+
+
+        public List<ItemsDomain> GetAllItemsGiay()
+        {
+            return ItemsGiayService.GetInstance().GetAllItemsGiay();
+
+
+        }
+
+        public List<ItemsDomain> GetAllItemsBag()
+        {
+            return ItemsTuiXachService.GetInstanceBag().GetAllItemsBag();
+        }
+
 
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)

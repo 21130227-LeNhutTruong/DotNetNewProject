@@ -8,18 +8,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.databinding.ViewholderSlideItemBinding;
+//import com.google.protobuf.BooleanArrayList;
 
 import java.util.List;
 
 public class SliderImgAdapter extends RecyclerView.Adapter<SliderImgAdapter.SlideViewHolder> {
 
-    private List<Integer> slideItems;
+    private List<String> imageUrls;
 
     Context context ;
-    public SliderImgAdapter(Context context, List<Integer> slideItems) {
-        this.slideItems = slideItems;
+    public SliderImgAdapter(Context context, List<String> imageUrls) {
         this.context = context;
+        this.imageUrls = imageUrls;
     }
 
     @NonNull
@@ -32,14 +34,14 @@ public class SliderImgAdapter extends RecyclerView.Adapter<SliderImgAdapter.Slid
 
     @Override
     public void onBindViewHolder(@NonNull SlideViewHolder holder, int position) {
-        int imageResId = slideItems.get(position);
+        String imageUrl = imageUrls.get(position);
 
-        Glide.with(context).load(imageResId).into(holder.binding.imageViewSlide);
+        Glide.with(context).load(imageUrl).into(holder.binding.imageViewSlide);
     }
 
     @Override
     public int getItemCount() {
-        return slideItems.size();
+        return imageUrls.size();
     }
 
     public static class SlideViewHolder extends RecyclerView.ViewHolder {

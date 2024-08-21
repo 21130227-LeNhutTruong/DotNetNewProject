@@ -17,19 +17,30 @@ public class ItemsDomain implements Serializable {
     private int NumberinCart;
     private String type;
 
-    public ItemsDomain() {
-    }
 
-    public ItemsDomain(String des,String id,String title, String description, ArrayList<String> picUrl, double price, double oldPrice, int review, double rating) {
+    public ItemsDomain(String id, String title, String description, ArrayList<String> picUrl, String des, double price, double oldPrice, int review, double rating) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.picUrl = picUrl;
+        this.des = des;
         this.price = price;
         this.oldPrice = oldPrice;
         this.review = review;
         this.rating = rating;
+    }
+
+    public ItemsDomain(String id, String title, String description, ArrayList<String> picUrl, String des, double price, double oldPrice, int review, double rating, int numberinCart) {
         this.id = id;
+        this.title = title;
+        this.description = description;
+        this.picUrl = picUrl;
         this.des = des;
+        this.price = price;
+        this.oldPrice = oldPrice;
+        this.review = review;
+        this.rating = rating;
+        NumberinCart = numberinCart;
     }
 
     public String getDes() {
