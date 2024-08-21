@@ -1,11 +1,77 @@
 [{
   "_id": {
-    "$oid": "66c1b5216137044977003a94"
+    "$oid": "66c2f10462b754413692946c"
   },
   "email": "21130035@st.hcmuaf.edu.vn",
   "pass": "123456",
+  "username": "nnkd",
   "name": "Duy Nguyen",
   "age": 21,
+  "avatar": "",
+  "sex": 1,
+  "role": 0
+},
+{
+  "_id": {
+    "$oid": "66c2fc8432459cb719346cfd"
+  },
+  "email": "duyngueyn@gmail.com",
+  "pass": "123456",
+  "username": "duy",
+  "name": "duy",
+  "age": 19,
+  "avatar": "\"\"",
+  "sex": 1,
+  "role": 1
+},
+{
+  "_id": {
+    "$oid": "66c2fd7632459cb719346cfe"
+  },
+  "email": "duyng@gmail.com",
+  "pass": "123456",
+  "username": "ppppks",
+  "name": "ppppks",
+  "age": 18,
+  "avatar": "",
+  "sex": 1,
+  "role": 0
+},
+{
+  "_id": {
+    "$oid": "66c30415c163f3d78f9a5ada"
+  },
+  "email": "duy@gmail.com",
+  "pass": "123456",
+  "username": "gggqu",
+  "name": "gggqu",
+  "age": 18,
+  "avatar": "",
+  "sex": 1,
+  "role": 0
+},
+{
+  "_id": {
+    "$oid": "66c346f2f3413250b8bbc881"
+  },
+  "email": "po@gmail.com",
+  "pass": "123456",
+  "username": "qff",
+  "name": "qff",
+  "age": 18,
+  "avatar": "",
+  "sex": 1,
+  "role": 0
+},
+{
+  "_id": {
+    "$oid": "66c34a49fb32b14734fae268"
+  },
+  "email": "21130035@st.hcmu.edu.vn",
+  "pass": "123456",
+  "username": "ioqfjm",
+  "name": "ioqfjm",
+  "age": 18,
   "avatar": "",
   "sex": 1,
   "role": 0

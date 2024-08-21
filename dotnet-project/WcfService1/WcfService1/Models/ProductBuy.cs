@@ -19,6 +19,7 @@ namespace WcfService1.Models
         [DataMember]
         public string type { get; set; }
 
+       
 
     }
 }

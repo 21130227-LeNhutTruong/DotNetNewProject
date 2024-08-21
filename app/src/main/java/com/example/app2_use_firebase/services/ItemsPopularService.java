@@ -2,6 +2,7 @@ package com.example.app2_use_firebase.services;
 
 import android.util.Log;
 
+import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.model.ItemsPopular;
 
 import org.ksoap2.SoapEnvelope;
@@ -83,7 +84,7 @@ public class ItemsPopularService {
         return itemsPopulars;
     }
 
-    public ItemsPopular getItemsPopularsById(String NAMESPACE, String URL, String id) {
+    public ItemsDomain getItemsPopularsById(String NAMESPACE, String URL, String id) {
         try {
             SoapObject request = new SoapObject(NAMESPACE, GetItemsPopularsById_METHOD_NAME);
             request.addProperty("id", id);
@@ -136,9 +137,10 @@ public class ItemsPopularService {
             int review = Integer.parseInt(getItemsPopularByIdResult.getProperty("review").toString());
             String title = getItemsPopularByIdResult.getProperty("title").toString();
 
-            ItemsPopular itemsPopular = new ItemsPopular(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+//            ItemsDomain itemsPopular = new ItemsDomain(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+            ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
 
-            return itemsPopular;
+            return itemsDomain;
 
         }catch (SoapFault fault) {
             Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
