@@ -122,6 +122,23 @@ namespace WcfService1
             return ItemsClothesService.GetInstance().GetAllItemsClothes();
         }
 
+        public List<ItemsDomain> GetAllItemsAos()
+        {
+            return ItemsAoService.GetInstance().GetAllItemsAos();
+        }
+
+        public List<ItemsDomain> GetAllItemsAoNams()
+        {
+            return ItemsAoNamService.GetInstance().GetAllItemsAoNams();
+        }
+
+        public List<ItemsDomain> GetAllItemsAoNus()
+        {
+            return ItemsAoNuService.GetInstance().GetAllItemsAoNus();
+        }
+
+
+
 
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)

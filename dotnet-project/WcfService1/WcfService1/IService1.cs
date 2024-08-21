@@ -42,6 +42,16 @@ namespace WcfService1
         List<ItemsDomain> GetItemsQuanNam();
         [OperationContract]
         List<ItemsDomain> GetItemsQuanNu();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAos();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAoNams();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAoNus();
+
         [OperationContract]
         bool AddUser(User user);
         [OperationContract]
