@@ -65,4 +65,13 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
             this.binding=binding;
         }
     }
+
+    public String getSelectedItem() {
+        if (selectedPosition != -1) {
+            return items.get(selectedPosition);
+        }
+        return null;
+    }
+
+
 }

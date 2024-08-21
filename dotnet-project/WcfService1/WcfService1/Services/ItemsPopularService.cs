@@ -30,5 +30,14 @@ namespace WcfService1.Services
             var result = _itemsPopular.Find(filter).Project<ItemsDomain>(projection).ToList();
             return result;
         }
+
+        public ItemsPopular GetItemsPopularById(string id)
+        {
+            var objectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
+            var filter = Builders<ItemsPopular>.Filter.Eq(ip => ip._id, objectId);
+            var projection = Builders<ItemsPopular>.Projection.Exclude("id");
+            var result = _itemsPopular.Find(filter).Project<ItemsPopular>(projection).FirstOrDefault();
+            return result;
+        }
     }
 }

@@ -15,6 +15,7 @@ public class ItemsDomain implements Serializable {
     private int review;
     private double rating;
     private int NumberinCart;
+    private String type;
 
 
     public ItemsDomain(String id, String title, String description, ArrayList<String> picUrl, String des, double price, double oldPrice, int review, double rating) {
@@ -121,9 +122,11 @@ public class ItemsDomain implements Serializable {
         this.NumberinCart = numberinCart;
     }
 
+    public String getType() {
+        return type;
+    }
 
-
-
-
-
+    public void setType(String type) {
+        this.type = type;
+    }
 }

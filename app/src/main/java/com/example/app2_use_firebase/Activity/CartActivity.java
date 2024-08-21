@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,14 +30,16 @@ import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Helper.ManagmentCart;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityCartBinding;
+import com.example.app2_use_firebase.model.AModel;
+import com.example.app2_use_firebase.model.Cart;
+import com.example.app2_use_firebase.services.TypeClassService;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -202,34 +206,108 @@ displayUserCart(this);
     }
 
 private void displayUserCart(Context context) {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//    FirebaseFirestore db = FirebaseFirestore.getInstance();
     // Kiểm tra xem người dùng đã đăng nhập hay chưa
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    if (currentUser != null) {
-        String userId = currentUser.getUid();
-        // Lấy danh sách sản phẩm trong giỏ hàng của người dùng hiện tại
+//    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//    if (currentUser != null) {
 
-        db.collection("users").document(userId).collection("carts")
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        ArrayList<ItemsDomain> cartItems = new ArrayList<>();
-                        // Lặp qua danh sách sản phẩm và thêm vào danh sách
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            // Convert document to ItemsDomain object
-                            ItemsDomain item = document.toObject(ItemsDomain.class);
-                            cartItems.add(item);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                    String userId = sharedPref.getString("userId", null);
+                    Log.d("SOAP", "Cart: "+userId);
+                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
+                    ArrayList<ItemsDomain> cartItems = new ArrayList<>();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (cart != null) {
+                                for (int i = 0; i < cart.getProducts().size(); i++) {
+                                    final String productId = cart.getProducts().get(i).get_id();
+                                    final int quantity = cart.getProducts().get(i).getQuantity();
+                                    final String type = cart.getProducts().get(i).getType();
+                                    new Thread(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                AModel model = TypeClassService.getInstance().selectType(type, productId);
+                                                Log.d("SOAP", "Model: " + model);
+//                                                ItemsPopular itemsPopular = SoapClient.getInstance().getItemsPopularsById(productId);
+                                                if (model != null) {
+
+                                                    ItemsDomain itemsDomain = new ItemsDomain(model.getDes(), model.get_id(),
+                                                            model.getTitle(), model.getDescription(), model.getPicUrl(),
+                                                            model.getPrice(), model.getOldPrice(), model.getReview(),
+                                                            model.getRating());
+                                                    itemsDomain.setNumberinCart(quantity);
+                                                    synchronized (cartItems) {
+                                                        cartItems.add(itemsDomain);
+                                                    }
+                                                }
+                                            }catch (Exception e) {
+                                                Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                            }
+                                        }
+                                    }).start();
+                                }
+                            }
+
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Thread.sleep(1000);
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                showCartItems(context, cartItems);
+                                            }
+                                        });
+                                    } catch (InterruptedException e) {
+                                        Log.d("SOAP", "Thread interrupted", e);
+                                    }
+                                }
+                            }).start();
+                            Log.d("SOAP", "Cart: " + cart);
                         }
-                        // Hiển thị danh sách sản phẩm trong giỏ hàng
-                        showCartItems(context,cartItems);
-                    } else {
-                        // Lỗi khi truy vấn dữ liệu từ Firestore
-                        Toast.makeText(context, "Error getting user's cart items", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    } else {
-        Toast.makeText(context, "User is not logged in", Toast.LENGTH_SHORT).show();
-    }
+                    });
+
+                }catch (Exception e) {
+                    Log.d("SOAP", "ERROR CONNECTION SOAP", e);
+                }
+            }
+        }).start();
+
+
+
+
+//        String userId = currentUser.getUid();
+//        // Lấy danh sách sản phẩm trong giỏ hàng của người dùng hiện tại
+//
+//        db.collection("users").document(userId).collection("carts")
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        ArrayList<ItemsDomain> cartItems = new ArrayList<>();
+//                        // Lặp qua danh sách sản phẩm và thêm vào danh sách
+//                        for (QueryDocumentSnapshot document : task.getResult()) {
+//                            // Convert document to ItemsDomain object
+//                            ItemsDomain item = document.toObject(ItemsDomain.class);
+//                            cartItems.add(item);
+//                        }
+//                        // Hiển thị danh sách sản phẩm trong giỏ hàng
+//                        showCartItems(context,cartItems);
+//                    } else {
+//                        // Lỗi khi truy vấn dữ liệu từ Firestore
+//                        Toast.makeText(context, "Error getting user's cart items", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    } else {
+//        Toast.makeText(context, "User is not logged in", Toast.LENGTH_SHORT).show();
+//    }
 }
 
     // Phương thức để hiển thị thông tin giỏ hàng trên giao diện người dùng

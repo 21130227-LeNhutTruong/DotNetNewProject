@@ -275,10 +275,10 @@ public class LoginActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private void saveLoginState(String userId) {
+    private void saveLoginState(String id) {
         SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("userId", userId);
+        editor.putString("userId", id);
         editor.apply();
     }
 

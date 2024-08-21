@@ -1,11 +1,16 @@
 package com.example.app2_use_firebase.Helper;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.app2_use_firebase.Domain.ItemsDomain;
+import com.example.app2_use_firebase.model.Cart;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,51 +36,113 @@ public class ManagmentCart {
 
     }
 
-public void insertProduct(ItemsDomain item) {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    // Lấy thông tin đăng nhập của người dùng
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    if (currentUser != null) {
-        // Lấy id của người dùng
-        String userId = currentUser.getUid();
+public void insertProduct(ItemsDomain item, String color) {
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try{
+                SharedPreferences sharedPref = context.getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                String userId = sharedPref.getString("userId", null);
+                Cart cart = SoapClient.getInstance().getCartByUser(userId);
 
-        // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng
-        ArrayList<ItemsDomain> listProduct = getListCart();
-        boolean existAlready = false;
-        int n = 0;
+                if (context instanceof Activity) {
+                    ((Activity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (cart != null) {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            boolean addCart = SoapClient.getInstance().addCart(cart.get_id(), item.getId(), 1, item.getType());
+                                            Log.d("SOAP", "ADD CART = "+addCart+", COLOR: "+color);
 
-        for (int y = 0; y < listProduct.size(); y++) {
-            // Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng
-            if (listProduct.get(y).getTitle().equals(item.getTitle())) {
-                // Cập nhật số lượng sản phẩm trong giỏ hàng
-                existAlready = true;
-                n = y;
-                break;
+                                        }catch (Exception e) {
+                                            Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                        }
+                                    }
+                                }).start();
+                            }
+                        }
+                    });
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+                            if (context instanceof Activity) {
+                                ((Activity) context).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng
+                                        ArrayList<ItemsDomain> listProduct = getListCart();
+                                        boolean existAlready = false;
+                                        int n = 0;
+
+                                        for (int y = 0; y < listProduct.size(); y++) {
+                                            // Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng
+                                            if (listProduct.get(y).getTitle().equals(item.getTitle())) {
+                                                // Cập nhật số lượng sản phẩm trong giỏ hàng
+                                                existAlready = true;
+                                                n = y;
+                                                break;
+                                            }
+                                        }
+                                        if (existAlready) {
+                                            // Cập nhật số lượng sản phẩm trong giỏ hàng
+                                            listProduct.get(n).setNumberinCart(item.getNumberinCart());
+                                        } else {
+                                            // Thêm sản phẩm vào giỏ hàng
+                                            listProduct.add(item);
+                                        }
+
+                                        tinyDB.putListObject("CartList", listProduct);
+                                    }
+                                });
+                            }
+
+                        } catch (InterruptedException e) {
+                            Log.d("SOAP", "Thread interrupted", e);
+                        }
+                    }
+                }).start();
+
+            }catch (Exception e) {
+                Log.d("SOAP ERROR", "ERROR CONNECTION", e);
             }
+
         }
-        if (existAlready) {
-            // Cập nhật số lượng sản phẩm trong giỏ hàng
-            listProduct.get(n).setNumberinCart(item.getNumberinCart());
-        } else {
-            // Thêm sản phẩm vào giỏ hàng
-            listProduct.add(item);
-        }
+    }).start();
+
+
+
+
+//    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//    // Lấy thông tin đăng nhập của người dùng
+//    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//    if (currentUser != null) {
+        // Lấy id của người dùng
+//        String userId = currentUser.getUid();
+
+
 
         // Lưu sản phẩm cho từng người dùng vào Firestore
-        db.collection("users").document(userId).collection("carts")
-                .document(item.getId()) // Sử dụng id của sản phẩm làm id của document
-                .set(item) // Lưu thông tin sản phẩm vào document
-                .addOnSuccessListener(aVoid -> {
-                    // Thành công khi lưu sản phẩm
-                    Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    // Lỗi khi lưu sản phẩm
-                    Toast.makeText(context, "Error adding to Cart", Toast.LENGTH_SHORT).show();
-                });
+//        db.collection("users").document(userId).collection("carts")
+//                .document(item.getId()) // Sử dụng id của sản phẩm làm id của document
+//                .set(item) // Lưu thông tin sản phẩm vào document
+//                .addOnSuccessListener(aVoid -> {
+//                    // Thành công khi lưu sản phẩm
+//                    Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
+//                })
+//                .addOnFailureListener(e -> {
+//                    // Lỗi khi lưu sản phẩm
+//                    Toast.makeText(context, "Error adding to Cart", Toast.LENGTH_SHORT).show();
+//                });
         // Lưu danh sách sản phẩm vào SharedPreferences
-        tinyDB.putListObject("CartList", listProduct);
-    }
+
+//    }
 }
     public void insertProductFav(ItemsDomain item) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -172,21 +239,61 @@ public void insertProduct(ItemsDomain item) {
         }
     }
     public void delectProductCart(ItemsDomain item) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
-            String userId = currentUser.getUid();
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if (currentUser != null) {
+//            String userId = currentUser.getUid();
+//
+//            db.collection("users").document(userId).collection("carts")
+//                    .document(item.getId())
+//                    .delete()
+//                    .addOnSuccessListener(aVoid -> {
+//                        Toast.makeText(context, "đã xóa khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
+//                    })
+//                    .addOnFailureListener(e -> {
+//                        Toast.makeText(context, "Lỗi khi xóa sản phẩm", Toast.LENGTH_SHORT).show();
+//                    });
+//        }
 
-            db.collection("users").document(userId).collection("carts")
-                    .document(item.getId())
-                    .delete()
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(context, "đã xóa khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(context, "Lỗi khi xóa sản phẩm", Toast.LENGTH_SHORT).show();
-                    });
-        }
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    SharedPreferences sharedPref = context.getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                    String userId = sharedPref.getString("userId", null);
+                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
+
+                    if (context instanceof Activity) {
+                        ((Activity) context).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (cart != null) {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                boolean removeCart = SoapClient.getInstance().removeCart(cart.get_id(), item.getId());
+                                                Log.d("SOAP", "REMOVE CART = "+removeCart);
+
+                                            }catch (Exception e) {
+                                                Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                            }
+                                        }
+                                    }).start();
+                                }
+                            }
+                        });
+                    }
+
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                }
+
+            }
+        }).start();
+
     }
 
 
@@ -197,24 +304,152 @@ public void insertProduct(ItemsDomain item) {
 
 
     public void minusItem(ArrayList<ItemsDomain> listProduct, int position, ChangeNumberItemsListener changeNumberItemsListener) {
-        // Kiểm tra số lượng sản phẩm trong giỏ hàng
-        if (listProduct.get(position).getNumberinCart() == 1) {
-            listProduct.remove(position);
-        } else {
-            // Giảm số lượng sản phẩm trong giỏ hàng
-            listProduct.get(position).setNumberinCart(listProduct.get(position).getNumberinCart() - 1);
-        }
-        // Lưu danh sách sản phẩm vào SharedPreferences
-        tinyDB.putListObject("CartList", listProduct);
-        changeNumberItemsListener.changed();
+
+        int quantity = listProduct.get(position).getNumberinCart() - 1;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    SharedPreferences sharedPref = context.getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                    String userId = sharedPref.getString("userId", null);
+                    Log.d("SOAP", "CartPos: "+position);
+                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
+
+                    if (context instanceof Activity) {
+                        ((Activity) context).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (cart != null) {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                if (quantity == 0) {
+                                                    boolean removeCart = SoapClient.getInstance().removeCart(cart.get_id(), cart.getProducts().get(position).get_id());
+                                                    Log.d("SOAP", "REMOVE CART = "+removeCart);
+                                                }else {
+                                                    boolean updateCart = SoapClient.getInstance().updateCartQuantity(cart.get_id(), cart.getProducts().get(position).get_id(), quantity);
+                                                    Log.d("SOAP", "UPDATE MINUS CART = "+updateCart);
+                                                }
+                                            }catch (Exception e) {
+                                                Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                            }
+                                        }
+                                    }).start();
+                                }
+                            }
+                        });
+                    }
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1000);
+                                if (context instanceof Activity) {
+                                    ((Activity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            // Kiểm tra số lượng sản phẩm trong giỏ hàng
+                                            if (listProduct.get(position).getNumberinCart() == 1) {
+                                                listProduct.remove(position);
+                                            } else {
+                                                // Giảm số lượng sản phẩm trong giỏ hàng
+                                                listProduct.get(position).setNumberinCart(listProduct.get(position).getNumberinCart() - 1);
+                                            }
+                                            // Lưu danh sách sản phẩm vào SharedPreferences
+                                            tinyDB.putListObject("CartList", listProduct);
+                                            changeNumberItemsListener.changed();
+                                        }
+                                    });
+                                }
+
+                            } catch (InterruptedException e) {
+                                Log.d("SOAP", "Thread interrupted", e);
+                            }
+                        }
+                    }).start();
+
+
+
+
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                }
+
+            }
+        }).start();
+
+
     }
 
     public void plusItem(ArrayList<ItemsDomain> listProduct, int position, ChangeNumberItemsListener changeNumberItemsListener) {
-        // Tăng số lượng sản phẩm trong giỏ hàng
-        listProduct.get(position).setNumberinCart(listProduct.get(position).getNumberinCart() + 1);
-        // Lưu danh sách sản phẩm vào SharedPreferences
-        tinyDB.putListObject("CartList", listProduct);
-        changeNumberItemsListener.changed();
+
+        int quantity = listProduct.get(position).getNumberinCart() + 1;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    SharedPreferences sharedPref = context.getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                    String userId = sharedPref.getString("userId", null);
+                    Log.d("SOAP", "CartPos: "+position);
+                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
+
+                    if (context instanceof Activity) {
+                        ((Activity) context).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (cart != null) {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                               boolean updateCart = SoapClient.getInstance().updateCartQuantity(cart.get_id(), cart.getProducts().get(position).get_id(), quantity);
+                                                Log.d("SOAP", "UPDATE PLUS CART = "+updateCart);
+                                            }catch (Exception e) {
+                                                Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                            }
+                                        }
+                                    }).start();
+                                }
+                            }
+                        });
+                    }
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1000);
+                                if (context instanceof Activity) {
+                                    ((Activity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            // Tăng số lượng sản phẩm trong giỏ hàng
+                                            listProduct.get(position).setNumberinCart(listProduct.get(position).getNumberinCart() + 1);
+                                            // Lưu danh sách sản phẩm vào SharedPreferences
+                                            tinyDB.putListObject("CartList", listProduct);
+                                            changeNumberItemsListener.changed();
+                                            Log.d("SOAP", "UPDATE CART QUANTITY");
+                                        }
+                                    });
+                                }
+
+                            } catch (InterruptedException e) {
+                                Log.d("SOAP", "Thread interrupted", e);
+                            }
+                        }
+                    }).start();
+
+
+
+
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                }
+
+            }
+        }).start();
     }
 
     public Double getTotalFee() {

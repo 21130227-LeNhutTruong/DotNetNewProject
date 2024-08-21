@@ -89,8 +89,8 @@ public class ProfileActivity extends BaseActivity {
                         public void run() {
                             if (user == null) {
                                 Log.d("User Null", "Not Login: "+ userId);
-                                startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
-                                finish();
+//                                startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+//                                finish();
                             }else {
                                 String name = user.getName();
                                 String email = user.getEmail();

@@ -31,6 +31,7 @@ public class DetailActivity extends BaseActivity {
         private int numberOrder = 1;
         private ManagmentCart managmentCart;
         private Handler slidedHandler = new Handler();
+        private String color;
 
 
 
@@ -59,8 +60,10 @@ public class DetailActivity extends BaseActivity {
 
         binding.recycleViewSize.setAdapter(new SizeAdapter(list));
         binding.recycleViewSize.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
+        ColorAdapter colorAdapter = new ColorAdapter(list);
+        binding.recycleViewColor.setAdapter(colorAdapter);
 
-        binding.recycleViewColor.setAdapter( new ColorAdapter(list));
+        color = colorAdapter.getSelectedItem();
         binding.recycleViewColor.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
 
 
@@ -105,7 +108,7 @@ public class DetailActivity extends BaseActivity {
         // xét sự kiện click vào button thêm vào giỏ hàng
         binding.addToCartBtn.setOnClickListener(v -> {
             object.setNumberinCart(numberOrder);
-            managmentCart.insertProduct(object);
+            managmentCart.insertProduct(object, color);
         });
         ImageView btnback = findViewById(R.id.btnBack);
         btnback.setOnClickListener(v ->  finish());
