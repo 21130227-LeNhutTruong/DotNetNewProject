@@ -12,12 +12,17 @@ import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.BillDetailService;
 import com.example.app2_use_firebase.services.BillService;
 import com.example.app2_use_firebase.services.CartService;
+import com.example.app2_use_firebase.services.ItemsAoNamService;
+import com.example.app2_use_firebase.services.ItemsAoNuService;
+import com.example.app2_use_firebase.services.ItemsAoService;
 import com.example.app2_use_firebase.services.ItemsBagService;
+import com.example.app2_use_firebase.services.ItemsClothesService;
 import com.example.app2_use_firebase.services.ItemsGiayService;
 import com.example.app2_use_firebase.services.ItemsPopularService;
 import com.example.app2_use_firebase.services.ItemsQuanNamService;
 import com.example.app2_use_firebase.services.ItemsQuanNuService;
 import com.example.app2_use_firebase.services.ItemsQuanService;
+import com.example.app2_use_firebase.services.ItemsTuiXachService;
 import com.example.app2_use_firebase.services.SliderItemsService;
 import com.example.app2_use_firebase.services.UserService;
 
@@ -26,9 +31,10 @@ import java.util.List;
 public class SoapClient {
 
     private static final String NAMESPACE = "http://tempuri.org/";
-    
-//ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://fe2b-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svcBil";
+
+
+//    ngrok http 55685 --host-header="localhost:55685"
+    private static final String URL = "https://ff96-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
@@ -105,6 +111,15 @@ public class SoapClient {
     public List<ItemsPopular> getItemsBag() {
         return ItemsBagService.getInstance().getItemsBagService(NAMESPACE, URL);
     }
+    public List<ItemsPopular> getItemsClothes() {
+        return ItemsClothesService.getInstance().getItemsClothes(NAMESPACE, URL);
+    }
+    public List<ItemsPopular> getItemsTuiXach() {
+        return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getAllItemsAos() {
+        return ItemsAoService.getInstance().getItemsAos(NAMESPACE, URL);
+    }
 
     public List<Bill> getBillByUser(String idUser) {
        return BillService.getInstance().getBillByUser(NAMESPACE, URL, idUser);
@@ -127,5 +142,12 @@ public class SoapClient {
     }
 
 
+    public List<ItemsDomain> getAllItemsAoNams() {
+        return ItemsAoNamService.getInstance().getItemsAoNams(NAMESPACE, URL);
+    }
+
+    public List<ItemsDomain> getAllItemsAoNus() {
+        return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
+    }
 }
 

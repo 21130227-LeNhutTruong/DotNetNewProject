@@ -28,6 +28,10 @@ namespace WcfService1
         List<ItemsDomain> GetAllItemsGiay();
         [OperationContract]
         List<ItemsDomain> GetAllItemsBag();
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsTuiXach();
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsClothes();
 
         [OperationContract]
         List<SliderItems> GetSliderItems();
@@ -38,6 +42,16 @@ namespace WcfService1
         List<ItemsDomain> GetItemsQuanNam();
         [OperationContract]
         List<ItemsDomain> GetItemsQuanNu();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAos();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAoNams();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAoNus();
+
         [OperationContract]
         bool AddUser(User user);
         [OperationContract]

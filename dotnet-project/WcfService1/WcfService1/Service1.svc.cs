@@ -107,7 +107,7 @@ namespace WcfService1
 
         public List<ItemsDomain> GetAllItemsBag()
         {
-            return ItemsTuiXachService.GetInstanceBag().GetAllItemsBag();
+            return ItemsBagService.GetInstanceBag().GetAllItemsBag();
         }
 
         public bool DeleteCart(string id)
@@ -163,6 +163,32 @@ namespace WcfService1
         }
 
         
+        public List<ItemsDomain> GetAllItemsTuiXach()
+        {
+            return ItemsTuiXachService.GetInstanceTuiXach().GetAllItemsTuiXach();
+        }
+
+        public List<ItemsDomain> GetAllItemsClothes()
+        {
+            return ItemsClothesService.GetInstance().GetAllItemsClothes();
+        }
+
+        public List<ItemsDomain> GetAllItemsAos()
+        {
+            return ItemsAoService.GetInstance().GetAllItemsAos();
+        }
+
+        public List<ItemsDomain> GetAllItemsAoNams()
+        {
+            return ItemsAoNamService.GetInstance().GetAllItemsAoNams();
+        }
+
+        public List<ItemsDomain> GetAllItemsAoNus()
+        {
+            return ItemsAoNuService.GetInstance().GetAllItemsAoNus();
+        }
+
+
 
 
 

@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app2_use_firebase.Adapter.PopularAdapter;
@@ -17,6 +19,7 @@ import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityListGiayBinding;
+import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,33 +49,50 @@ public class GiayActivity extends BaseActivity{
 
     }
     private void initGiay() {
-        DatabaseReference myRef = database.getReference("ItemsGiay");
-        binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsPopular> itemsGiays = soapClient.getItemsGiay();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsGiays != null && !itemsGiays.isEmpty()) {
+                                StringBuilder response = new StringBuilder();
+                                for (ItemsPopular itemsgiay : itemsGiays) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.get_id(),
+                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),itemsgiay.getDes(),
+                                            itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
+                                            itemsgiay.getRating());
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewListGiay.setLayoutManager(new GridLayoutManager(GiayActivity.this, 2));
-                        binding.recyclerViewListGiay.setAdapter(new PopularAdapter(items));
+                                    items.add(itemsDomain);
+                                }
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewListGiay.setLayoutManager(new GridLayoutManager(GiayActivity.this, 2));
+                                    binding.recyclerViewListGiay.setAdapter(new PopularAdapter(items));
+                                }
 
 
-                    }
-                    binding.progressAo.setVisibility(View.GONE);
-
+                            } else {
+                                Toast.makeText(GiayActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ;
+                        }
+                    });
                 }
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
     private void initSliderImage(){
         binding.progressAo.setVisibility(View.VISIBLE);
