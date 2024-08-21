@@ -8,6 +8,9 @@ import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.CartService;
+import com.example.app2_use_firebase.services.ItemsAoNamService;
+import com.example.app2_use_firebase.services.ItemsAoNuService;
+import com.example.app2_use_firebase.services.ItemsAoService;
 import com.example.app2_use_firebase.services.ItemsBagService;
 import com.example.app2_use_firebase.services.ItemsClothesService;
 import com.example.app2_use_firebase.services.ItemsGiayService;
@@ -26,7 +29,7 @@ public class SoapClient {
     private static final String NAMESPACE = "http://tempuri.org/";
 
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://1767-42-118-185-52.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://6d90-2402-800-6312-306d-8445-b5f2-e20-39c6.ngrok-free.app/Service1.svc";
 
 
     private static final String HELLO_METHOD_NAME = "hello";
@@ -110,6 +113,17 @@ public class SoapClient {
     }
     public List<ItemsPopular> getItemsTuiXach() {
         return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getAllItemsAos() {
+        return ItemsAoService.getInstance().getItemsAos(NAMESPACE, URL);
+    }
+
+    public List<ItemsDomain> getAllItemsAoNams() {
+        return ItemsAoNamService.getInstance().getItemsAoNams(NAMESPACE, URL);
+    }
+
+    public List<ItemsDomain> getAllItemsAoNus() {
+        return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
     }
 }
 

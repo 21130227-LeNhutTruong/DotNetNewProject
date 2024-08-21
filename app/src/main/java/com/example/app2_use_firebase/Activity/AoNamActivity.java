@@ -46,34 +46,38 @@ public class AoNamActivity extends BaseActivity{
 
     }
     // hiển thị sản phẩm
-    private void initAoNam() {
-        DatabaseReference myRef = database.getReference("ItemsAoNam");
+    private  void  initAoNam(){
         binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
+            public void run() {
+                try {
+                    final List<ItemsDomain> itemsAoNamList = soapClient.getAllItemsAoNams();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsAoNamList != null && !itemsAoNamList.isEmpty()) {
+                                items.addAll(itemsAoNamList);
 
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewListAoNam.setLayoutManager(new GridLayoutManager(AoNamActivity.this, 2));
-                        binding.recyclerViewListAoNam.setAdapter(new PopularAdapter(items));
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewListAoNam.setLayoutManager(new GridLayoutManager(AoNamActivity.this, 2));
+                                    binding.recyclerViewListAoNam.setAdapter(new PopularAdapter(items));
+                                }
 
-
-                    }
-                    binding.progressAo.setVisibility(View.GONE);
-
+                                binding.progressAo.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(AoNamActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
                 }
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }).start();
     }
     private void initSliderImage(){
         binding.progressAo.setVisibility(View.VISIBLE);
