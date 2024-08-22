@@ -3,7 +3,7 @@ package com.example.app2_use_firebase.services;
 import android.util.Log;
 
 import com.example.app2_use_firebase.Domain.ItemsDomain;
-import com.example.app2_use_firebase.model.ItemsPopular;
+
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -27,8 +27,8 @@ public class ItemsTuiXachService {
         return instance;
     }
 
-    public List<ItemsPopular> getItemsTuiXach(String NAMESPACE, String URL) {
-        List<ItemsPopular> itemsTuiXachs = new ArrayList<>();
+    public List<ItemsDomain> getItemsTuiXach(String NAMESPACE, String URL) {
+        List<ItemsDomain> itemsTuiXachs = new ArrayList<>();
 
         try {
             SoapObject request = new SoapObject(NAMESPACE, GET_ItemsTuiXach_METHOD_NAME);
@@ -56,7 +56,7 @@ public class ItemsTuiXachService {
             for (int i = 0; i < getResultItemsTuiXach.getPropertyCount(); i++) {
                 SoapObject itemsTuiXachObject = (SoapObject) getResultItemsTuiXach.getProperty(i);
                 SoapObject idObject = (SoapObject) itemsTuiXachObject.getProperty("_id");
-                String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+                String _id = idObject.getProperty("_a").toString()+"*"+ idObject.getProperty("_b").toString()+"*" + idObject.getProperty("_c").toString();
                 String des = itemsTuiXachObject.getProperty("des").toString();
                 String description = itemsTuiXachObject.getProperty("description").toString();
                 double oldPrice = Double.parseDouble(itemsTuiXachObject.getProperty("oldPrice").toString());
@@ -72,9 +72,10 @@ public class ItemsTuiXachService {
                 int review = Integer.parseInt(itemsTuiXachObject.getProperty("review").toString());
                 String title = itemsTuiXachObject.getProperty("title").toString();
 
-                ItemsPopular itemsTuiXach = new ItemsPopular(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+//                ItemsDomain itemsTuiXach = new ItemsDomain(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+                ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
 
-                itemsTuiXachs.add(itemsTuiXach);
+                itemsTuiXachs.add(itemsDomain);
             }
         }catch (SoapFault fault) {
             Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);

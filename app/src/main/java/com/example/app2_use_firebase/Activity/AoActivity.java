@@ -49,6 +49,10 @@ public class AoActivity extends BaseActivity{
             public void run() {
                 try {
                     final List<ItemsDomain> itemsAoList = soapClient.getAllItemsAos();
+
+                    for (int i = 0; i < itemsAoList.size(); i++) {
+                        itemsAoList.get(i).setType("ItemsAo");
+                    }
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

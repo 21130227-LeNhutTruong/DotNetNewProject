@@ -92,7 +92,7 @@ namespace WcfService1
 
         [OperationContract]
         bool isExistUser(string email);
-
+    
         [OperationContract]
         Cart GetCartByUser(string id);
         [OperationContract]
@@ -121,7 +121,7 @@ namespace WcfService1
         [OperationContract]
         bool UpdateStatusBill(string id, string status);
         [OperationContract]
-        bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser, string idProduct, int quanity, string type);
+        bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser);
         [OperationContract]
         bool DeleteBill(string id);
         [OperationContract]
@@ -131,7 +131,10 @@ namespace WcfService1
         
         [OperationContract]
         bool AddNewCart(string idUser, string idProduct, string type);
-        
+        [OperationContract]
+        bool AddProductInBillDetail(string idUser, string idProduct, int quantity, string type);
+
+
 
     }
 

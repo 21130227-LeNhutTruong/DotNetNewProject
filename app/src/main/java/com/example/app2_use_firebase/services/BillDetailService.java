@@ -8,6 +8,7 @@ import com.example.app2_use_firebase.model.ProductBuy;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -18,8 +19,10 @@ public class BillDetailService {
     private static  BillDetailService instance;
 
     private static final String GetBillDetail_METHOD_NAME = "GetBillDetail";
+    private static final String AddProductInBillDetail_METHOD_NAME = "AddProductInBillDetail";
 
     private static final String GetBillDetail_SOAP_ACTION = "http://tempuri.org/IService1/"+GetBillDetail_METHOD_NAME;
+    private static final String AddProductInBillDetail_SOAP_ACTION = "http://tempuri.org/IService1/"+AddProductInBillDetail_METHOD_NAME;
 
 
     public static BillDetailService getInstance() {
@@ -40,8 +43,6 @@ public class BillDetailService {
 
             HttpTransportSE transport = new HttpTransportSE(URL);
             transport.call(GetBillDetail_SOAP_ACTION, envelope);
-
-
 
             Object objectResponse = envelope.bodyIn;
             if (objectResponse instanceof SoapFault) {
@@ -91,6 +92,45 @@ public class BillDetailService {
         } catch (Exception e) {
             Log.e("SoapClient", "Error: " + e.getMessage(), e);
             return null;
+        }
+    }
+
+    public boolean addProductInBD(String NAMESPACE, String URL, String idUser, String idProduct, int quantity, String type) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, AddProductInBillDetail_METHOD_NAME);
+            SoapObject billObject = (SoapObject) new SoapObject(NAMESPACE, "bill");
+
+            request.addProperty("idUser", idUser);
+            request.addProperty("idProduct", idProduct);
+            request.addProperty("quantity", quantity);
+            request.addProperty("type", type);
+
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(AddProductInBillDetail_SOAP_ACTION, envelope);
+
+            Object response = envelope.getResponse();
+            if (response instanceof SoapPrimitive) {
+                String responseString = response.toString();
+                return Boolean.parseBoolean(responseString);
+            } else {
+                Log.e("SoapClient", "Unexpected response type: " + response.getClass().getSimpleName());
+                return false;
+            }
+
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return false;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return false;
         }
     }
 

@@ -15,7 +15,7 @@ namespace WcfService1.Models
         public ObjectId _id { get; set; }
 
         [DataMember]
-        public ObjectId userId { get; set; }
+        public ObjectId billId { get; set; }
 
         [DataMember]
         public List<ProductBuy> products { get; set; }

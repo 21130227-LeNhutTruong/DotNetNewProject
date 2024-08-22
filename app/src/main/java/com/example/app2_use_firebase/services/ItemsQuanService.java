@@ -56,7 +56,7 @@ public class ItemsQuanService {
             for (int i = 0; i < getResultItemsQuan.getPropertyCount(); i++) {
                 SoapObject ItemsQuanObject = (SoapObject) getResultItemsQuan.getProperty(i);
                 SoapObject idObject = (SoapObject) ItemsQuanObject.getProperty("_id");
-                String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+                String _id = idObject.getProperty("_a").toString()+"*" + idObject.getProperty("_b").toString() +"*"+ idObject.getProperty("_c").toString();
                 String des = ItemsQuanObject.getProperty("des").toString();
                 String description = ItemsQuanObject.getProperty("description").toString();
                 double oldPrice = Double.parseDouble(ItemsQuanObject.getProperty("oldPrice").toString());

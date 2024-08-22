@@ -55,7 +55,7 @@ public class ItemsAoNamService {
                 SoapObject itemsAoObject = (SoapObject) getResultItemsAo.getProperty(i);
 
                 SoapObject idObject = (SoapObject) itemsAoObject.getProperty("_id");
-                String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+                String _id = idObject.getProperty("_a").toString()+"*" + idObject.getProperty("_b").toString() +"*"+ idObject.getProperty("_c").toString();
                 String des = itemsAoObject.getProperty("des").toString();
                 String description = itemsAoObject.getProperty("description").toString();
                 double oldPrice = Double.parseDouble(itemsAoObject.getProperty("oldPrice").toString());

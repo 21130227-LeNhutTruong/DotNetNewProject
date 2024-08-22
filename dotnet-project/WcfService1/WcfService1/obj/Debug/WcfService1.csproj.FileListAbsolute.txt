@@ -1,50 +1,50 @@
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\mongocrypt.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\WcfService1.dll.config
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\WcfService1.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\WcfService1.pdb
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.Core.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.SecurityToken.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\DnsClient.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Win32.Registry.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Bson.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.Core.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Libmongocrypt.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\SharpCompress.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Snappier.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Buffers.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Memory.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Numerics.Vectors.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.AccessControl.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.Principal.Windows.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Text.Encoding.CodePages.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Threading.Tasks.Extensions.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\ZstdSharp.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.Core.pdb
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.Core.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.SecurityToken.pdb
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.SecurityToken.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\DnsClient.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Win32.Registry.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Bson.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.Core.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Snappier.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Buffers.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Memory.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Numerics.Vectors.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.AccessControl.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.Principal.Windows.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Text.Encoding.CodePages.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Threading.Tasks.Extensions.xml
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.AssemblyReference.cache
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfServi.806E2312.Up2Date
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.dll
-C:\Users\ADMIN\Desktop\.NET\Main Project\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\mongocrypt.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\WcfService1.dll.config
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\WcfService1.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\WcfService1.pdb
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.Core.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.SecurityToken.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\DnsClient.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Win32.Registry.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Bson.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.Core.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Libmongocrypt.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\SharpCompress.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Snappier.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Buffers.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Memory.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Numerics.Vectors.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.AccessControl.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.Principal.Windows.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Text.Encoding.CodePages.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Threading.Tasks.Extensions.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\ZstdSharp.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.Core.pdb
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.Core.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.SecurityToken.pdb
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\AWSSDK.SecurityToken.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\DnsClient.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Microsoft.Win32.Registry.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Bson.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\MongoDB.Driver.Core.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\Snappier.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Buffers.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Memory.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Numerics.Vectors.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.AccessControl.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Security.Principal.Windows.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Text.Encoding.CodePages.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\bin\System.Threading.Tasks.Extensions.xml
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.AssemblyReference.cache
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.csproj.CoreCompileInputs.cache
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfServi.806E2312.Up2Date
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.dll
+D:\Code\android\DotNetNewProject\dotnet-project\WcfService1\WcfService1\obj\Debug\WcfService1.pdb

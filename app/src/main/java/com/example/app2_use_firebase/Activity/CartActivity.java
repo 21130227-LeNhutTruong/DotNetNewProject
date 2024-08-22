@@ -32,6 +32,7 @@ import com.example.app2_use_firebase.databinding.ActivityCartBinding;
 import com.example.app2_use_firebase.model.Bill;
 import com.example.app2_use_firebase.model.Cart;
 import com.example.app2_use_firebase.model.ItemsPopular;
+import com.example.app2_use_firebase.model.ProductBuy;
 import com.example.app2_use_firebase.services.TypeClassService;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,6 +43,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CartActivity extends  BaseActivity {
     ActivityCartBinding binding;
@@ -145,26 +148,46 @@ public class CartActivity extends  BaseActivity {
 
                     SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
                     String userId = sharedPref.getString("userId", null);
-                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
-                    boolean deleteCart = SoapClient.getInstance().deleteCart(userId);
+
 
                     LocalDateTime dateTime = LocalDateTime.now();
                     Bill bill = new Bill("", date, diachi, hoten, paymentMethod, "Đang xử lý", sdt, (int) totalAmount,userId);
-                    boolean addBill = SoapClient.getInstance().addBill(bill, cart.getProducts().get(0).get_id(), cart.getProducts().get(0).getQuantity(), cart.getProducts().get(0).getType());
+                    boolean addBill = SoapClient.getInstance().addBill(bill);
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
 
-                            Log.d("SOAP", "Delete Cart: "+deleteCart);
                             Log.d("SOAP", "Add Bill: "+ addBill);
 
                         }
                     });
 
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1000);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        addBillDetail();
+                                        startActivity(new Intent(CartActivity.this, BillActivity.class));
+                                    }
+                                });
+                            } catch (InterruptedException e) {
+                                Log.d("SOAP", "Thread interrupted", e);
+                            }
+                        }
+                    }).start();
+
+
                 }catch (Exception e) {
                     Log.d("SOAP ERROR", "ERROR CONNECT", e);
                 }
+
+
 
             }
         }).start();
@@ -181,6 +204,39 @@ public class CartActivity extends  BaseActivity {
 //                })
 //                .addOnFailureListener(e -> Toast.makeText(CartActivity.this, "Lỗi khi lưu hóa đơn", Toast.LENGTH_SHORT).show());
     }
+
+    public void addBillDetail() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                String userId = sharedPref.getString("userId", null);
+                Cart cart = SoapClient.getInstance().getCartByUser(userId);
+                boolean deleteCart = SoapClient.getInstance().deleteCart(userId);
+
+                // Lặp qua danh sách sản phẩm trong giỏ hàng
+                if (cart != null && cart.getProducts() != null) {
+                    for (ProductBuy product : cart.getProducts()) {
+                        // Gọi phương thức SOAP cho từng sản phẩm
+                        SoapClient.getInstance().addProductInBD(userId, product.get_id(), product.getQuantity(), product.getType());
+                    }
+                }
+
+                // Cập nhật UI sau khi hoàn tất các thao tác mạng
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Cập nhật UI nếu cần
+                    }
+                });
+            }
+        });
+
+    }
+
+
+
     private boolean validateInputs(String hoten, String diachi, String sdt) {
         if (hoten.isEmpty()) {
             Toast.makeText(this, "Họ tên không để trống", Toast.LENGTH_SHORT).show();

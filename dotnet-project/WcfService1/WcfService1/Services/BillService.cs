@@ -78,7 +78,18 @@ namespace WcfService1.Services
 
         }
 
-        public bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser, string idProduct, int quanity, string type)
+        public Bill GetNewBillByUser(string idUser)
+        {
+            var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
+
+            var filter = Builders<Bill>.Filter.Eq(b => b.userId, userObjectId);
+
+            var result = _bill.Find(filter).SortByDescending(b => b.date).FirstOrDefault();
+
+            return result;
+        }
+
+        public bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser)
         {
 
             var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
@@ -98,7 +109,7 @@ namespace WcfService1.Services
             try
             {
                 _bill.InsertOne(bill);
-                BillDetailService.GetInstance().AddBillDetail(idUser, idProduct, quanity, type);
+                BillDetailService.GetInstance().AddBillDetail(idUser);
 
                 return true;
             }

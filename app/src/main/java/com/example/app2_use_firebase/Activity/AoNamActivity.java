@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -15,16 +14,10 @@ import com.example.app2_use_firebase.Adapter.PopularAdapter;
 import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
-import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityListAoNamBinding;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AoNamActivity extends BaseActivity{
@@ -56,6 +49,9 @@ public class AoNamActivity extends BaseActivity{
             public void run() {
                 try {
                     final List<ItemsDomain> itemsAoNamList = soapClient.getAllItemsAoNams();
+                    for (int i = 0; i < itemsAoNamList.size(); i++) {
+                        itemsAoNamList.get(i).setType("ItemsAoNam");
+                    }
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

@@ -3,7 +3,7 @@ package com.example.app2_use_firebase.services;
 import android.util.Log;
 
 import com.example.app2_use_firebase.Domain.ItemsDomain;
-import com.example.app2_use_firebase.model.ItemsPopular;
+
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -27,8 +27,8 @@ public class ItemsGiayService {
             return instance;
         }
 
-        public List<ItemsPopular> getItemsGiayService(String NAMESPACE, String URL) {
-            List<ItemsPopular> itemsGiay = new ArrayList<>();
+        public List<ItemsDomain> getItemsGiayService(String NAMESPACE, String URL) {
+            List<ItemsDomain> itemsGiay = new ArrayList<>();
 
             try {
                 SoapObject request = new SoapObject(NAMESPACE, GET_ItemsGiay_METHOD_NAME);
@@ -56,7 +56,7 @@ public class ItemsGiayService {
                 for (int i = 0; i < getResultItemsGiay.getPropertyCount(); i++) {
                     SoapObject itemsGiayObject = (SoapObject) getResultItemsGiay.getProperty(i);
                     SoapObject idObject = (SoapObject) itemsGiayObject.getProperty("_id");
-                    String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+                    String _id = idObject.getProperty("_a").toString()+"*" + idObject.getProperty("_b").toString()+"*" + idObject.getProperty("_c").toString();
                     String des = itemsGiayObject.getProperty("des").toString();
                     String description = itemsGiayObject.getProperty("description").toString();
                     double oldPrice = Double.parseDouble(itemsGiayObject.getProperty("oldPrice").toString());
@@ -72,9 +72,10 @@ public class ItemsGiayService {
                     int review = Integer.parseInt(itemsGiayObject.getProperty("review").toString());
                     String title = itemsGiayObject.getProperty("title").toString();
 
-                    ItemsPopular itemsGiays = new ItemsPopular(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+//                    ItemsPopular itemsGiays = new ItemsPopular(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+                    ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
 
-                    itemsGiay.add(itemsGiays);
+                    itemsGiay.add(itemsDomain);
                 }
             }catch (SoapFault fault) {
                 Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
