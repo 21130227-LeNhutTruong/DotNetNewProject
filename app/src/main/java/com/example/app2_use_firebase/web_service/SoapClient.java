@@ -3,11 +3,18 @@ package com.example.app2_use_firebase.web_service;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.model.Banner;
+import com.example.app2_use_firebase.model.Bill;
+import com.example.app2_use_firebase.model.BillDetail;
 import com.example.app2_use_firebase.model.Cart;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.services.BannerService;
+import com.example.app2_use_firebase.services.BillDetailService;
+import com.example.app2_use_firebase.services.BillService;
 import com.example.app2_use_firebase.services.CartService;
+import com.example.app2_use_firebase.services.ItemsAoNamService;
+import com.example.app2_use_firebase.services.ItemsAoNuService;
+import com.example.app2_use_firebase.services.ItemsAoService;
 import com.example.app2_use_firebase.services.ItemsBagService;
 import com.example.app2_use_firebase.services.ItemsClothesService;
 import com.example.app2_use_firebase.services.ItemsGiayService;
@@ -16,6 +23,7 @@ import com.example.app2_use_firebase.services.ItemsQuanNamService;
 import com.example.app2_use_firebase.services.ItemsQuanNuService;
 import com.example.app2_use_firebase.services.ItemsQuanService;
 import com.example.app2_use_firebase.services.ItemsTuiXachService;
+import com.example.app2_use_firebase.services.MailService;
 import com.example.app2_use_firebase.services.SliderItemsService;
 import com.example.app2_use_firebase.services.UserService;
 
@@ -25,12 +33,11 @@ public class SoapClient {
 
     private static final String NAMESPACE = "http://tempuri.org/";
 
+
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://1767-42-118-185-52.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://4bd0-123-28-174-244.ngrok-free.app/Service1.svc";
 
 
-    private static final String HELLO_METHOD_NAME = "hello";
-    private static final String HELLO_SOAP_ACTION = "http://tempuri.org/IService1/hello";
     private static SoapClient instance;
 
    public static SoapClient getInstance() {
@@ -46,13 +53,18 @@ public class SoapClient {
         return ItemsPopularService.getInstance().getItemsPopular(NAMESPACE, URL);
     }
 
-    public ItemsPopular getItemsPopularsById(String id) {
+    public ItemsDomain getItemsPopularsById(String id) {
         return ItemsPopularService.getInstance().getItemsPopularsById(NAMESPACE, URL, id);
     }
     public ItemsDomain getItemsQuanById(String id) {
         return ItemsQuanService.getInstance().getItemsQuanById(NAMESPACE, URL, id);
     }
-
+    public ItemsDomain getItemsQuanNamById(String id) {
+        return ItemsQuanNamService.getInstance().getItemsQuanNamById(NAMESPACE, URL, id);
+    }
+    public ItemsDomain getItemsQuanNuById(String id) {
+        return ItemsQuanNuService.getInstance().getItemsQuanNuById(NAMESPACE, URL, id);
+    }
     public boolean addUser(User user) {
         return UserService.getInstance().addUser(NAMESPACE, URL, user);
     }
@@ -113,6 +125,40 @@ public class SoapClient {
     }
     public List<ItemsPopular> getItemsTuiXach() {
         return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
+    }
+    public List<ItemsDomain> getAllItemsAos() {
+        return ItemsAoService.getInstance().getItemsAos(NAMESPACE, URL);
+    }
+
+    public List<Bill> getBillByUser(String idUser) {
+       return BillService.getInstance().getBillByUser(NAMESPACE, URL, idUser);
+    }
+
+    public BillDetail getBillDetail(String idUser) {
+       return BillDetailService.getInstance().getBillDetail(NAMESPACE, URL, idUser);
+    }
+
+    public boolean deleteCart(String id) {
+       return CartService.getInstance().deleteCart(NAMESPACE, URL, id);
+    }
+
+    public boolean addBill(Bill bill, String idProduct, int quantity, String type) {
+       return BillService.getInstance().addBill(NAMESPACE, URL, bill, idProduct, quantity, type);
+    }
+
+    public boolean addNewCart(String idUser, String idProduct, String type) {
+       return CartService.getInstance().addNewCart(NAMESPACE, URL, idUser, idProduct, type);
+    }
+    public boolean sendMail(String to, String subject, String body) {
+       return MailService.getInstance().sendMail(NAMESPACE, URL, to, subject, body);
+    }
+
+    public List<ItemsDomain> getAllItemsAoNams() {
+        return ItemsAoNamService.getInstance().getItemsAoNams(NAMESPACE, URL);
+    }
+
+    public List<ItemsDomain> getAllItemsAoNus() {
+        return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
     }
 }
 

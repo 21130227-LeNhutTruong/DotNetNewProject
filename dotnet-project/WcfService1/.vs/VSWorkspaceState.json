@@ -3,8 +3,9 @@
     "",
     "\\WcfService1",
     "\\WcfService1\\Models",
+    "\\WcfService1\\obj",
     "\\WcfService1\\Services"
   ],
-  "SelectedNode": "\\WcfService1\\Services\\ItemsQuanService.cs",
+  "SelectedNode": "\\WcfService1.sln",
   "PreviewInSolutionExplorer": false
 }

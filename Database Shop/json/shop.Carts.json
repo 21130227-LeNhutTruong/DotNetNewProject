@@ -1,22 +1,24 @@
 [{
   "_id": {
-    "$oid": "66c1b27f24e4d81c2016abf3"
+    "$oid": "66c55cbd7aa10029d952e58e"
   },
   "userId": {
-    "$oid": "66c1a8b124e4d81c2016abc0"
+    "$oid": "66c2f10462b754413692946c"
   },
   "products": [
     {
-      "productId": {
-        "$oid": "66b9f49ebc5595a4d344f71d"
+      "_id": {
+        "$oid": "66b9f3d4bc5595a4d344f6f9"
       },
-      "quantity": 1
+      "quantity": 2,
+      "type": "ItemsPopular"
     },
     {
-      "productId": {
-        "$oid": "66b9f577bc5595a4d344f779"
+      "_id": {
+        "$oid": "66b9f3d4bc5595a4d344f6f7"
       },
-      "quantity": 2
+      "quantity": 1,
+      "type": "ItemsPopular"
     }
   ]
 }]

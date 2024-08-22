@@ -50,15 +50,15 @@ namespace WcfService1
         }
         public ItemsDomain GetItemsQuanById(string id)
         {
-            return ItemsQuanService.GetInstance().GetItemsPopularById(id);
+            return ItemsQuanService.GetInstance().GetItemsQuanById(id);
         }
         public ItemsDomain GetItemsQuanNamById(string id)
         {
-            return ItemsQuanNamService.GetInstance().GetItemsPopularById(id);
+            return ItemsQuanNamService.GetInstance().GetItemsQuanNamById(id);
         }
         public ItemsDomain GetItemsQuanNuById(string id)
         {
-            return ItemsQuanNuService.GetInstance().GetItemsPopularById(id);
+            return ItemsQuanNuService.GetInstance().GetItemsQuanNuById(id);
         }
 
         public bool AddUser(User user)
@@ -115,8 +115,6 @@ namespace WcfService1
         public List<ItemsDomain> GetAllItemsGiay()
         {
             return ItemsGiayService.GetInstance().GetAllItemsGiay();
-
-
         }
 
         public List<ItemsDomain> GetAllItemsBag()
@@ -124,6 +122,59 @@ namespace WcfService1
             return ItemsBagService.GetInstanceBag().GetAllItemsBag();
         }
 
+        public bool DeleteCart(string id)
+        {
+            return CartService.GetInstance().DeleteCart(id);
+        }
+
+        public Bill GetBillById(string id)
+        {
+            return BillService.GetInstance().GetBillById(id);
+        }
+
+        public List<Bill> GetBillByUser(string idUser)
+        {
+            return BillService.GetInstance().GetBillByUser(idUser);
+        }
+
+        public bool UpdateStatusBill(string id, string status)
+        {
+            return BillService.GetInstance().UpdateStatusBill(id, status);  
+        }
+
+        public bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser, string idProduct, int quanity, string type)
+        {
+            return BillService.GetInstance().AddBill(address, fullName, payment, phone, totalAmount, idUser, idProduct, quanity, type); 
+        }
+
+        public bool DeleteBill(string id)
+        {
+            return BillService.GetInstance().DeleteBill(id);
+        }
+
+        public List<Bill> GetAllBill()
+        {
+            return BillService.GetInstance().GetAllBill();
+        }
+
+        public BillDetail GetBillDetail(string idBill)
+        {
+            return BillDetailService.GetInstance().GetBillDetail(idBill);
+        }
+
+        public bool DeleteBillDetail(string idBill)
+        {
+            return BillDetailService.GetInstance().DeleteBillDetail(idBill);
+        }
+
+        
+
+        public bool AddNewCart(string idUser, string idProduct, string type)
+        {
+            return CartService.GetInstance().AddNewCart(idUser, idProduct, type);
+        }
+
+        
         public List<ItemsDomain> GetAllItemsTuiXach()
         {
             return ItemsTuiXachService.GetInstanceTuiXach().GetAllItemsTuiXach();
@@ -133,6 +184,23 @@ namespace WcfService1
         {
             return ItemsClothesService.GetInstance().GetAllItemsClothes();
         }
+
+        public List<ItemsDomain> GetAllItemsAos()
+        {
+            return ItemsAoService.GetInstance().GetAllItemsAos();
+        }
+
+        public List<ItemsDomain> GetAllItemsAoNams()
+        {
+            return ItemsAoNamService.GetInstance().GetAllItemsAoNams();
+        }
+
+        public List<ItemsDomain> GetAllItemsAoNus()
+        {
+            return ItemsAoNuService.GetInstance().GetAllItemsAoNus();
+        }
+
+
 
 
 

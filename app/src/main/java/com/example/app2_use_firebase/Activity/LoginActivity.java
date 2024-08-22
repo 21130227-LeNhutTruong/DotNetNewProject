@@ -245,7 +245,13 @@ public class LoginActivity extends BaseActivity {
                         public void run() {
                             if (user != null) {
                                 progressDialog.dismiss();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent;
+                                if(user.getRole()==0) {
+                                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                                }
+                                else {
+                                    intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                                }
                                 startActivity(intent);
                                 finishAffinity();
                                 saveLoginState(user.get_id());

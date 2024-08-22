@@ -42,6 +42,16 @@ namespace WcfService1
         List<ItemsDomain> GetItemsQuanNam();
         [OperationContract]
         List<ItemsDomain> GetItemsQuanNu();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAos();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAoNams();
+
+        [OperationContract]
+        List<ItemsDomain> GetAllItemsAoNus();
+
         [OperationContract]
         ItemsDomain GetItemsQuanById(string id);
         [OperationContract]
@@ -73,6 +83,30 @@ namespace WcfService1
         bool AddCart(string id, string idProduct, int quantity, string type);
         [OperationContract]
         bool RemoveCart(string id, string idProduct);
+
+        [OperationContract]
+        bool DeleteCart(string id);
+
+        [OperationContract]
+        Bill GetBillById(string id);
+        [OperationContract]
+        List<Bill> GetAllBill();
+        [OperationContract]
+        List<Bill> GetBillByUser(string idUser);
+        [OperationContract]
+        bool UpdateStatusBill(string id, string status);
+        [OperationContract]
+        bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser, string idProduct, int quanity, string type);
+        [OperationContract]
+        bool DeleteBill(string id);
+        [OperationContract]
+        BillDetail GetBillDetail(string idUser);
+        [OperationContract]
+        bool DeleteBillDetail(string idUser);
+        
+        [OperationContract]
+        bool AddNewCart(string idUser, string idProduct, string type);
+        
 
     }
 

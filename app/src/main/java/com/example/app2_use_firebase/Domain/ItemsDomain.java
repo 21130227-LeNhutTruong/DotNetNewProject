@@ -6,7 +6,7 @@ import com.example.app2_use_firebase.model.AModel;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ItemsDomain extends AModel implements Serializable{
+public class ItemsDomain implements Serializable{
     private String id;
     private String title;
     private String description;
@@ -20,7 +20,7 @@ public class ItemsDomain extends AModel implements Serializable{
     private String type;
 
 
-    public ItemsDomain(){}
+
 
     public ItemsDomain(String id, String title, String description, ArrayList<String> picUrl, String des, double price, double oldPrice, int review, double rating) {
         this.id = id;
