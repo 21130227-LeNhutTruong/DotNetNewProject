@@ -17,12 +17,16 @@ import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.web_service.SoapClient;
 
+import java.util.Random;
+
 public class VerifyCodeActivity extends AppCompatActivity {
 
     EditText et1,et2,et3,et4;
 
     Button btnVerify;
+    Button sendCode;
     ProgressDialog progressDialog;
+    private int correctCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
         EditText et3 = findViewById(R.id.etCode3);
         EditText et4 = findViewById(R.id.etCode4);
         btnVerify = findViewById(R.id.btnConfirm);
+        sendCode = findViewById(R.id.btnResendCode);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Registering...");
         et1.addTextChangedListener(new TextWatcher() {
@@ -100,22 +105,59 @@ public class VerifyCodeActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
         String email = getIntent().getStringExtra("email");
-        String correctCode = getIntent().getStringExtra("verificationCode") + "";
+        correctCode = getIntent().getIntExtra("verificationCode", -1);
+
         User user =(User) getIntent().getSerializableExtra("user");
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String enteredCode = et1.getText().toString() + et2.getText().toString() + et3.getText().toString() + et4.getText().toString();
-
-                if (enteredCode.equals(correctCode)) {
+                int enteredCodeInt = Integer.parseInt(enteredCode);
+                if (enteredCodeInt == correctCode) {
                     // Mã xác minh đúng, chuyển đến trang đăng nhập
                     registerOnClick(user);
                     Intent intent = new Intent(VerifyCodeActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
+                    Log.d("VERIFY", "CODE: "+enteredCode+", : "+correctCode);
                 } else {
                     Toast.makeText(VerifyCodeActivity.this, "Incorrect code. Please try again.", Toast.LENGTH_SHORT).show();
+                    Log.d("VERIFY", "ERROR: "+enteredCode+", : "+correctCode);
                 }
+            }
+        });
+
+        sendCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random random = new Random();
+                int code = random.nextInt(9000) + 1000;
+                correctCode = code;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            boolean isSend = SoapClient.getInstance().sendMail(email, "Your verification code", "Your verification code is: " + code);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(isSend) {
+                                        Toast.makeText(VerifyCodeActivity.this, "Send Code Success", Toast.LENGTH_SHORT).show();
+                                        Log.d("SOAP", "SEND MAIL: "+isSend);
+                                    } else {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(VerifyCodeActivity.this, "Can`t send mail", Toast.LENGTH_SHORT).show();
+                                        Log.d("SOAP", "SEND MAIL: "+isSend);
+                                    }
+                                }
+                            });
+
+                        }catch (Exception e) {
+                            Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -153,8 +195,5 @@ public class VerifyCodeActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
-
-
     }
 }

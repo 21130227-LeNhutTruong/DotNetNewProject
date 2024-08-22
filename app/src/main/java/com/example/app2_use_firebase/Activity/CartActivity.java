@@ -212,22 +212,24 @@ public class CartActivity extends  BaseActivity {
             public void run() {
                 SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
                 String userId = sharedPref.getString("userId", null);
+//                User user = SoapClient.getInstance().getUserById(userId);
                 Cart cart = SoapClient.getInstance().getCartByUser(userId);
                 boolean deleteCart = SoapClient.getInstance().deleteCart(userId);
 
-                // Lặp qua danh sách sản phẩm trong giỏ hàng
+//                String subject = "";
+
                 if (cart != null && cart.getProducts() != null) {
                     for (ProductBuy product : cart.getProducts()) {
-                        // Gọi phương thức SOAP cho từng sản phẩm
                         SoapClient.getInstance().addProductInBD(userId, product.get_id(), product.getQuantity(), product.getType());
                     }
                 }
 
-                // Cập nhật UI sau khi hoàn tất các thao tác mạng
+//                boolean sendMail = SoapClient.getInstance().sendMail(user.getEmail(), "Bill", "");
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        // Cập nhật UI nếu cần
+                        Log.d("SOAP", "DELETE CART: "+deleteCart);
                     }
                 });
             }
