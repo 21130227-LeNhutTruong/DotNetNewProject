@@ -219,6 +219,31 @@ namespace WcfService1
 
 
 
+      
+        public List<ItemsDomain> GetAllItems()
+        {
+            // Khởi tạo dịch vụ với kết nối MongoDB và tên cơ sở dữ liệu
+            var connectionString = "mongodb://localhost:27017";
+            var databaseName = "shop";
+            var collectionNames = new[] { "ItemsPopular", "ItemsQuan", "ItemsAo", "ItemsGiay", "ItemsTuiXach" };
+
+            var getAllItemsService = new GetAllItemsService(connectionString, databaseName);
+            return getAllItemsService.GetAllItems(collectionNames);
+        }
+
+
+        public List<ItemsDomain> SearchItems(string searchText)
+        {
+            var connectionString = "mongodb://localhost:27017";
+            var databaseName = "shop";
+            var collectionNames = new[] { "ItemsPopular", "ItemsQuan", "ItemsAo", "ItemsGiay", "ItemsTuiXach" };
+
+            var searchItemsService = new GetAllItemsService(connectionString, databaseName);
+            return searchItemsService.SearchItems(collectionNames, searchText);
+        }
+
+
+
 
         //public CompositeType GetDataUsingDataContract(CompositeType composite)
         //{
