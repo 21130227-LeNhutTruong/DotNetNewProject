@@ -36,7 +36,7 @@ public class SoapClient {
 
 
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://b963-2001-ee0-51b8-8f60-d09a-b3ab-f62b-6eba.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://2b32-2001-ee0-51b8-8f60-15c6-858-b99a-e6a2.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;

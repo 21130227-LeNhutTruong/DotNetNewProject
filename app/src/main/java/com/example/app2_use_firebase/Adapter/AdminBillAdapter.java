@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app2_use_firebase.Domain.Bill;
 import com.example.app2_use_firebase.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -48,7 +47,7 @@ public class AdminBillAdapter extends RecyclerView.Adapter<AdminBillAdapter.Bill
         holder.tvPaymentMethod.setText("Phương thức: " + bill.getPhuongthuc());
         holder.tvTotalAmount.setText("Tổng tiền: $" + bill.getTotalAmount());
         holder.tvStatus.setText("Trạng thái: " + bill.getStatus());
-        holder.tvUserName.setText("Tên người dùng: " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        holder.tvUserName.setText("Tên người dùng: " + bill.getUserName());
 
         //sự kiện click
         holder.itemView.setOnClickListener(v -> {

@@ -147,8 +147,14 @@ public class BillAdminActivity extends BaseActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(BillAdminActivity.this, "Update Status Bill Success", Toast.LENGTH_LONG).show();
-                            Log.d("SOAP", "UPDATE BILL: "+updateBill);
+                            if (updateBill) {
+                                bill.setStatus(status);
+                                billAdapter.notifyDataSetChanged();
+                                Toast.makeText(BillAdminActivity.this, "Update Status Bill Success", Toast.LENGTH_LONG).show();
+                                Log.d("SOAP", "UPDATE BILL: "+updateBill);
+                            }else {
+                                Log.d("SOAP", "UPDATE BILL: "+updateBill);
+                            }
                         }
                     });
                 }catch (Exception e) {
