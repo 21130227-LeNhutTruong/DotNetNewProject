@@ -2,6 +2,7 @@ package com.example.app2_use_firebase.services;
 
 import android.util.Log;
 
+import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.model.ItemsPopular;
 
 import org.ksoap2.SoapEnvelope;
@@ -16,7 +17,10 @@ import java.util.List;
 public class ItemsTuiXachService {
     private static ItemsTuiXachService instance;
     private static final String GET_ItemsTuiXach_METHOD_NAME = "GetAllItemsTuiXach";
+    private static final String GetItemsTuiXachById_METHOD_NAME = "GetItemsTuiXachById";
+
     private static final String GET_ItemsTuiXach_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_ItemsTuiXach_METHOD_NAME;
+    private static final String GetItemsTuiXachById_SOAP_ACTION = "http://tempuri.org/IService1/"+GetItemsTuiXachById_METHOD_NAME;
 
     public static ItemsTuiXachService getInstance() {
         if (instance == null) instance = new ItemsTuiXachService();
@@ -82,4 +86,71 @@ public class ItemsTuiXachService {
 
         return itemsTuiXachs;
     }
+    public ItemsDomain getItemsTuiXachById(String NAMESPACE, String URL, String id) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, GetItemsTuiXachById_METHOD_NAME);
+            request.addProperty("id", id);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(GetItemsTuiXachById_SOAP_ACTION, envelope);
+
+
+
+            Object objectResponse = envelope.bodyIn;
+            if (objectResponse instanceof SoapFault) {
+                SoapFault fault = (SoapFault) objectResponse;
+                Log.e("SoapClient", "SOAP Fault: " + fault.getMessage());
+                return null;
+            }
+
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            Log.d("SOAP Response", response.toString());
+
+            SoapObject getItemsTuiXachByIdResult = (SoapObject) response.getProperty("GetItemsPopularByIdResult");
+
+            if (getItemsTuiXachByIdResult == null) {
+                Log.e("SoapClient", "CheckLoginResult is null");
+                return null;
+            }
+
+
+            SoapObject idObject = (SoapObject) getItemsTuiXachByIdResult.getProperty("_id");
+
+            String _id = idObject.getPrimitivePropertyAsString("_a") +"*"+ idObject.getPrimitivePropertyAsString("_b") +"*" + idObject.getPrimitivePropertyAsString("_c");
+
+            String des = getItemsTuiXachByIdResult.getProperty("des").toString();
+            String description = getItemsTuiXachByIdResult.getProperty("description").toString();
+            double oldPrice = Double.parseDouble(getItemsTuiXachByIdResult.getProperty("oldPrice").toString());
+
+            ArrayList<String> picUrl = new ArrayList<>();
+            SoapObject picUrlObject = (SoapObject) getItemsTuiXachByIdResult.getProperty("picUrl");
+            for (int j = 0; j < picUrlObject.getPropertyCount(); j++) {
+                picUrl.add(picUrlObject.getProperty(j).toString());
+            }
+
+            int price = Integer.parseInt(getItemsTuiXachByIdResult.getProperty("price").toString());
+            double rating = Double.parseDouble(getItemsTuiXachByIdResult.getProperty("rating").toString());
+            int review = Integer.parseInt(getItemsTuiXachByIdResult.getProperty("review").toString());
+            String title = getItemsTuiXachByIdResult.getProperty("title").toString();
+
+//            ItemsDomain itemsPopular = new ItemsDomain(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+            ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
+
+            return itemsDomain;
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return null;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return null;
+        }
+    }
+
 }

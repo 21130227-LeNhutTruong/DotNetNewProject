@@ -27,11 +27,23 @@ namespace WcfService1
         [OperationContract]
         List<ItemsDomain> GetAllItemsGiay();
         [OperationContract]
+        ItemsDomain GetItemsGiayById(string id);
+
+
+        [OperationContract]
         List<ItemsDomain> GetAllItemsBag();
+        [OperationContract]
+        ItemsDomain GetItemsBagById(string id);
+
         [OperationContract]
         List<ItemsDomain> GetAllItemsTuiXach();
         [OperationContract]
+        ItemsDomain GetItemsTuiXachById(string id);
+
+        [OperationContract]
         List<ItemsDomain> GetAllItemsClothes();
+        [OperationContract]
+        ItemsDomain GetItemsClothesById(string id);
 
         [OperationContract]
         List<SliderItems> GetSliderItems();
@@ -45,12 +57,18 @@ namespace WcfService1
 
         [OperationContract]
         List<ItemsDomain> GetAllItemsAos();
+        [OperationContract]
+        ItemsDomain GetItemsAoById(string id);
 
         [OperationContract]
         List<ItemsDomain> GetAllItemsAoNams();
+        [OperationContract]
+        ItemsDomain GetItemsAoNamById(string id);
 
         [OperationContract]
         List<ItemsDomain> GetAllItemsAoNus();
+        [OperationContract]
+        ItemsDomain GetItemsAoNuById(string id);
 
         [OperationContract]
         ItemsDomain GetItemsQuanById(string id);
@@ -83,6 +101,13 @@ namespace WcfService1
         bool AddCart(string id, string idProduct, int quantity, string type);
         [OperationContract]
         bool RemoveCart(string id, string idProduct);
+
+      
+        [OperationContract]
+        List<ItemsDomain> GetAllItems();
+        [OperationContract]
+        List<ItemsDomain> SearchItems(string searchText);
+
 
         [OperationContract]
         bool DeleteCart(string id);

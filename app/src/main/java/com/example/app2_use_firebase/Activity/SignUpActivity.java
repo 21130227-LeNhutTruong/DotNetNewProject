@@ -91,8 +91,7 @@ public class SignUpActivity extends BaseActivity  {
                     intent.putExtra("email", email);
                     intent.putExtra("verificationCode", code);
                     intent.putExtra("user", user);
-                    startActivity(intent);
-                progressDialog.dismiss();
+                    startActivity(intent);progressDialog.dismiss();
                 } else {
                     progressDialog.dismiss();
                     Toast.makeText(SignUpActivity.this, "Can`t send mail", Toast.LENGTH_SHORT).show();

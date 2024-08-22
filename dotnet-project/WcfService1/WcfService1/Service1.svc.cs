@@ -116,10 +116,18 @@ namespace WcfService1
         {
             return ItemsGiayService.GetInstance().GetAllItemsGiay();
         }
+        public ItemsDomain GetItemsGiayById(string id)
+        {
+            return ItemsGiayService.GetInstance().GetItemsGiayById(id);
+        }
 
         public List<ItemsDomain> GetAllItemsBag()
         {
             return ItemsBagService.GetInstanceBag().GetAllItemsBag();
+        }
+        public ItemsDomain GetItemsBagById(string id)
+        {
+            return ItemsBagService.GetInstanceBag().GetItemsBagById(id);
         }
 
         public bool DeleteCart(string id)
@@ -179,27 +187,72 @@ namespace WcfService1
         {
             return ItemsTuiXachService.GetInstanceTuiXach().GetAllItemsTuiXach();
         }
+        public ItemsDomain GetItemsTuiXachById(string id)
+        {
+            return ItemsTuiXachService.GetInstanceTuiXach().GetItemsTuiSachById(id);
+        }
 
         public List<ItemsDomain> GetAllItemsClothes()
         {
             return ItemsClothesService.GetInstance().GetAllItemsClothes();
+        }
+        public ItemsDomain GetItemsClothesById(string id)
+        {
+            return ItemsClothesService.GetInstance().GetItemsClothesById(id);
         }
 
         public List<ItemsDomain> GetAllItemsAos()
         {
             return ItemsAoService.GetInstance().GetAllItemsAos();
         }
+        public ItemsDomain GetItemsAoById(string id)
+        {
+            return ItemsAoService.GetInstance().GetItemsAoById(id);
+        }
 
         public List<ItemsDomain> GetAllItemsAoNams()
         {
             return ItemsAoNamService.GetInstance().GetAllItemsAoNams();
+        }
+        public ItemsDomain GetItemsAoNamById(string id)
+        {
+            return ItemsAoNamService.GetInstance().GetItemsAoNamById(id);
         }
 
         public List<ItemsDomain> GetAllItemsAoNus()
         {
             return ItemsAoNuService.GetInstance().GetAllItemsAoNus();
         }
+        public ItemsDomain GetItemsAoNuById(string id)
+        {
+            return ItemsAoNuService.GetInstance().GetItemsAoNuById(id);
+        }
 
+
+
+
+      
+        public List<ItemsDomain> GetAllItems()
+        {
+            // Khởi tạo dịch vụ với kết nối MongoDB và tên cơ sở dữ liệu
+            var connectionString = "mongodb://localhost:27017";
+            var databaseName = "shop";
+            var collectionNames = new[] { "ItemsPopular", "ItemsQuan", "ItemsAo", "ItemsGiay", "ItemsTuiXach" };
+
+            var getAllItemsService = new GetAllItemsService(connectionString, databaseName);
+            return getAllItemsService.GetAllItems(collectionNames);
+        }
+
+
+        public List<ItemsDomain> SearchItems(string searchText)
+        {
+            var connectionString = "mongodb://localhost:27017";
+            var databaseName = "shop";
+            var collectionNames = new[] { "ItemsPopular", "ItemsQuan", "ItemsAo", "ItemsGiay", "ItemsTuiXach" };
+
+            var searchItemsService = new GetAllItemsService(connectionString, databaseName);
+            return searchItemsService.SearchItems(collectionNames, searchText);
+        }
 
 
 

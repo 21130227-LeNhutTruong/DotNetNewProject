@@ -7539,19 +7539,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
       "projectName": "WebServicesProject",
-      "projectPath": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\obj\\",
+      "projectPath": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

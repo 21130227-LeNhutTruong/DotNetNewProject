@@ -1,8 +1,8 @@
 package com.example.app2_use_firebase.services;
 
-import com.example.app2_use_firebase.Domain.ItemsDomain;
-
 import android.util.Log;
+
+import com.example.app2_use_firebase.Domain.ItemsDomain;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 public class ItemsAoService {
     private static ItemsAoService instance;
-    private static final String GET_ITEMS_AO_METHOD_NAME = "GetAllItemsAos";
-    private static final String GET_ITEMS_AO_SOAP_ACTION = "http://tempuri.org/IService1/" + GET_ITEMS_AO_METHOD_NAME;
+    private static final String GET_ItemsAo_METHOD_NAME = "GetAllItemsAos";
+    private static final String GetItemsAoById_METHOD_NAME = "GetItemsAoById";
+    private static final String GET_ITEMS_AO_SOAP_ACTION = "http://tempuri.org/IService1/" + GET_ItemsAo_METHOD_NAME;
+    private static final String GetItemsAoById_SOAP_ACTION = "http://tempuri.org/IService1/"+GetItemsAoById_METHOD_NAME;
 
     public static ItemsAoService getInstance() {
         if (instance == null) instance = new ItemsAoService();
@@ -26,7 +28,7 @@ public class ItemsAoService {
         List<ItemsDomain> itemsAoList = new ArrayList<>();
 
         try {
-            SoapObject request = new SoapObject(NAMESPACE, GET_ITEMS_AO_METHOD_NAME);
+            SoapObject request = new SoapObject(NAMESPACE, GET_ItemsAo_METHOD_NAME);
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.setOutputSoapObject(request);
@@ -77,5 +79,71 @@ public class ItemsAoService {
         }
 
         return itemsAoList;
+    }
+    public ItemsDomain getItemsAoById(String NAMESPACE, String URL, String id) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, GetItemsAoById_METHOD_NAME);
+            request.addProperty("id", id);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(GetItemsAoById_SOAP_ACTION, envelope);
+
+
+
+            Object objectResponse = envelope.bodyIn;
+            if (objectResponse instanceof SoapFault) {
+                SoapFault fault = (SoapFault) objectResponse;
+                Log.e("SoapClient", "SOAP Fault: " + fault.getMessage());
+                return null;
+            }
+
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            Log.d("SOAP Response", response.toString());
+
+            SoapObject getItemsAoByIdResult = (SoapObject) response.getProperty("GetItemsAoByIdResult");
+
+            if (getItemsAoByIdResult == null) {
+                Log.e("SoapClient", "CheckLoginResult is null");
+                return null;
+            }
+
+
+            SoapObject idObject = (SoapObject)getItemsAoByIdResult.getProperty("_id");
+
+            String _id = idObject.getPrimitivePropertyAsString("_a") +"*"+ idObject.getPrimitivePropertyAsString("_b") +"*" + idObject.getPrimitivePropertyAsString("_c");
+
+            String des = getItemsAoByIdResult.getProperty("des").toString();
+            String description = getItemsAoByIdResult.getProperty("description").toString();
+            double oldPrice = Double.parseDouble(getItemsAoByIdResult.getProperty("oldPrice").toString());
+
+            ArrayList<String> picUrl = new ArrayList<>();
+            SoapObject picUrlObject = (SoapObject) getItemsAoByIdResult.getProperty("picUrl");
+            for (int j = 0; j < picUrlObject.getPropertyCount(); j++) {
+                picUrl.add(picUrlObject.getProperty(j).toString());
+            }
+
+            int price = Integer.parseInt(getItemsAoByIdResult.getProperty("price").toString());
+            double rating = Double.parseDouble(getItemsAoByIdResult.getProperty("rating").toString());
+            int review = Integer.parseInt(getItemsAoByIdResult.getProperty("review").toString());
+            String title = getItemsAoByIdResult.getProperty("title").toString();
+
+//            ItemsDomain itemsPopular = new ItemsDomain(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+            ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
+
+            return itemsDomain;
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return null;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return null;
+        }
     }
 }
