@@ -14,8 +14,10 @@ import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.web_service.SoapClient;
 
+import java.util.Random;
 
-public class SignUpActivity extends BaseActivity {
+
+public class SignUpActivity extends BaseActivity  {
     EditText edtUsername, edtEmail, edtPassword, edtRepassword;
     String username, email, password, repassword;
     Button register;
@@ -45,7 +47,56 @@ public class SignUpActivity extends BaseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerOnClick();
+                username = String.valueOf(edtUsername.getText());
+                email = String.valueOf(edtEmail.getText());
+                password = String.valueOf(edtPassword.getText());
+                repassword = String.valueOf(edtRepassword.getText());
+
+                // Kiểm tra thông tin đăng nhập
+                if (TextUtils.isEmpty(username)) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Enter username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(email)) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (password.length() < 6) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                }
+                if (TextUtils.isEmpty(repassword)) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Enter repassword", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!TextUtils.equals(password, repassword)) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Repassword invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Random random = new Random();
+                int code = random.nextInt(9000) + 1000;
+                boolean isSend = SoapClient.getInstance().sendMail(email, "Your verification code", "Your verification code is: " + code);
+                if(isSend) {
+                    Intent intent = new Intent(SignUpActivity.this, VerifyCodeActivity.class);
+                    User user = new User("", email, password, username, username, 18, "", 1, 0);
+                    intent.putExtra("email", email);
+                    intent.putExtra("verificationCode", code);
+                    intent.putExtra("user", user);
+                    startActivity(intent);progressDialog.dismiss();
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(SignUpActivity.this, "Can`t send mail", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -56,41 +107,41 @@ public class SignUpActivity extends BaseActivity {
         progressDialog.show();
 //        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        username = String.valueOf(edtUsername.getText());
-        email = String.valueOf(edtEmail.getText());
-        password = String.valueOf(edtPassword.getText());
-        repassword = String.valueOf(edtRepassword.getText());
-
-        // Kiểm tra thông tin đăng nhập
-        if (TextUtils.isEmpty(username)) {
-            progressDialog.dismiss();
-            Toast.makeText(SignUpActivity.this, "Enter username", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (TextUtils.isEmpty(email)) {
-            progressDialog.dismiss();
-            Toast.makeText(SignUpActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (TextUtils.isEmpty(password)) {
-            progressDialog.dismiss();
-            Toast.makeText(SignUpActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (password.length() < 6) {
-            progressDialog.dismiss();
-            Toast.makeText(SignUpActivity.this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(repassword)) {
-            progressDialog.dismiss();
-            Toast.makeText(SignUpActivity.this, "Enter repassword", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (!TextUtils.equals(password, repassword)) {
-            progressDialog.dismiss();
-            Toast.makeText(SignUpActivity.this, "Repassword invalid", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        username = String.valueOf(edtUsername.getText());
+//        email = String.valueOf(edtEmail.getText());
+//        password = String.valueOf(edtPassword.getText());
+//        repassword = String.valueOf(edtRepassword.getText());
+//
+//        // Kiểm tra thông tin đăng nhập
+//        if (TextUtils.isEmpty(username)) {
+//            progressDialog.dismiss();
+//            Toast.makeText(SignUpActivity.this, "Enter username", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        if (TextUtils.isEmpty(email)) {
+//            progressDialog.dismiss();
+//            Toast.makeText(SignUpActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        if (TextUtils.isEmpty(password)) {
+//            progressDialog.dismiss();
+//            Toast.makeText(SignUpActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        if (password.length() < 6) {
+//            progressDialog.dismiss();
+//            Toast.makeText(SignUpActivity.this, "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+//        }
+//        if (TextUtils.isEmpty(repassword)) {
+//            progressDialog.dismiss();
+//            Toast.makeText(SignUpActivity.this, "Enter repassword", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        if (!TextUtils.equals(password, repassword)) {
+//            progressDialog.dismiss();
+//            Toast.makeText(SignUpActivity.this, "Repassword invalid", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
 
 
 

@@ -48,6 +48,18 @@ namespace WcfService1
         {
             return ItemsPopularService.GetInstance().GetItemsPopularById(id);
         }
+        public ItemsDomain GetItemsQuanById(string id)
+        {
+            return ItemsQuanService.GetInstance().GetItemsQuanById(id);
+        }
+        public ItemsDomain GetItemsQuanNamById(string id)
+        {
+            return ItemsQuanNamService.GetInstance().GetItemsQuanNamById(id);
+        }
+        public ItemsDomain GetItemsQuanNuById(string id)
+        {
+            return ItemsQuanNuService.GetInstance().GetItemsQuanNuById(id);
+        }
 
         public bool AddUser(User user)
         {

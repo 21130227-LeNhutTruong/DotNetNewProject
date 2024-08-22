@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\",
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\webservicesproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\webservicesproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\webservicesproject\\services\\iecommerceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\webservicesproject\\services\\iecommerceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|solutionrelative:services\\iecommerceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\webservicesproject\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\webservicesproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\webservicesproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|d:\\code\\android\\dotnetnewproject\\dotnet-project\\webservicesproject\\webservicesproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\webservicesproject\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|c:\\users\\admin\\desktop\\.net\\main project\\dotnetnewproject\\dotnet-project\\webservicesproject\\webservicesproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{C7E47BF9-00F0-4C39-8920-43370B257C84}|WebServicesProject.csproj|solutionrelative:webservicesproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -30,56 +30,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "IECommerceService.cs",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Services\\IECommerceService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Services\\IECommerceService.cs",
               "RelativeDocumentMoniker": "Services\\IECommerceService.cs",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Services\\IECommerceService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Services\\IECommerceService.cs",
               "RelativeToolTip": "Services\\IECommerceService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T13:09:58.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-13T12:28:35.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T13:09:58.497Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-13T12:28:35.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AQIAACsAAAAAAAAAAAAIwCgAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-13T12:03:13.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T12:03:13.247Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAUwCEAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAUwCkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-07T05:52:56.388Z",
               "EditorCaption": ""
@@ -87,15 +88,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "WebServicesProject",
-              "DocumentMoniker": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
+              "Title": "WebServicesProject.csproj",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
               "RelativeDocumentMoniker": "WebServicesProject.csproj",
-              "ToolTip": "D:\\Code\\android\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\.NET\\Main Project\\DotNetNewProject\\dotnet-project\\WebServicesProject\\WebServicesProject.csproj",
               "RelativeToolTip": "WebServicesProject.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-13T12:14:18.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-13T12:14:18.055Z"
             }
           ]
         }
