@@ -36,7 +36,7 @@ public class ManagmentCart {
 
     }
 
-public void insertProduct(ItemsDomain item, String color) {
+public void insertProduct(ItemsDomain item) {
     new Thread(new Runnable() {
         @Override
         public void run() {
@@ -55,7 +55,20 @@ public void insertProduct(ItemsDomain item, String color) {
                                     public void run() {
                                         try {
                                             boolean addCart = SoapClient.getInstance().addCart(cart.get_id(), item.getId(), 1, item.getType());
-                                            Log.d("SOAP", "ADD CART = "+addCart+", COLOR: "+color);
+                                            Log.d("SOAP", "ADD CART = "+addCart);
+
+                                        }catch (Exception e) {
+                                            Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
+                                        }
+                                    }
+                                }).start();
+                            }else {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            boolean addCart = SoapClient.getInstance().addNewCart(userId, item.getId(), item.getType());
+                                            Log.d("SOAP", "ADD NEW CART = "+addCart);
 
                                         }catch (Exception e) {
                                             Log.d("SOAP", "ERROR CONNECTION SOAP INSIDE", e);
@@ -99,6 +112,7 @@ public void insertProduct(ItemsDomain item, String color) {
                                         }
 
                                         tinyDB.putListObject("CartList", listProduct);
+                                        Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -111,6 +125,7 @@ public void insertProduct(ItemsDomain item, String color) {
 
             }catch (Exception e) {
                 Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                Toast.makeText(context, "Error adding to Cart", Toast.LENGTH_SHORT).show();
             }
 
         }

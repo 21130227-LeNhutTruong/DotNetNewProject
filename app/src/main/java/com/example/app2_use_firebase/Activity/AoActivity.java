@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -15,16 +14,10 @@ import com.example.app2_use_firebase.Adapter.PopularAdapter;
 import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
-import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivictyListClotheAoBinding;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AoActivity extends BaseActivity{
@@ -48,32 +41,38 @@ public class AoActivity extends BaseActivity{
 
     // hiển thị sản phẩm
     private void initAo() {
-        // đọc dữ liệu từ firebase
-        DatabaseReference myRef = database.getReference("ItemsAo");
         binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-        // đọc dữ liệu từ firebase
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        SoapClient soapClient = new SoapClient();
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // kiểm tra dữ liệu có tồn tại hay không
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        // lấy dữ liệu từ firebase
-                        items.add(issue.getValue(ItemsDomain.class));
-                    }
-                    if (!items.isEmpty()) {
+            public void run() {
+                try {
+                    final List<ItemsDomain> itemsAoList = soapClient.getAllItemsAos();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (itemsAoList != null && !itemsAoList.isEmpty()) {
+                                items.addAll(itemsAoList);
 
-                        binding.recyclerViewListAo.setLayoutManager(new GridLayoutManager(AoActivity.this, 2));
-                        binding.recyclerViewListAo.setAdapter(new PopularAdapter(items));
-                    }
-                    binding.progressAo.setVisibility(View.GONE);
+
+
+                                if (!items.isEmpty()) {
+                                    binding.recyclerViewListAo.setLayoutManager(new GridLayoutManager(AoActivity.this, 2));
+                                    binding.recyclerViewListAo.setAdapter(new PopularAdapter(items));
+                                }
+
+                                binding.progressAo.setVisibility(View.GONE);
+                            } else {
+                                Toast.makeText(AoActivity.this, "Web service connect error", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        }).start();
     }
 
 

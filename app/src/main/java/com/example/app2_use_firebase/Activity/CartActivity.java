@@ -29,22 +29,19 @@ import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Helper.ManagmentCart;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityCartBinding;
-import com.example.app2_use_firebase.model.AModel;
+import com.example.app2_use_firebase.model.Bill;
 import com.example.app2_use_firebase.model.Cart;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.services.TypeClassService;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class CartActivity extends  BaseActivity {
     ActivityCartBinding binding;
@@ -117,39 +114,72 @@ public class CartActivity extends  BaseActivity {
                 // Nếu dữ liệu hợp lệ, lưu hóa đơn vào Firestore
                 String paymentMethod = spinner.getSelectedItem().toString();
                 double totalAmount = total;
-                saveBillToFirebase(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), FirebaseAuth.getInstance().getCurrentUser().getUid(),hoten, diachi, sdt, paymentMethod, totalAmount);
+//                saveBillToFirebase(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), FirebaseAuth.getInstance().getCurrentUser().getUid(),hoten, diachi, sdt, paymentMethod, totalAmount);
+                saveBillToFirebase(hoten, diachi, sdt, paymentMethod, totalAmount);
                 dialog.cancel();
             }
         });
     }
-    private void saveBillToFirebase(String userName,String userId,String hoten, String diachi, String sdt, String paymentMethod, double totalAmount) {
+    private void saveBillToFirebase(String hoten, String diachi, String sdt, String paymentMethod, double totalAmount) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String date = sdf.format(Calendar.getInstance().getTime());
+//
+//        // Tạo đối tượng Map để lưu thông tin hóa đơn
+//        Map<String, Object> bill = new HashMap<>();
+//        bill.put("userId", userId);
+//        bill.put("userName", userName); // Lưu tên người dùng
+//        bill.put("date", date);
+//        bill.put("hoten", hoten);
+//        bill.put("diachi", diachi);
+//        bill.put("sdt", sdt);
+//        bill.put("phuongthuc", paymentMethod);
+//        bill.put("totalAmount", totalAmount);
+//        bill.put("status", "Đang xử lý"); // Trạng thái mặc định ban đầu
 
-        // Tạo đối tượng Map để lưu thông tin hóa đơn
-        Map<String, Object> bill = new HashMap<>();
-        bill.put("userId", userId);
-        bill.put("userName", userName); // Lưu tên người dùng
-        bill.put("date", date);
-        bill.put("hoten", hoten);
-        bill.put("diachi", diachi);
-        bill.put("sdt", sdt);
-        bill.put("phuongthuc", paymentMethod);
-        bill.put("totalAmount", totalAmount);
-        bill.put("status", "Đang xử lý"); // Trạng thái mặc định ban đầu
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+
+                    SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+                    String userId = sharedPref.getString("userId", null);
+                    Cart cart = SoapClient.getInstance().getCartByUser(userId);
+                    boolean deleteCart = SoapClient.getInstance().deleteCart(userId);
+
+                    LocalDateTime dateTime = LocalDateTime.now();
+                    Bill bill = new Bill("", date, diachi, hoten, paymentMethod, "Đang xử lý", sdt, (int) totalAmount,userId);
+                    boolean addBill = SoapClient.getInstance().addBill(bill, cart.getProducts().get(0).get_id(), cart.getProducts().get(0).getQuantity(), cart.getProducts().get(0).getType());
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Log.d("SOAP", "Delete Cart: "+deleteCart);
+                            Log.d("SOAP", "Add Bill: "+ addBill);
+
+                        }
+                    });
+
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECT", e);
+                }
+
+            }
+        }).start();
 
 
         // Lưu hóa đơn vào Firestore
-        db.collection("users").document(userId).collection("bills")
-                .add(bill)
-                .addOnSuccessListener(documentReference -> {Toast.makeText(CartActivity.this, "Hóa đơn đã được lưu", Toast.LENGTH_SHORT).show();
-                    // Xóa giỏ hàng
-                    managmentCart.clearCart();
-                    startActivity(new Intent(CartActivity.this,BillActivity.class));
-displayUserCart(this);
-                })
-                .addOnFailureListener(e -> Toast.makeText(CartActivity.this, "Lỗi khi lưu hóa đơn", Toast.LENGTH_SHORT).show());
+//        db.collection("users").document(userId).collection("bills")
+//                .add(bill)
+//                .addOnSuccessListener(documentReference -> {Toast.makeText(CartActivity.this, "Hóa đơn đã được lưu", Toast.LENGTH_SHORT).show();
+//                    // Xóa giỏ hàng
+//                    managmentCart.clearCart();
+//                    startActivity(new Intent(CartActivity.this,BillActivity.class));
+//displayUserCart(this);
+//                })
+//                .addOnFailureListener(e -> Toast.makeText(CartActivity.this, "Lỗi khi lưu hóa đơn", Toast.LENGTH_SHORT).show());
     }
     private boolean validateInputs(String hoten, String diachi, String sdt) {
         if (hoten.isEmpty()) {
@@ -213,7 +243,7 @@ private void displayUserCart(Context context) {
                 try {
                     SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
                     String userId = sharedPref.getString("userId", null);
-                    Log.d("SOAP", "Cart: "+userId);
+                    Log.d("SOAP", "User: "+userId);
                     Cart cart = SoapClient.getInstance().getCartByUser(userId);
                     ArrayList<ItemsDomain> cartItems = new ArrayList<>();
                     runOnUiThread(new Runnable() {
@@ -229,14 +259,21 @@ private void displayUserCart(Context context) {
                                         @Override
                                         public void run() {
                                             try {
-                                                AModel model = TypeClassService.getInstance().selectType(type, productId);
-                                                Log.d("SOAP", "Model: " + model);
+//                                                AModel model = TypeClassService.getInstance().selectType(type, productId);
+                                                ItemsDomain itemsDomain = TypeClassService.getInstance().selectType(type, productId);
+                                                Log.d("SOAP", "Model: " +itemsDomain);
 //                                                ItemsPopular itemsPopular = SoapClient.getInstance().getItemsPopularsById(productId);
-                                                if (model != null) {
-
-                                                    ItemsDomain itemsDomain = new ItemsDomain(model.get_id(), model.getTitle(), model.getDescription(),
-                                                            model.getPicUrl(), model.getDes(), model.getPrice(), model.getOldPrice(),
-                                                            model.getReview(), model.getRating());
+//                                                if (model != null) {
+//
+//                                                    ItemsDomain itemsDomain = new ItemsDomain(model.get_id(), model.getTitle(), model.getDescription(),
+//                                                            model.getPicUrl(), model.getDes(), model.getPrice(), model.getOldPrice(),
+//                                                            model.getReview(), model.getRating());
+//                                                    itemsDomain.setNumberinCart(quantity);
+//                                                    synchronized (cartItems) {
+//                                                        cartItems.add(itemsDomain);
+//                                                    }
+//                                                }
+                                                if (itemsDomain != null) {
                                                     itemsDomain.setNumberinCart(quantity);
                                                     synchronized (cartItems) {
                                                         cartItems.add(itemsDomain);
