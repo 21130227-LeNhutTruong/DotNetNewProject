@@ -59,7 +59,14 @@ public class QuanNamActivity extends BaseActivity{
                         @Override
                         public void run() {
                             if (itemsQuanList != null && !itemsQuanList.isEmpty()) {
-                                items.addAll(itemsQuanList);
+                                for (ItemsDomain item : itemsQuanList) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(item.getId(),
+                                            item.getTitle(), item.getDescription(), item.getPicUrl(),item.getDes(),
+                                            item.getPrice(), item.getOldPrice(), item.getReview(),
+                                            item.getRating());
+                                    itemsDomain.setType("ItemsQuanNam");
+                                    items.add(itemsDomain);
+                                }
 
                                 if (!items.isEmpty()) {
                                     binding.recyclerViewListQuanNam.setLayoutManager(new GridLayoutManager(QuanNamActivity.this, 2));

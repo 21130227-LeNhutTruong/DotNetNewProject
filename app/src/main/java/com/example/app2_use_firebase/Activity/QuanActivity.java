@@ -17,6 +17,7 @@ import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityListClothesQuanBinding;
+import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,8 +60,14 @@ public class QuanActivity extends BaseActivity{
                         @Override
                         public void run() {
                             if (itemsQuanList != null && !itemsQuanList.isEmpty()) {
-                                items.addAll(itemsQuanList);
-
+                                for (ItemsDomain item : itemsQuanList) {
+                                    ItemsDomain itemsDomain = new ItemsDomain(item.getId(),
+                                            item.getTitle(), item.getDescription(), item.getPicUrl(),item.getDes(),
+                                            item.getPrice(), item.getOldPrice(), item.getReview(),
+                                            item.getRating());
+                                    itemsDomain.setType("ItemsQuan");
+                                    items.add(itemsDomain);
+                                }
                                 if (!items.isEmpty()) {
                                     binding.recyclerViewListQuan.setLayoutManager(new GridLayoutManager(QuanActivity.this, 2));
                                     binding.recyclerViewListQuan.setAdapter(new PopularAdapter(items));

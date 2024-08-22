@@ -15,6 +15,12 @@ public class TypeClassService {
         switch (type) {
             case "ItemsPopular":
                 return SoapClient.getInstance().getItemsPopularsById(id);
+            case "ItemsQuan":
+                return SoapClient.getInstance().getItemsQuanById(id);
+            case "ItemsQuanNam":
+                return SoapClient.getInstance().getItemsQuanNamById(id);
+            case "ItemsQuanNu":
+                return SoapClient.getInstance().getItemsQuanNuById(id);
             case "ItemsAo":
                 return SoapClient.getInstance().getItemsAoById(id);
             case "ItemsAoNam":

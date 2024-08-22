@@ -71,6 +71,12 @@ namespace WcfService1
         ItemsDomain GetItemsAoNuById(string id);
 
         [OperationContract]
+        ItemsDomain GetItemsQuanById(string id);
+        [OperationContract]
+        ItemsDomain GetItemsQuanNamById(string id);
+        [OperationContract]
+        ItemsDomain GetItemsQuanNuById(string id);
+        [OperationContract]
         bool AddUser(User user);
         [OperationContract]
         bool Register(User user);

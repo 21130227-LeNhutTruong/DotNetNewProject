@@ -24,6 +24,7 @@ import com.example.app2_use_firebase.services.ItemsQuanNamService;
 import com.example.app2_use_firebase.services.ItemsQuanNuService;
 import com.example.app2_use_firebase.services.ItemsQuanService;
 import com.example.app2_use_firebase.services.ItemsTuiXachService;
+import com.example.app2_use_firebase.services.MailService;
 import com.example.app2_use_firebase.services.SliderItemsService;
 import com.example.app2_use_firebase.services.UserService;
 
@@ -35,8 +36,7 @@ public class SoapClient {
 
 
 //    ngrok http 55685 --host-header="localhost:55685"
-
-    private static final String URL = "https://0942-112-197-38-97.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://f5f9-2001-ee0-51b8-8f60-d09a-b3ab-f62b-6eba.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
@@ -57,7 +57,15 @@ public class SoapClient {
     public ItemsDomain getItemsPopularsById(String id) {
         return ItemsPopularService.getInstance().getItemsPopularsById(NAMESPACE, URL, id);
     }
-
+    public ItemsDomain getItemsQuanById(String id) {
+        return ItemsQuanService.getInstance().getItemsQuanById(NAMESPACE, URL, id);
+    }
+    public ItemsDomain getItemsQuanNamById(String id) {
+        return ItemsQuanNamService.getInstance().getItemsQuanNamById(NAMESPACE, URL, id);
+    }
+    public ItemsDomain getItemsQuanNuById(String id) {
+        return ItemsQuanNuService.getInstance().getItemsQuanNuById(NAMESPACE, URL, id);
+    }
     public boolean addUser(User user) {
         return UserService.getInstance().addUser(NAMESPACE, URL, user);
     }
@@ -145,9 +153,10 @@ public class SoapClient {
         return GetAllItemsService.getInstance().getAllItems(NAMESPACE, URL);
     }
 
-    public List<ItemsPopular> getSearchService(String query) {
-        return GetAllItemsService.getInstance().searchItems("searchItems", NAMESPACE, URL);
+    public List<ItemsDomain> getSearchService(String query) {
+        return GetAllItemsService.getInstance().searchItems(NAMESPACE, URL, query);
     }
+
 
     public ItemsDomain getItemsTuiXachById(String id) {
         return ItemsTuiXachService.getInstance().getItemsTuiXachById(NAMESPACE, URL, id);
@@ -198,6 +207,24 @@ public class SoapClient {
     public ItemsDomain getItemsAoNuById(String id) {
         return ItemsAoNuService.getInstance().getItemsAoNuById(NAMESPACE, URL, id);
     }
+
+    public boolean sendMail(String to, String subject, String body) {
+       return MailService.getInstance().sendMail(NAMESPACE, URL, to, subject, body);
+    }
+
+    public List<Bill> getAllBills() {
+        return BillService.getInstance().getAllBills(NAMESPACE, URL);
+    }
+
+    public boolean updateBill(String id, String status) {
+        return BillService.getInstance().updateStatusBill(NAMESPACE, URL, id, status);
+    }
+
+    public boolean addProductInBD(String idUser, String idProduct, int quantity, String type) {
+        return BillDetailService.getInstance().addProductInBD(NAMESPACE, URL, idUser, idProduct, quantity, type);
+    }
+
+
 }
 
 

@@ -17,6 +17,7 @@ public class ItemsQuanNamService {
     private static ItemsQuanNamService instance;
     private static final String GET_ItemsQuanNam_METHOD_NAME = "GetItemsQuanNam";
     private static final String GET_ItemsQuanNam_SOAP_ACTION = "http://tempuri.org/IService1/GetItemsQuanNam";
+    private static final String GetItemsQuanNamById_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_ItemsQuanNam_METHOD_NAME;
 
     public static ItemsQuanNamService getInstance() {
         if (instance == null) instance = new ItemsQuanNamService();
@@ -77,5 +78,71 @@ public class ItemsQuanNamService {
             Log.e("SoapClient", "Error: " + e.getMessage(), e);
         }
         return ItemsQuanNam;
+    }
+
+    public ItemsDomain getItemsQuanNamById(String NAMESPACE, String URL, String id) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, GET_ItemsQuanNam_METHOD_NAME);
+            request.addProperty("id", id);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(GetItemsQuanNamById_SOAP_ACTION, envelope);
+
+
+
+            Object objectResponse = envelope.bodyIn;
+            if (objectResponse instanceof SoapFault) {
+                SoapFault fault = (SoapFault) objectResponse;
+                Log.e("SoapClient", "SOAP Fault: " + fault.getMessage());
+                return null;
+            }
+
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            Log.d("SOAP Response", response.toString());
+
+            SoapObject getItemsQuanNamByIdResult = (SoapObject) response.getProperty("GetItemsQuanNamByIdResult");
+
+            if (getItemsQuanNamByIdResult == null) {
+                Log.e("SoapClient", "CheckLoginResult is null");
+                return null;
+            }
+
+
+            SoapObject idObject = (SoapObject) getItemsQuanNamByIdResult.getProperty("_id");
+
+            String _id = idObject.getPrimitivePropertyAsString("_a") +"*"+ idObject.getPrimitivePropertyAsString("_b") +"*" + idObject.getPrimitivePropertyAsString("_c");
+
+            String des = getItemsQuanNamByIdResult.getProperty("des").toString();
+            String description = getItemsQuanNamByIdResult.getProperty("description").toString();
+            double oldPrice = Double.parseDouble(getItemsQuanNamByIdResult.getProperty("oldPrice").toString());
+
+            ArrayList<String> picUrl = new ArrayList<>();
+            SoapObject picUrlObject = (SoapObject) getItemsQuanNamByIdResult.getProperty("picUrl");
+            for (int j = 0; j < picUrlObject.getPropertyCount(); j++) {
+                picUrl.add(picUrlObject.getProperty(j).toString());
+            }
+
+            int price = Integer.parseInt(getItemsQuanNamByIdResult.getProperty("price").toString());
+            double rating = Double.parseDouble(getItemsQuanNamByIdResult.getProperty("rating").toString());
+            int review = Integer.parseInt(getItemsQuanNamByIdResult.getProperty("review").toString());
+            String title = getItemsQuanNamByIdResult.getProperty("title").toString();
+
+            ItemsDomain itemsQuan = new ItemsDomain(_id, title, description, picUrl, des, price,oldPrice, review, rating);
+
+            return itemsQuan;
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return null;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return null;
+        }
     }
 }

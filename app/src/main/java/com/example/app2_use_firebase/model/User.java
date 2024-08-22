@@ -1,6 +1,8 @@
 package com.example.app2_use_firebase.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String _id;
     private String email;
     private String pass;
