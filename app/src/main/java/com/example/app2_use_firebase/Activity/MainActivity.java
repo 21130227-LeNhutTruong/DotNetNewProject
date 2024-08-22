@@ -83,49 +83,7 @@ public class MainActivity extends BaseActivity {
         checkAd();
     }
 
-    public void test() {
-        textView4 = findViewById(R.id.textView4);
-        SoapClient soapClient = new SoapClient();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-//                    final List<Banner> banners = soapClient.callGetBannersService();
-                    final List<ItemsPopular> itemsPopulars = soapClient.getAllItemsPopular();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (itemsPopulars != null && !itemsPopulars.isEmpty()) {
-                                StringBuilder response = new StringBuilder();
-                                for (ItemsPopular itemsPopular : itemsPopulars) {
-//                                    response.append("ID: ").append(banner.getId()).append("\n");
-                                    response.append("URL: ").append(itemsPopular.getDes()).append("\n\n");
-                                }
-                                textView4.setText(response.toString());
-                            } else {
-                                textView4.setText("No banners found");
-                            }
-                        }
-                    });
-                } catch (Exception e) {
-                    Log.e("SoapClient", "Error: " + e.getMessage(), e);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            textView4.setText("Error fetching banners");
-                        }
-                    });
-                }
-            }
-        }).start();
-
-
-
-
-
-
-    }
 
 
 
@@ -231,19 +189,19 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
-                    final List<ItemsPopular> itemsClothes = soapClient.getItemsClothes();
+                    final List<ItemsDomain> itemsClothes = soapClient.getItemsClothes();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (itemsClothes != null && !itemsClothes.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
-                                for (ItemsPopular itemsClothe : itemsClothes) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsClothe.get_id(),
-                                            itemsClothe.getTitle(), itemsClothe.getDescription(), itemsClothe.getPicUrl(),itemsClothe.getDes(),
-                                            itemsClothe.getPrice(), itemsClothe.getOldPrice(), itemsClothe.getReview(),
-                                            itemsClothe.getRating());
-
-                                    items.add(itemsDomain);
+                                for (ItemsDomain itemsClothe : itemsClothes) {
+//                                    ItemsDomain itemsDomain = new ItemsDomain(itemsClothe.get_id(),
+//                                            itemsClothe.getTitle(), itemsClothe.getDescription(), itemsClothe.getPicUrl(),itemsClothe.getDes(),
+//                                            itemsClothe.getPrice(), itemsClothe.getOldPrice(), itemsClothe.getReview(),
+//                                            itemsClothe.getRating());
+                                    itemsClothe.setType("ItemsClothes");
+                                    items.add(itemsClothe);
                                 }
 
                                 if (!items.isEmpty()) {
@@ -330,19 +288,21 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
-                    final List<ItemsPopular> itemsBags = soapClient.getItemsBag();
+                    final List<ItemsDomain> itemsBags = soapClient.getItemsBag();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (itemsBags != null && !itemsBags.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
-                                for (ItemsPopular itemsBag : itemsBags) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsBag.get_id(),
-                                            itemsBag.getTitle(), itemsBag.getDescription(), itemsBag.getPicUrl(),itemsBag.getDes(),
-                                            itemsBag.getPrice(), itemsBag.getOldPrice(), itemsBag.getReview(),
-                                            itemsBag.getRating());
+                                for (ItemsDomain itemsBag : itemsBags) {
+//                                    ItemsDomain itemsDomain = new ItemsDomain(itemsBag.get_id(),
+//                                            itemsBag.getTitle(), itemsBag.getDescription(), itemsBag.getPicUrl(),itemsBag.getDes(),
+//                                            itemsBag.getPrice(), itemsBag.getOldPrice(), itemsBag.getReview(),
+//                                            itemsBag.getRating());
 
-                                    items.add(itemsDomain);
+                                    itemsBag.setType("ItemsBag");
+
+                                    items.add(itemsBag);
                                 }
 
                                 if (!items.isEmpty()) {

@@ -43,7 +43,6 @@ public class AoActivity extends BaseActivity{
     private void initAo() {
         binding.progressAo.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
-
         SoapClient soapClient = new SoapClient();
         new Thread(new Runnable() {
             @Override
@@ -59,6 +58,8 @@ public class AoActivity extends BaseActivity{
                         public void run() {
                             if (itemsAoList != null && !itemsAoList.isEmpty()) {
                                 items.addAll(itemsAoList);
+
+
 
                                 if (!items.isEmpty()) {
                                     binding.recyclerViewListAo.setLayoutManager(new GridLayoutManager(AoActivity.this, 2));

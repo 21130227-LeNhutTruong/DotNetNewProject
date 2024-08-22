@@ -15,27 +15,20 @@ public class TypeClassService {
         switch (type) {
             case "ItemsPopular":
                 return SoapClient.getInstance().getItemsPopularsById(id);
-//            case "ItemsAo":
-//                return SoapClient.getInstance().getItemsAoById(id);
-//            case "ItemsAoNam":
-//                return SoapClient.getInstance().getItemsAoNamById(id);
-//            case "ItemsAoNu":
-//                return SoapClient.getInstance().getItemsAoNuById(id);
-//            case "ItemsBag":
-//                return SoapClient.getInstance().getItemsBagById(id);
-//            case "ItemsClothes":
-//                return SoapClient.getInstance().getItemsClothesById(id);
-//            case "ItemsGiay":
-//                return SoapClient.getInstance().getItemsGiayById(id);
-//            case "ItemsQuan":
-//                return SoapClient.getInstance().getItemsQuanById(id);
-//            case "ItemsQuanNam":
-//                return SoapClient.getInstance().getItemsQuanNamById(id);
-//            case "ItemsQuanNu":
-//                return SoapClient.getInstance().getItemsQuanNuById(id);
-//            case "ItemsTuiXach":
-//                return SoapClient.getInstance().getItemsTuiXachById(id);
-
+            case "ItemsAo":
+                return SoapClient.getInstance().getItemsAoById(id);
+            case "ItemsAoNam":
+                return SoapClient.getInstance().getItemsAoNamById(id);
+            case "ItemsAoNu":
+                return SoapClient.getInstance().getItemsAoNuById(id);
+            case "ItemsTuiXach":
+                return SoapClient.getInstance().getItemsTuiXachById(id);
+            case "ItemsBag":
+                return SoapClient.getInstance().getItemsBagById(id);
+            case "ItemsGiay":
+                return SoapClient.getInstance().getItemsGiayById(id);
+            case "ItemsClothes":
+                return SoapClient.getInstance().getItemsClothesById(id);
             default:
                 return null;
         }

@@ -3,8 +3,6 @@ package com.example.app2_use_firebase.services;
 import android.util.Log;
 
 import com.example.app2_use_firebase.Domain.ItemsDomain;
-import com.example.app2_use_firebase.Domain.SliderItems;
-import com.example.app2_use_firebase.model.ItemsPopular;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -55,7 +53,7 @@ public class ItemsQuanService {
             for (int i = 0; i < getResultItemsQuan.getPropertyCount(); i++) {
                 SoapObject ItemsQuanObject = (SoapObject) getResultItemsQuan.getProperty(i);
                 SoapObject idObject = (SoapObject) ItemsQuanObject.getProperty("_id");
-                String _id = idObject.getProperty("_a").toString() + idObject.getProperty("_b").toString() + idObject.getProperty("_c").toString();
+                String _id = idObject.getProperty("_a").toString()+"*" + idObject.getProperty("_b").toString() +"*"+ idObject.getProperty("_c").toString();
                 String des = ItemsQuanObject.getProperty("des").toString();
                 String description = ItemsQuanObject.getProperty("description").toString();
                 double oldPrice = Double.parseDouble(ItemsQuanObject.getProperty("oldPrice").toString());

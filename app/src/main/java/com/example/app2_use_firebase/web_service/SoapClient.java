@@ -34,7 +34,8 @@ public class SoapClient {
 
 
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://0c67-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
+
+    private static final String URL = "https://57b7-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
@@ -108,17 +109,42 @@ public class SoapClient {
     public List<ItemsDomain> getItemsGiay() {
         return ItemsGiayService.getInstance().getItemsGiayService(NAMESPACE, URL);
     }
-    public List<ItemsPopular> getItemsBag() {
+
+    public ItemsDomain getItemsGiayById(String id) {
+        return ItemsGiayService.getInstance().getItemsGiayById(NAMESPACE,URL,id);
+    }
+
+    public List<ItemsDomain> getItemsBag() {
         return ItemsBagService.getInstance().getItemsBagService(NAMESPACE, URL);
     }
-    public List<ItemsPopular> getItemsClothes() {
+
+    public ItemsDomain getItemsBagById(String id) {
+        return ItemsBagService.getInstance().getItemsBagById(NAMESPACE,URL,id);
+    }
+
+    public List<ItemsDomain> getItemsClothes() {
         return ItemsClothesService.getInstance().getItemsClothes(NAMESPACE, URL);
     }
+
+//    public List<ItemsDomain> getItemsTuiXach() {
+
+
+    public ItemsDomain getItemsClothesById(String id) {
+        return ItemsClothesService.getInstance().getItemsClothesById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsDomain> getItemsTuiXach() {
         return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
     }
+    public ItemsDomain getItemsTuiXachById(String id) {
+        return ItemsTuiXachService.getInstance().getItemsTuiXachById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsDomain> getAllItemsAos() {
         return ItemsAoService.getInstance().getItemsAos(NAMESPACE, URL);
+    }
+    public ItemsDomain getItemsAoById(String id) {
+        return ItemsAoService.getInstance().getItemsAoById(NAMESPACE,URL,id);
     }
 
     public List<Bill> getBillByUser(String idUser) {
@@ -146,6 +172,10 @@ public class SoapClient {
         return ItemsAoNamService.getInstance().getItemsAoNams(NAMESPACE, URL);
     }
 
+    public ItemsDomain getItemsAoNamById(String id) {
+        return ItemsAoNamService.getInstance().getItemsAoNamById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsDomain> getAllItemsAoNus() {
         return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
     }
@@ -159,7 +189,11 @@ public class SoapClient {
     }
 
     public List<Bill> getAllBills() {
-       return BillService.getInstance().getAllBills(NAMESPACE, URL);
+        return BillService.getInstance().getAllBills(NAMESPACE, URL);
+    }
+
+    public ItemsDomain getItemsAoNuById(String id) {
+        return ItemsAoNuService.getInstance().getItemsAoNuById(NAMESPACE,URL,id);
     }
 }
 
