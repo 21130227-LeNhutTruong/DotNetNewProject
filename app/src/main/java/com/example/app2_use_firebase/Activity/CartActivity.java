@@ -33,7 +33,7 @@ import com.example.app2_use_firebase.model.Bill;
 import com.example.app2_use_firebase.model.Cart;
 import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.model.ProductBuy;
-import com.example.app2_use_firebase.services.TypeClassService;
+import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -172,7 +172,7 @@ public class CartActivity extends  BaseActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        addBillDetail();
+                                        addBillDetail(bill);
                                         startActivity(new Intent(CartActivity.this, BillActivity.class));
                                     }
                                 });
@@ -205,33 +205,41 @@ public class CartActivity extends  BaseActivity {
 //                .addOnFailureListener(e -> Toast.makeText(CartActivity.this, "Lỗi khi lưu hóa đơn", Toast.LENGTH_SHORT).show());
     }
 
-    public void addBillDetail() {
+    public void addBillDetail(Bill bill) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
                 String userId = sharedPref.getString("userId", null);
-//                User user = SoapClient.getInstance().getUserById(userId);
+                User user = SoapClient.getInstance().getUserById(userId);
                 Cart cart = SoapClient.getInstance().getCartByUser(userId);
                 boolean deleteCart = SoapClient.getInstance().deleteCart(userId);
 
-//                String subject = "";
+                String body = "<p>Đơn hàng: " + bill.get_id() + ". Thời gian: " + bill.getDate() + "</p>";
+                body += "<p>Tổng tiền: " + bill.getTotalAmount() + "</p>";
 
                 if (cart != null && cart.getProducts() != null) {
                     for (ProductBuy product : cart.getProducts()) {
+                        ItemsDomain itemsDomain = SoapClient.getInstance().getProductInAll(product.get_id());
+                        body += "<p>Tên sản phẩm: " + itemsDomain.getTitle() + ". Số lượng: " + product.getQuantity() + "</p>";
                         SoapClient.getInstance().addProductInBD(userId, product.get_id(), product.getQuantity(), product.getType());
                     }
                 }
 
-//                boolean sendMail = SoapClient.getInstance().sendMail(user.getEmail(), "Bill", "");
+                body += "<p>Liên hệ với chúng tôi: 21130035@st.hcmuaf.edu.vn</p>";
+
+                boolean sendMail = SoapClient.getInstance().sendMail(user.getEmail(), "Đơn hàng của bạn", body);
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Log.d("SOAP", "DELETE CART: "+deleteCart);
+                        Log.d("SOAP", "SEND MAIL: "+sendMail);
                     }
                 });
+
+
             }
         });
 
@@ -318,7 +326,13 @@ private void displayUserCart(Context context) {
                                         public void run() {
                                             try {
 //                                                AModel model = TypeClassService.getInstance().selectType(type, productId);
-                                                ItemsDomain itemsDomain = TypeClassService.getInstance().selectType(type, productId);
+                                                ItemsDomain itemsDomain = SoapClient.getInstance().getProductInAll(productId);
+//                                                if (type.equals("")) {
+//                                                    itemsDomain = SoapClient.getInstance().getProductInAll(productId);
+//                                                }else {
+//
+//                                                    itemsDomain = TypeClassService.getInstance().selectType(type, productId);
+//                                                }
                                                 Log.d("SOAP", "Model: " +itemsDomain);
 //                                                ItemsPopular itemsPopular = SoapClient.getInstance().getItemsPopularsById(productId);
 //                                                if (model != null) {

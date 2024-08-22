@@ -9,7 +9,6 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,9 +23,6 @@ import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityBillListBinding;
 import com.example.app2_use_firebase.model.User;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -68,7 +64,7 @@ public class BillActivity extends BaseActivity {
 
         loadBillsFromFirebase();
         bottomNavigation();
-        listenToBillUpdates();
+//        listenToBillUpdates();
         initSliderImage();
 
 
@@ -204,51 +200,51 @@ private void loadBillsFromFirebase() {
     }
 
 
-    private void listenToBillUpdates() {
-        // lấy thông tin người dùng hiện tại
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = currentUser != null ? currentUser.getUid() : null;
-        if (userId != null) {
-            // Lấy danh sách hóa đơn từ Firestore
-            db.collection("bills")
-                    .whereEqualTo("userId", userId)
-                    .addSnapshotListener((snapshots, e) -> {
-                        if (e != null) {
-                            Toast.makeText(BillActivity.this, "Lỗi khi tải hóa đơn", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        // Xử lý sự kiện khi dữ liệu thay đổi
-                        for (DocumentChange dc : snapshots.getDocumentChanges()) {
-
-                            switch (dc.getType()) {
-                                // Thêm, sửa, xóa hóa đơn
-                                case ADDED:
-                                    Bill billAdded = dc.getDocument().toObject(Bill.class);
-                                    billList.add(billAdded);
-                                    break;
-                                case MODIFIED:
-                                    // Cập nhật hóa đơn
-                                    Bill billModified = dc.getDocument().toObject(Bill.class);
-                                    for (int i = 0; i < billList.size(); i++) {
-                                        if (billList.get(i).getId().equals(billModified.getId())) {
-                                            billList.set(i, billModified);
-                                            break;
-                                        }
-                                    }
-                                    break;
-                                case REMOVED:
-                                    // Xóa hóa đơn
-                                    Bill billRemoved = dc.getDocument().toObject(Bill.class);
-                                    billList.removeIf(bill -> bill.getId().equals(billRemoved.getId()));
-                                    break;
-                            }
-                        }
-                        billAdapter.notifyDataSetChanged();
-                    });
-        } else {
-            Toast.makeText(BillActivity.this, "Không thể xác định người dùng hiện tại", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void listenToBillUpdates() {
+//        // lấy thông tin người dùng hiện tại
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        String userId = currentUser != null ? currentUser.getUid() : null;
+//        if (userId != null) {
+//            // Lấy danh sách hóa đơn từ Firestore
+//            db.collection("bills")
+//                    .whereEqualTo("userId", userId)
+//                    .addSnapshotListener((snapshots, e) -> {
+//                        if (e != null) {
+//                            Toast.makeText(BillActivity.this, "Lỗi khi tải hóa đơn", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
+//                        // Xử lý sự kiện khi dữ liệu thay đổi
+//                        for (DocumentChange dc : snapshots.getDocumentChanges()) {
+//
+//                            switch (dc.getType()) {
+//                                // Thêm, sửa, xóa hóa đơn
+//                                case ADDED:
+//                                    Bill billAdded = dc.getDocument().toObject(Bill.class);
+//                                    billList.add(billAdded);
+//                                    break;
+//                                case MODIFIED:
+//                                    // Cập nhật hóa đơn
+//                                    Bill billModified = dc.getDocument().toObject(Bill.class);
+//                                    for (int i = 0; i < billList.size(); i++) {
+//                                        if (billList.get(i).getId().equals(billModified.getId())) {
+//                                            billList.set(i, billModified);
+//                                            break;
+//                                        }
+//                                    }
+//                                    break;
+//                                case REMOVED:
+//                                    // Xóa hóa đơn
+//                                    Bill billRemoved = dc.getDocument().toObject(Bill.class);
+//                                    billList.removeIf(bill -> bill.getId().equals(billRemoved.getId()));
+//                                    break;
+//                            }
+//                        }
+//                        billAdapter.notifyDataSetChanged();
+//                    });
+//        } else {
+//            Toast.makeText(BillActivity.this, "Không thể xác định người dùng hiện tại", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     protected void onPause() {

@@ -1,8 +1,6 @@
 package com.example.app2_use_firebase.Domain;
 
 
-import com.example.app2_use_firebase.model.AModel;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -20,7 +18,8 @@ public class ItemsDomain implements Serializable{
     private String type;
 
 
-
+    public ItemsDomain() {
+    }
 
     public ItemsDomain(String id, String title, String description, ArrayList<String> picUrl, String des, double price, double oldPrice, int review, double rating) {
         this.id = id;

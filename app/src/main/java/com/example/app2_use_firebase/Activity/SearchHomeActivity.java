@@ -233,6 +233,8 @@ public class SearchHomeActivity extends BaseActivity {
 
                 // Gọi dịch vụ SOAP để tìm kiếm
                 List<ItemsDomain> searchResults = SoapClient.getInstance().getSearchService(query);
+
+
                 // Ghi log kết quả tìm kiếm
 //                Log.d("SearchHomeActivity", "Nhận được kết quả tìm kiếm: " + searchResults.get(0).getTitle());
 

@@ -17,7 +17,7 @@ import java.util.List;
 public class ItemsGiayService {
         private static com.example.app2_use_firebase.services.ItemsGiayService instance;
         private static final String GET_ItemsGiay_METHOD_NAME = "GetAllItemsGiay";
-    private static final String GetItemsGiayById_METHOD_NAME = "GetItemsPopularById";
+    private static final String GetItemsGiayById_METHOD_NAME = "GetItemsGiayById";
 
     private static final String GET_ItemsGiay_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_ItemsGiay_METHOD_NAME;
     private static final String GetItemsGiayById_SOAP_ACTION = "http://tempuri.org/IService1/"+GetItemsGiayById_METHOD_NAME;
@@ -113,10 +113,10 @@ public class ItemsGiayService {
             SoapObject response = (SoapObject) envelope.bodyIn;
             Log.d("SOAP Response", response.toString());
 
-            SoapObject getItemsGiayByIdResult = (SoapObject) response.getProperty("GetItemsPopularByIdResult");
+            SoapObject getItemsGiayByIdResult = (SoapObject) response.getProperty("GetItemsGiayByIdResult");
 
             if (getItemsGiayByIdResult == null) {
-                Log.e("SoapClient", "CheckLoginResult is null");
+                Log.e("SoapClient", "Giay is null");
                 return null;
             }
 

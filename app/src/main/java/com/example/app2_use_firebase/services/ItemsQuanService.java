@@ -3,7 +3,6 @@ package com.example.app2_use_firebase.services;
 import android.util.Log;
 
 import com.example.app2_use_firebase.Domain.ItemsDomain;
-import com.example.app2_use_firebase.Domain.SliderItems;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -17,9 +16,10 @@ import java.util.List;
 public class ItemsQuanService {
     private static ItemsQuanService instance;
     private static final String GET_ItemsQuan_METHOD_NAME = "GetItemsQuan";
+    private static final String GetItemsQuanById_METHOD_NAME = "GetItemsQuanById";
     private static final String GET_ItemsQuan_SOAP_ACTION = "http://tempuri.org/IService1/GetItemsQuan";
 
-    private static final String GetItemsQuanById_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_ItemsQuan_METHOD_NAME;
+    private static final String GetItemsQuanById_SOAP_ACTION = "http://tempuri.org/IService1/"+GetItemsQuanById_METHOD_NAME;
 
     public static ItemsQuanService getInstance() {
         if (instance == null) instance = new ItemsQuanService();
@@ -84,7 +84,7 @@ public class ItemsQuanService {
 
     public ItemsDomain getItemsQuanById(String NAMESPACE, String URL, String id) {
         try {
-            SoapObject request = new SoapObject(NAMESPACE, GET_ItemsQuan_METHOD_NAME);
+            SoapObject request = new SoapObject(NAMESPACE, GetItemsQuanById_METHOD_NAME);
             request.addProperty("id", id);
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
@@ -111,7 +111,7 @@ public class ItemsQuanService {
             SoapObject getItemsQuanByIdResult = (SoapObject) response.getProperty("GetItemsQuanByIdResult");
 
             if (getItemsQuanByIdResult == null) {
-                Log.e("SoapClient", "CheckLoginResult is null");
+                Log.e("SoapClient", "Quan is null");
                 return null;
             }
 
