@@ -16,8 +16,9 @@ import java.util.List;
 public class ItemsQuanNamService {
     private static ItemsQuanNamService instance;
     private static final String GET_ItemsQuanNam_METHOD_NAME = "GetItemsQuanNam";
+    private static final String GetItemsQuanById_METHOD_NAME = "GetItemsQuanNamById";
     private static final String GET_ItemsQuanNam_SOAP_ACTION = "http://tempuri.org/IService1/GetItemsQuanNam";
-    private static final String GetItemsQuanNamById_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_ItemsQuanNam_METHOD_NAME;
+    private static final String GetItemsQuanNamById_SOAP_ACTION = "http://tempuri.org/IService1/"+GetItemsQuanById_METHOD_NAME;
 
     public static ItemsQuanNamService getInstance() {
         if (instance == null) instance = new ItemsQuanNamService();
@@ -82,7 +83,7 @@ public class ItemsQuanNamService {
 
     public ItemsDomain getItemsQuanNamById(String NAMESPACE, String URL, String id) {
         try {
-            SoapObject request = new SoapObject(NAMESPACE, GET_ItemsQuanNam_METHOD_NAME);
+            SoapObject request = new SoapObject(NAMESPACE, GetItemsQuanById_METHOD_NAME);
             request.addProperty("id", id);
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
@@ -109,7 +110,7 @@ public class ItemsQuanNamService {
             SoapObject getItemsQuanNamByIdResult = (SoapObject) response.getProperty("GetItemsQuanNamByIdResult");
 
             if (getItemsQuanNamByIdResult == null) {
-                Log.e("SoapClient", "CheckLoginResult is null");
+                Log.e("SoapClient", "QUnaNam is null");
                 return null;
             }
 

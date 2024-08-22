@@ -18,7 +18,9 @@ import java.util.List;
 public class GetAllItemsService {
     private static GetAllItemsService instance;
     private static final String GET_AllItems_METHOD_NAME = "GetAllItems";
+    private static final String GetProductInAll_METHOD_NAME = "GetProductInAll";
     private static final String GET_AllItems_SOAP_ACTION = "http://tempuri.org/IService1/"+GET_AllItems_METHOD_NAME;
+    private static final String GetProductInAll_SOAP_ACTION = "http://tempuri.org/IService1/"+GetProductInAll_METHOD_NAME;
     private static final String METHOD_NAME_SEARCH="SearchItems";
     private static final String SOAP_ACTION_SEARCH = "http://tempuri.org/IService1/"+METHOD_NAME_SEARCH;
     public static GetAllItemsService getInstance() {
@@ -148,6 +150,73 @@ public class GetAllItemsService {
         }
 
         return itemsDomains;
+    }
+
+    public ItemsDomain getProductInAll(String NAMESPACE, String URL, String id) {
+        try {
+            SoapObject request = new SoapObject(NAMESPACE, GetProductInAll_METHOD_NAME);
+            request.addProperty("id", id);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.setOutputSoapObject(request);
+
+            envelope.implicitTypes = true;
+            envelope.dotNet = true;
+
+            HttpTransportSE transport = new HttpTransportSE(URL);
+            transport.call(GetProductInAll_SOAP_ACTION, envelope);
+
+
+
+            Object objectResponse = envelope.bodyIn;
+            if (objectResponse instanceof SoapFault) {
+                SoapFault fault = (SoapFault) objectResponse;
+                Log.e("SoapClient", "SOAP Fault: " + fault.getMessage());
+                return null;
+            }
+
+            SoapObject response = (SoapObject) envelope.bodyIn;
+            Log.d("SOAP Response", response.toString());
+
+            SoapObject getItemsPopularByIdResult = (SoapObject) response.getProperty("GetProductInAllResult");
+
+            if (getItemsPopularByIdResult == null) {
+                Log.e("SoapClient", "All is null");
+                return null;
+            }
+
+
+            SoapObject idObject = (SoapObject) getItemsPopularByIdResult.getProperty("_id");
+
+            String _id = idObject.getPrimitivePropertyAsString("_a") +"*"+ idObject.getPrimitivePropertyAsString("_b") +"*" + idObject.getPrimitivePropertyAsString("_c");
+
+            String des = getItemsPopularByIdResult.getProperty("des").toString();
+            String description = getItemsPopularByIdResult.getProperty("description").toString();
+            double oldPrice = Double.parseDouble(getItemsPopularByIdResult.getProperty("oldPrice").toString());
+
+            ArrayList<String> picUrl = new ArrayList<>();
+            SoapObject picUrlObject = (SoapObject) getItemsPopularByIdResult.getProperty("picUrl");
+            for (int j = 0; j < picUrlObject.getPropertyCount(); j++) {
+                picUrl.add(picUrlObject.getProperty(j).toString());
+            }
+
+            int price = Integer.parseInt(getItemsPopularByIdResult.getProperty("price").toString());
+            double rating = Double.parseDouble(getItemsPopularByIdResult.getProperty("rating").toString());
+            int review = Integer.parseInt(getItemsPopularByIdResult.getProperty("review").toString());
+            String title = getItemsPopularByIdResult.getProperty("title").toString();
+
+//            ItemsDomain itemsPopular = new ItemsDomain(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+            ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
+
+            return itemsDomain;
+
+        }catch (SoapFault fault) {
+            Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);
+            return null;
+        } catch (Exception e) {
+            Log.e("SoapClient", "Error: " + e.getMessage(), e);
+            return null;
+        }
     }
 }
 

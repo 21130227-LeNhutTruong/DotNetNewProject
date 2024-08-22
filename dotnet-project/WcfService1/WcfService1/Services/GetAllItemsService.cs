@@ -62,5 +62,25 @@ namespace WcfService1.Services
 
             return items;
         }
+
+        public ItemsDomain GetProductInAll(string id)
+        {
+            var pObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
+
+            foreach (var collectionName in _database.ListCollectionNames().ToEnumerable())
+            {
+                var collection = _database.GetCollection<ItemsDomain>(collectionName);
+                var filter = Builders<ItemsDomain>.Filter.Eq(p => p._id, pObjectId);
+                var projection = Builders<ItemsDomain>.Projection.Exclude("id");
+                var product = collection.Find(filter).Project<ItemsDomain>(projection).FirstOrDefault();
+
+                if (product != null)
+                {
+                    return product; 
+                }
+            }
+
+            return null;
+        }
     }
 }

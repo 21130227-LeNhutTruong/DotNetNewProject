@@ -36,7 +36,7 @@ public class SoapClient {
 
 
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://2b32-2001-ee0-51b8-8f60-15c6-858-b99a-e6a2.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://c599-2001-ee0-51b8-8f60-15c6-858-b99a-e6a2.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
@@ -222,6 +222,10 @@ public class SoapClient {
 
     public boolean addProductInBD(String idUser, String idProduct, int quantity, String type) {
         return BillDetailService.getInstance().addProductInBD(NAMESPACE, URL, idUser, idProduct, quantity, type);
+    }
+
+    public ItemsDomain getProductInAll(String id) {
+        return GetAllItemsService.getInstance().getProductInAll(NAMESPACE, URL, id);
     }
 
 

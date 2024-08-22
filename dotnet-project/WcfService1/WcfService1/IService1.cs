@@ -134,6 +134,9 @@ namespace WcfService1
         [OperationContract]
         bool AddProductInBillDetail(string idUser, string idProduct, int quantity, string type);
 
+        [OperationContract]
+        ItemsDomain GetProductInAll(string id);
+
 
 
     }

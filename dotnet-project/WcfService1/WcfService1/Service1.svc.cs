@@ -259,6 +259,16 @@ namespace WcfService1
             return searchItemsService.SearchItems(collectionNames, searchText);
         }
 
+        public ItemsDomain GetProductInAll(string id)
+        {
+            var connectionString = "mongodb://localhost:27017";
+            var databaseName = "shop";
+            var collectionNames = new[] { "ItemsPopular", "ItemsQuan", "ItemsAo", "ItemsGiay", "ItemsTuiXach" };
+
+            var getAllItemsService = new GetAllItemsService(connectionString, databaseName);
+            return getAllItemsService.GetProductInAll(id);
+        }
+
 
 
 
