@@ -34,7 +34,7 @@ public class SoapClient {
 
 
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://ff96-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://6271-2402-800-6312-306d-65e0-3f8b-bd0-c04e.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
@@ -108,17 +108,39 @@ public class SoapClient {
     public List<ItemsPopular> getItemsGiay() {
         return ItemsGiayService.getInstance().getItemsGiayService(NAMESPACE, URL);
     }
+
+    public ItemsDomain getItemsGiayById(String id) {
+        return ItemsGiayService.getInstance().getItemsGiayById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsPopular> getItemsBag() {
         return ItemsBagService.getInstance().getItemsBagService(NAMESPACE, URL);
     }
+
+    public ItemsDomain getItemsBagById(String id) {
+        return ItemsBagService.getInstance().getItemsBagById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsPopular> getItemsClothes() {
         return ItemsClothesService.getInstance().getItemsClothes(NAMESPACE, URL);
     }
+
+    public ItemsDomain getItemsClothesById(String id) {
+        return ItemsClothesService.getInstance().getItemsClothesById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsPopular> getItemsTuiXach() {
         return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
     }
+    public ItemsDomain getItemsTuiXachById(String id) {
+        return ItemsTuiXachService.getInstance().getItemsTuiXachById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsDomain> getAllItemsAos() {
         return ItemsAoService.getInstance().getItemsAos(NAMESPACE, URL);
+    }
+    public ItemsDomain getItemsAoById(String id) {
+        return ItemsAoService.getInstance().getItemsAoById(NAMESPACE,URL,id);
     }
 
     public List<Bill> getBillByUser(String idUser) {
@@ -146,8 +168,15 @@ public class SoapClient {
         return ItemsAoNamService.getInstance().getItemsAoNams(NAMESPACE, URL);
     }
 
+    public ItemsDomain getItemsAoNamById(String id) {
+        return ItemsAoNamService.getInstance().getItemsAoNamById(NAMESPACE,URL,id);
+    }
+
     public List<ItemsDomain> getAllItemsAoNus() {
         return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
+    }
+    public ItemsDomain getItemsAoNuById(String id) {
+        return ItemsAoNuService.getInstance().getItemsAoNuById(NAMESPACE,URL,id);
     }
 }
 

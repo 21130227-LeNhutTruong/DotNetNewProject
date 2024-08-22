@@ -31,5 +31,13 @@ namespace WcfService1.Services
             var result = _itemsGiay.Find(filter).Project<ItemsDomain>(projection).ToList();
             return result;
         }
+        public ItemsDomain GetItemsGiayById(string id)
+        {
+            var objectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(id);
+            var filter = Builders<ItemsDomain>.Filter.Eq(ip => ip._id, objectId);
+            var projection = Builders<ItemsDomain>.Projection.Exclude("id");
+            var result = _itemsGiay.Find(filter).Project<ItemsDomain>(projection).FirstOrDefault();
+            return result;
+        }
     }
 }
