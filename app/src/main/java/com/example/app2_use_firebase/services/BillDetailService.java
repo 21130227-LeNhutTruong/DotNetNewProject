@@ -44,8 +44,6 @@ public class BillDetailService {
             HttpTransportSE transport = new HttpTransportSE(URL);
             transport.call(GetBillDetail_SOAP_ACTION, envelope);
 
-
-
             Object objectResponse = envelope.bodyIn;
             if (objectResponse instanceof SoapFault) {
                 SoapFault fault = (SoapFault) objectResponse;
