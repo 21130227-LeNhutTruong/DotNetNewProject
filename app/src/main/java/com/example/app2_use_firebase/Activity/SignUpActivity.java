@@ -84,19 +84,38 @@ public class SignUpActivity extends BaseActivity  {
                 }
                 Random random = new Random();
                 int code = random.nextInt(9000) + 1000;
-                boolean isSend = SoapClient.getInstance().sendMail(email, "Your verification code", "Your verification code is: " + code);
-                if(isSend) {
-                    Intent intent = new Intent(SignUpActivity.this, VerifyCodeActivity.class);
-                    User user = new User("", email, password, username, username, 18, "", 1, 0);
-                    intent.putExtra("email", email);
-                    intent.putExtra("verificationCode", code);
-                    intent.putExtra("user", user);
-                    startActivity(intent);progressDialog.dismiss();
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(SignUpActivity.this, "Can`t send mail", Toast.LENGTH_SHORT).show();
-                }
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            boolean isSend = SoapClient.getInstance().sendMail(email, "Your verification code", "Your verification code is: " + code);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(isSend) {
+                                        Intent intent = new Intent(SignUpActivity.this, VerifyCodeActivity.class);
+                                        User user = new User("", email, password, username, username, 18, "", 1, 0);
+                                        intent.putExtra("email", email);
+                                        intent.putExtra("verificationCode", code);
+                                        intent.putExtra("user", user);
+                                        progressDialog.dismiss();
+                                        startActivity(intent);
+                                        Log.d("SOAP", "SEND MAIL: "+isSend);
+                                    } else {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(SignUpActivity.this, "Can`t send mail", Toast.LENGTH_SHORT).show();
+                                        Log.d("SOAP", "SEND MAIL: "+isSend);
+                                    }
+                                }
+                            });
+
+                        }catch (Exception e) {
+                            Log.d("SOAP ERROR", "ERROR CONNECTION", e);
+                        }
+                    }
+                }).start();
             }
         });
 
