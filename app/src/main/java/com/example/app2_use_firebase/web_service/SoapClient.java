@@ -34,7 +34,7 @@ public class SoapClient {
 
 
 //    ngrok http 55685 --host-header="localhost:55685"
-    private static final String URL = "https://ff96-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://0c67-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
@@ -105,7 +105,7 @@ public class SoapClient {
         return ItemsQuanNuService.getInstance().getItemsQuanNu(NAMESPACE, URL);
     }
 
-    public List<ItemsPopular> getItemsGiay() {
+    public List<ItemsDomain> getItemsGiay() {
         return ItemsGiayService.getInstance().getItemsGiayService(NAMESPACE, URL);
     }
     public List<ItemsPopular> getItemsBag() {
@@ -114,7 +114,7 @@ public class SoapClient {
     public List<ItemsPopular> getItemsClothes() {
         return ItemsClothesService.getInstance().getItemsClothes(NAMESPACE, URL);
     }
-    public List<ItemsPopular> getItemsTuiXach() {
+    public List<ItemsDomain> getItemsTuiXach() {
         return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
     }
     public List<ItemsDomain> getAllItemsAos() {
@@ -133,8 +133,8 @@ public class SoapClient {
        return CartService.getInstance().deleteCart(NAMESPACE, URL, id);
     }
 
-    public boolean addBill(Bill bill, String idProduct, int quantity, String type) {
-       return BillService.getInstance().addBill(NAMESPACE, URL, bill, idProduct, quantity, type);
+    public boolean addBill(Bill bill) {
+       return BillService.getInstance().addBill(NAMESPACE, URL, bill);
     }
 
     public boolean addNewCart(String idUser, String idProduct, String type) {
@@ -148,6 +148,18 @@ public class SoapClient {
 
     public List<ItemsDomain> getAllItemsAoNus() {
         return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
+    }
+
+    public boolean addProductInBD(String idUser, String idProduct, int quantity, String type) {
+       return BillDetailService.getInstance().addProductInBD(NAMESPACE, URL, idUser, idProduct, quantity, type);
+    }
+
+    public boolean updateBill(String id, String status ) {
+       return BillService.getInstance().updateStatusBill(NAMESPACE, URL, id, status);
+    }
+
+    public List<Bill> getAllBills() {
+       return BillService.getInstance().getAllBills(NAMESPACE, URL);
     }
 }
 

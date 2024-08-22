@@ -74,6 +74,7 @@ public class BillActivity extends BaseActivity {
 
     }
 
+
     private void initSliderImage(){
         viewPager2 = binding.viewPager2;
 // Thêm danh sách các hình ảnh cho slide

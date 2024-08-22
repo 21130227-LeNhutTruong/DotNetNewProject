@@ -7,27 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.app2_use_firebase.Adapter.PopularAdapter;
 import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
-import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityListGiayBinding;
-import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GiayActivity extends BaseActivity{
@@ -55,19 +45,20 @@ public class GiayActivity extends BaseActivity{
             @Override
             public void run() {
                 try {
-                    final List<ItemsPopular> itemsGiays = soapClient.getItemsGiay();
+                    final List<ItemsDomain> itemsGiays = soapClient.getItemsGiay();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (itemsGiays != null && !itemsGiays.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
-                                for (ItemsPopular itemsgiay : itemsGiays) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.get_id(),
-                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),itemsgiay.getDes(),
-                                            itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
-                                            itemsgiay.getRating());
+                                for (ItemsDomain itemsgiay : itemsGiays) {
+//                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.get_id(),
+//                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),itemsgiay.getDes(),
+//                                            itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
+//                                            itemsgiay.getRating());
+                                    itemsgiay.setType("ItemsGiay");
 
-                                    items.add(itemsDomain);
+                                    items.add(itemsgiay);
                                 }
 
                                 if (!items.isEmpty()) {

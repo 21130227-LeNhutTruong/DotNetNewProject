@@ -1,6 +1,7 @@
 package com.example.app2_use_firebase.Activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.example.app2_use_firebase.Adapter.SearchListAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivitySearchBinding;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,27 +70,20 @@ public class SearchHomeActivity extends BaseActivity{
 
         });
     }
-    private void initSearch(){
+    private void initSearch(){  
 
-        DatabaseReference myData = database.getReference("ItemsPopular");
-        myData.addListenerForSingleValueEvent(new ValueEventListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(ItemsDomain.class));
-
-                    }
-                    if (!items.isEmpty()) {
-                        binding.recyclerViewSearch.setLayoutManager(new LinearLayoutManager(SearchHomeActivity.this,RecyclerView.VERTICAL,false));
-                        binding.recyclerViewSearch.setAdapter(searchListAdapter = new SearchListAdapter(items));
-                    }
+            public void run() {
+                try {
+                    List<ItemsDomain> itemsDomains = SoapClient.getInstance().getAllItemsAoNams();
+                    items.addAll(itemsDomains);
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECTION", e);
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        }).start();
+
     }
     private void initSearch1(){
 
@@ -185,6 +180,7 @@ public class SearchHomeActivity extends BaseActivity{
                 fiteredList.add(item);
             }
         }
+        Log.d("SEARCH", "SEARCH: "+items);
         if(fiteredList.isEmpty()){
            // Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
         }else{

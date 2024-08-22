@@ -29,7 +29,7 @@ namespace WcfService1.Services
         {
             var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
 
-            var filter = Builders<BillDetail>.Filter.Eq(b => b.userId, userObjectId);
+            var filter = Builders<BillDetail>.Filter.Eq(b => b.billId, userObjectId);
 
             var result = _billDetail.Find(filter).FirstOrDefault();
 
@@ -41,7 +41,7 @@ namespace WcfService1.Services
 
             var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
 
-            var filter = Builders<BillDetail>.Filter.Eq(b => b.userId, userObjectId);
+            var filter = Builders<BillDetail>.Filter.Eq(b => b.billId, userObjectId);
 
             var result = _billDetail.DeleteOne(filter);
 
@@ -56,24 +56,24 @@ namespace WcfService1.Services
 
         }
 
-        public bool AddBillDetail(string idUser, string idProduct, int quantity, string type)
+        public bool AddBillDetail(string idUser)
         {
             try
             {
                 var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
 
+                Bill bill = BillService.GetInstance().GetNewBillByUser(idUser);
+
                 var productDetails = new List<ProductBuy>();
 
                 var billDetail = new BillDetail
                 {
-                    userId = userObjectId, 
+                    billId = bill._id, 
                     products = productDetails 
                 };
 
                 
                 _billDetail.InsertOne(billDetail);
-
-                //AddProductInBillDetail(idUser, idProduct, quantity, type);
 
                 return true; 
             }
@@ -90,7 +90,10 @@ namespace WcfService1.Services
                 var userObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idUser);
                 var productObjectId = ObjectIdService.GetInstance().ChangeIdStringToObjectId(idProduct);
 
-                var filter = Builders<BillDetail>.Filter.Eq(bd => bd.userId, userObjectId);
+                Bill bill = BillService.GetInstance().GetNewBillByUser(idUser);
+
+
+                var filter = Builders<BillDetail>.Filter.Eq(bd => bd.billId, bill._id);
 
                 var newProduct = new ProductBuy
                 {

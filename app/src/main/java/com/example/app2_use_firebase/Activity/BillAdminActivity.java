@@ -2,6 +2,7 @@ package com.example.app2_use_firebase.Activity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,11 +16,11 @@ import com.example.app2_use_firebase.Adapter.AdminBillAdapter;
 import com.example.app2_use_firebase.Domain.Bill;
 import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityAdminBillListBinding;
-import com.google.firebase.firestore.DocumentReference;
+import com.example.app2_use_firebase.web_service.SoapClient;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BillAdminActivity extends BaseActivity {
     private RecyclerView rvBillList;
@@ -63,25 +64,53 @@ public class BillAdminActivity extends BaseActivity {
     }
     private void loadBillsFromFirebase() {
         // load dữ liệu từ firestore
-        db.collectionGroup("bills")
-                .get()
-                .addOnCompleteListener(task -> {
-                    // Xử lý kết quả
-                    if (task.isSuccessful()) {
-                        // Lấy danh sách hóa đơn từ kết quả
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            // Tạo đối tượng hóa đơn từ document
-                            Bill bill = document.toObject(Bill.class);
-                            bill.setId(document.getId()); // Thiết lập id từ document ID
-                            // Thêm hóa đơn vào danh sách
-                            billList.add(bill);
+//        db.collectionGroup("bills")
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    // Xử lý kết quả
+//                    if (task.isSuccessful()) {
+//                        // Lấy danh sách hóa đơn từ kết quả
+//                        for (QueryDocumentSnapshot document : task.getResult()) {
+//                            // Tạo đối tượng hóa đơn từ document
+//                            Bill bill = document.toObject(Bill.class);
+//                            bill.setId(document.getId()); // Thiết lập id từ document ID
+//                            // Thêm hóa đơn vào danh sách
+//                            billList.add(bill);
+//                        }
+//                        // Cập nhật dữ liệu vào adapter
+//                        billAdapter.notifyDataSetChanged();
+//                    } else {
+//                        Toast.makeText(BillAdminActivity.this, "Lỗi khi tải hóa đơn", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<com.example.app2_use_firebase.model.Bill> bills = SoapClient.getInstance().getAllBills();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            for (int i = 0; i < bills.size(); i++) {
+                                com.example.app2_use_firebase.model.Bill bill = bills.get(i);
+                                Bill bill1 = new Bill(bill.getFullName(), bill.getUserId(), bill.get_id(), bill.getDate().toString(),
+                                        bill.getFullName(), bill.getAddress(), bill.getPhone(), bill.getPayment(),
+                                        bill.getTotalAmount(), null, bill.getStatus());
+                                billList.add(bill1);
+                            }
+
+                            billAdapter.notifyDataSetChanged();
+                        }catch (Exception e) {
+                            Log.d("SOAP ERROR", "ERROR CONNECT SOAP", e);
                         }
-                        // Cập nhật dữ liệu vào adapter
-                        billAdapter.notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(BillAdminActivity.this, "Lỗi khi tải hóa đơn", Toast.LENGTH_SHORT).show();
+
                     }
                 });
+            }
+        }).start();
     }
     // hiển thị dialog update
     private void showStatusUpdateDialog(Bill bill) {
@@ -105,10 +134,31 @@ public class BillAdminActivity extends BaseActivity {
 
 }
     private void updateBillStatus(Bill bill, String status) {
-        DocumentReference billRef = db.collection("users").document(bill.getUserId()).collection("bills").document(bill.getId());
-        billRef.update("status", status)
-                .addOnSuccessListener(aVoid -> Toast.makeText(BillAdminActivity.this, "Trạng thái đã được cập nhật", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e -> Toast.makeText(BillAdminActivity.this, "Lỗi khi cập nhật trạng thái", Toast.LENGTH_SHORT).show());
+//        DocumentReference billRef = db.collection("users").document(bill.getUserId()).collection("bills").document(bill.getId());
+//        billRef.update("status", status)
+//                .addOnSuccessListener(aVoid -> Toast.makeText(BillAdminActivity.this, "Trạng thái đã được cập nhật", Toast.LENGTH_SHORT).show())
+//                .addOnFailureListener(e -> Toast.makeText(BillAdminActivity.this, "Lỗi khi cập nhật trạng thái", Toast.LENGTH_SHORT).show());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    boolean updateBill = SoapClient.getInstance().updateBill(bill.getId(), status);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(BillAdminActivity.this, "Update Status Bill Success", Toast.LENGTH_LONG).show();
+                            Log.d("SOAP", "UPDATE BILL: "+updateBill);
+                        }
+                    });
+                }catch (Exception e) {
+                    Log.d("SOAP ERROR", "ERROR CONNECT", e);
+                }
+
+
+
+            }
+        }).start();
 
     }
 

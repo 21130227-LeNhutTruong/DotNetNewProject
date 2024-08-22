@@ -2,7 +2,7 @@ package com.example.app2_use_firebase.services;
 
 import android.util.Log;
 
-import com.example.app2_use_firebase.model.ItemsPopular;
+import com.example.app2_use_firebase.Domain.ItemsDomain;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -23,8 +23,8 @@ public class ItemsGiayService {
             return instance;
         }
 
-        public List<ItemsPopular> getItemsGiayService(String NAMESPACE, String URL) {
-            List<ItemsPopular> itemsGiay = new ArrayList<>();
+        public List<ItemsDomain> getItemsGiayService(String NAMESPACE, String URL) {
+            List<ItemsDomain> itemsGiay = new ArrayList<>();
 
             try {
                 SoapObject request = new SoapObject(NAMESPACE, GET_ItemsGiay_METHOD_NAME);
@@ -68,9 +68,10 @@ public class ItemsGiayService {
                     int review = Integer.parseInt(itemsGiayObject.getProperty("review").toString());
                     String title = itemsGiayObject.getProperty("title").toString();
 
-                    ItemsPopular itemsGiays = new ItemsPopular(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+//                    ItemsPopular itemsGiays = new ItemsPopular(_id, description, oldPrice, picUrl, des, price, rating, review, title);
+                    ItemsDomain itemsDomain = new ItemsDomain(_id, title, description, picUrl, des, price, oldPrice, review, rating);
 
-                    itemsGiay.add(itemsGiays);
+                    itemsGiay.add(itemsDomain);
                 }
             }catch (SoapFault fault) {
                 Log.e("SoapClient", "SOAP Fault: " + fault.getMessage(), fault);

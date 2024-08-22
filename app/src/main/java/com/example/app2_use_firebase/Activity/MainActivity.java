@@ -280,19 +280,21 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
-                    final List<ItemsPopular> itemsGiays = soapClient.getItemsGiay();
+                    final List<ItemsDomain> itemsGiays = soapClient.getItemsGiay();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (itemsGiays != null && !itemsGiays.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
-                                for (ItemsPopular itemsgiay : itemsGiays) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.get_id(),
-                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),itemsgiay.getDes(),
-                                            itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
-                                            itemsgiay.getRating());
+                                for (ItemsDomain itemsgiay : itemsGiays) {
+//                                    ItemsDomain itemsDomain = new ItemsDomain(itemsgiay.get_id(),
+//                                            itemsgiay.getTitle(), itemsgiay.getDescription(), itemsgiay.getPicUrl(),itemsgiay.getDes(),
+//                                            itemsgiay.getPrice(), itemsgiay.getOldPrice(), itemsgiay.getReview(),
+//                                            itemsgiay.getRating());
 
-                                    items.add(itemsDomain);
+                                    itemsgiay.setType("ItemsGiay");
+
+                                    items.add(itemsgiay);
                                 }
 
                                 if (!items.isEmpty()) {

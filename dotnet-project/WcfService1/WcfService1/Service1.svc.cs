@@ -130,9 +130,9 @@ namespace WcfService1
             return BillService.GetInstance().UpdateStatusBill(id, status);  
         }
 
-        public bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser, string idProduct, int quanity, string type)
+        public bool AddBill(string address, string fullName, string payment, string phone, int totalAmount, string idUser)
         {
-            return BillService.GetInstance().AddBill(address, fullName, payment, phone, totalAmount, idUser, idProduct, quanity, type); 
+            return BillService.GetInstance().AddBill(address, fullName, payment, phone, totalAmount, idUser); 
         }
 
         public bool DeleteBill(string id)
@@ -186,6 +186,11 @@ namespace WcfService1
         public List<ItemsDomain> GetAllItemsAoNus()
         {
             return ItemsAoNuService.GetInstance().GetAllItemsAoNus();
+        }
+
+        public bool AddProductInBillDetail(string idUser, string idProduct, int quantity, string type)
+        {
+            return BillDetailService.GetInstance().AddProductInBillDetail(idUser, idProduct, quantity, type);
         }
 
 

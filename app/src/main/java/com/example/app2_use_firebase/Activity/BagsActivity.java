@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -15,17 +14,10 @@ import com.example.app2_use_firebase.Adapter.PopularAdapter;
 import com.example.app2_use_firebase.Adapter.SliderImgAdapter;
 import com.example.app2_use_firebase.Domain.ItemsDomain;
 import com.example.app2_use_firebase.Domain.SliderItems;
-import com.example.app2_use_firebase.R;
 import com.example.app2_use_firebase.databinding.ActivityListBagsBinding;
-import com.example.app2_use_firebase.model.ItemsPopular;
 import com.example.app2_use_firebase.web_service.SoapClient;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BagsActivity extends BaseActivity{
@@ -53,19 +45,21 @@ public class BagsActivity extends BaseActivity{
             @Override
             public void run() {
                 try {
-                    final List<ItemsPopular> itemsTuiXachs = soapClient.getItemsTuiXach();
+                    final List<ItemsDomain> itemsTuiXachs = soapClient.getItemsTuiXach();
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (itemsTuiXachs != null && !itemsTuiXachs.isEmpty()) {
                                 StringBuilder response = new StringBuilder();
-                                for (ItemsPopular itemsTuiXach : itemsTuiXachs) {
-                                    ItemsDomain itemsDomain = new ItemsDomain(itemsTuiXach.get_id(),
-                                            itemsTuiXach.getTitle(), itemsTuiXach.getDescription(), itemsTuiXach.getPicUrl(),itemsTuiXach.getDes(),
-                                            itemsTuiXach.getPrice(), itemsTuiXach.getOldPrice(), itemsTuiXach.getReview(),
-                                            itemsTuiXach.getRating());
+                                for (ItemsDomain itemsTuiXach : itemsTuiXachs) {
+//                                    ItemsDomain itemsDomain = new ItemsDomain(itemsTuiXach.get_id(),
+//                                            itemsTuiXach.getTitle(), itemsTuiXach.getDescription(), itemsTuiXach.getPicUrl(),itemsTuiXach.getDes(),
+//                                            itemsTuiXach.getPrice(), itemsTuiXach.getOldPrice(), itemsTuiXach.getReview(),
+//                                            itemsTuiXach.getRating());
 
-                                    items.add(itemsDomain);
+                                    itemsTuiXach.setType("ItemsBag");
+                                    items.add(itemsTuiXach);
                                 }
 
                                 if (!items.isEmpty()) {
