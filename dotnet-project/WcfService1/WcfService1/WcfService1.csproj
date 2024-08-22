@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GetAllItemsService.cs" />
     <Compile Include="Services\ItemsBagService.cs" />
     <Compile Include="Services\ItemsClothesService.cs" />
     <Compile Include="Services\ItemsGiayService.cs" />

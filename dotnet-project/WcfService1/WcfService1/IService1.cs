@@ -67,7 +67,11 @@ namespace WcfService1
         bool AddCart(string id, string idProduct, int quantity, string type);
         [OperationContract]
         bool RemoveCart(string id, string idProduct);
-
+      
+        [OperationContract]
+        List<ItemsDomain> GetAllItems();
+        [OperationContract]
+        List<ItemsDomain> SearchItems(string searchText);
     }
 
 
