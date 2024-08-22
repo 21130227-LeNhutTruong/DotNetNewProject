@@ -62,7 +62,7 @@ public class BillService {
             SoapObject getBillByUserResult = (SoapObject) response.getProperty("GetBillByUserResult");
 
             if (getBillByUserResult == null) {
-                Log.e("SoapClient", "CheckLoginResult is null");
+                Log.e("SoapClient", "BillUser is null");
                 return null;
             }
 
@@ -81,7 +81,9 @@ public class BillService {
                 String status = billObject.getProperty("status").toString();
                 int totalAmount = Integer.parseInt(billObject.getProperty("totalAmount").toString());
 
-                bills.add(new Bill(_id, localDateTime.toString(), address, fullName, payment, status, phone, totalAmount, userId));
+                String date = localDateTime.getYear()+"/"+localDateTime.getMonthValue()+"/"+localDateTime.getDayOfMonth()+" "+localDateTime.getHour()+":"+localDateTime.getMinute()+":"+localDateTime.getSecond();
+
+                bills.add(new Bill(_id, date, address, fullName, payment, status, phone, totalAmount, userId));
             }
 
 
@@ -120,16 +122,16 @@ public class BillService {
             SoapObject response = (SoapObject) envelope.bodyIn;
             Log.d("SOAP Response", response.toString());
 
-            SoapObject getBillByUserResult = (SoapObject) response.getProperty("GetBillByUserResult");
+            SoapObject getBillResult = (SoapObject) response.getProperty("GetAllBillResult");
 
-            if (getBillByUserResult == null) {
-                Log.e("SoapClient", "CheckLoginResult is null");
+            if (getBillResult == null) {
+                Log.e("SoapClient", "BillAll is null");
                 return null;
             }
 
             List<Bill> bills = new ArrayList<>();
-            for (int i = 0; i < getBillByUserResult.getPropertyCount(); i++) {
-                SoapObject billObject = (SoapObject) getBillByUserResult.getProperty(i);
+            for (int i = 0; i < getBillResult.getPropertyCount(); i++) {
+                SoapObject billObject = (SoapObject) getBillResult.getProperty(i);
                 SoapObject idObject = (SoapObject) billObject.getProperty("_id");
                 String _id = idObject.getPrimitivePropertyAsString("_a") +"*"+ idObject.getPrimitivePropertyAsString("_b") +"*" + idObject.getPrimitivePropertyAsString("_c");
 
@@ -142,11 +144,13 @@ public class BillService {
                 String status = billObject.getProperty("status").toString();
                 int totalAmount = Integer.parseInt(billObject.getProperty("totalAmount").toString());
 
+                String date = localDateTime.getYear()+"/"+localDateTime.getMonthValue()+"/"+localDateTime.getDayOfMonth()+" "+localDateTime.getHour()+":"+localDateTime.getMinute()+":"+localDateTime.getSecond();
+
                 SoapObject idUserObject = (SoapObject) billObject.getProperty("userId");
                 String idUser = idUserObject.getPrimitivePropertyAsString("_a") +"*"+ idObject.getPrimitivePropertyAsString("_b") +"*" + idObject.getPrimitivePropertyAsString("_c");
 
 
-                bills.add(new Bill(_id, localDateTime.toString(), address, fullName, payment, status, phone, totalAmount, idUser));
+                bills.add(new Bill(_id, date, address, fullName, payment, status, phone, totalAmount, idUser));
             }
 
 
