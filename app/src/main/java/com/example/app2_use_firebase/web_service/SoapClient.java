@@ -12,6 +12,7 @@ import com.example.app2_use_firebase.services.BannerService;
 import com.example.app2_use_firebase.services.BillDetailService;
 import com.example.app2_use_firebase.services.BillService;
 import com.example.app2_use_firebase.services.CartService;
+import com.example.app2_use_firebase.services.GetAllItemsService;
 import com.example.app2_use_firebase.services.ItemsAoNamService;
 import com.example.app2_use_firebase.services.ItemsAoNuService;
 import com.example.app2_use_firebase.services.ItemsAoService;
@@ -35,12 +36,12 @@ public class SoapClient {
 
 //    ngrok http 55685 --host-header="localhost:55685"
 
-    private static final String URL = "https://57b7-2001-ee0-51b8-8f60-c0d0-776f-73f9-9424.ngrok-free.app/Service1.svc";
+    private static final String URL = "https://0942-112-197-38-97.ngrok-free.app/Service1.svc";
 
 
     private static SoapClient instance;
 
-   public static SoapClient getInstance() {
+    public static SoapClient getInstance() {
         if (instance == null) instance = new SoapClient();
         return instance;
     }
@@ -82,7 +83,7 @@ public class SoapClient {
     }
 
     public boolean updateCartQuantity(String id, String idProduct, int quantity) {
-        return CartService.getInstance().updateCartQuantity(NAMESPACE,URL, id, idProduct, quantity);
+        return CartService.getInstance().updateCartQuantity(NAMESPACE, URL, id, idProduct, quantity);
     }
 
     public boolean removeCart(String id, String idProduct) {
@@ -96,12 +97,15 @@ public class SoapClient {
     public List<SliderItems> getSliderItems() {
         return SliderItemsService.getInstance().getSliderItems(NAMESPACE, URL);
     }
+
     public List<ItemsDomain> getItemsQuan() {
-       return ItemsQuanService.getInstance().getItemsQuan(NAMESPACE, URL);
+        return ItemsQuanService.getInstance().getItemsQuan(NAMESPACE, URL);
     }
+
     public List<ItemsDomain> getItemsQuanNam() {
         return ItemsQuanNamService.getInstance().getItemsQuanNam(NAMESPACE, URL);
     }
+
     public List<ItemsDomain> getItemsQuanNu() {
         return ItemsQuanNuService.getInstance().getItemsQuanNu(NAMESPACE, URL);
     }
@@ -111,7 +115,7 @@ public class SoapClient {
     }
 
     public ItemsDomain getItemsGiayById(String id) {
-        return ItemsGiayService.getInstance().getItemsGiayById(NAMESPACE,URL,id);
+        return ItemsGiayService.getInstance().getItemsGiayById(NAMESPACE, URL, id);
     }
 
     public List<ItemsDomain> getItemsBag() {
@@ -119,7 +123,7 @@ public class SoapClient {
     }
 
     public ItemsDomain getItemsBagById(String id) {
-        return ItemsBagService.getInstance().getItemsBagById(NAMESPACE,URL,id);
+        return ItemsBagService.getInstance().getItemsBagById(NAMESPACE, URL, id);
     }
 
     public List<ItemsDomain> getItemsClothes() {
@@ -130,41 +134,52 @@ public class SoapClient {
 
 
     public ItemsDomain getItemsClothesById(String id) {
-        return ItemsClothesService.getInstance().getItemsClothesById(NAMESPACE,URL,id);
+        return ItemsClothesService.getInstance().getItemsClothesById(NAMESPACE, URL, id);
     }
 
     public List<ItemsDomain> getItemsTuiXach() {
         return ItemsTuiXachService.getInstance().getItemsTuiXach(NAMESPACE, URL);
     }
+
+    public List<ItemsPopular> getAllItemsService() {
+        return GetAllItemsService.getInstance().getAllItems(NAMESPACE, URL);
+    }
+
+    public List<ItemsPopular> getSearchService(String query) {
+        return GetAllItemsService.getInstance().searchItems("searchItems", NAMESPACE, URL);
+    }
+
     public ItemsDomain getItemsTuiXachById(String id) {
-        return ItemsTuiXachService.getInstance().getItemsTuiXachById(NAMESPACE,URL,id);
+        return ItemsTuiXachService.getInstance().getItemsTuiXachById(NAMESPACE, URL, id);
     }
 
     public List<ItemsDomain> getAllItemsAos() {
         return ItemsAoService.getInstance().getItemsAos(NAMESPACE, URL);
     }
+
     public ItemsDomain getItemsAoById(String id) {
-        return ItemsAoService.getInstance().getItemsAoById(NAMESPACE,URL,id);
+        return ItemsAoService.getInstance().getItemsAoById(NAMESPACE, URL, id);
     }
 
     public List<Bill> getBillByUser(String idUser) {
-       return BillService.getInstance().getBillByUser(NAMESPACE, URL, idUser);
+        return BillService.getInstance().getBillByUser(NAMESPACE, URL, idUser);
     }
 
     public BillDetail getBillDetail(String idUser) {
-       return BillDetailService.getInstance().getBillDetail(NAMESPACE, URL, idUser);
-    }
-
-    public boolean deleteCart(String id) {
-       return CartService.getInstance().deleteCart(NAMESPACE, URL, id);
+        return BillDetailService.getInstance().getBillDetail(NAMESPACE, URL, idUser);
     }
 
     public boolean addBill(Bill bill) {
-       return BillService.getInstance().addBill(NAMESPACE, URL, bill);
+        return BillService.getInstance().addBill(NAMESPACE, URL, bill);
     }
 
+    public boolean deleteCart(String id) {
+        return CartService.getInstance().deleteCart(NAMESPACE, URL, id);
+    }
+
+
     public boolean addNewCart(String idUser, String idProduct, String type) {
-       return CartService.getInstance().addNewCart(NAMESPACE, URL, idUser, idProduct, type);
+        return CartService.getInstance().addNewCart(NAMESPACE, URL, idUser, idProduct, type);
     }
 
 
@@ -173,27 +188,16 @@ public class SoapClient {
     }
 
     public ItemsDomain getItemsAoNamById(String id) {
-        return ItemsAoNamService.getInstance().getItemsAoNamById(NAMESPACE,URL,id);
+        return ItemsAoNamService.getInstance().getItemsAoNamById(NAMESPACE, URL, id);
     }
 
     public List<ItemsDomain> getAllItemsAoNus() {
         return ItemsAoNuService.getInstance().getItemsAoNus(NAMESPACE, URL);
     }
 
-    public boolean addProductInBD(String idUser, String idProduct, int quantity, String type) {
-       return BillDetailService.getInstance().addProductInBD(NAMESPACE, URL, idUser, idProduct, quantity, type);
-    }
-
-    public boolean updateBill(String id, String status ) {
-       return BillService.getInstance().updateStatusBill(NAMESPACE, URL, id, status);
-    }
-
-    public List<Bill> getAllBills() {
-        return BillService.getInstance().getAllBills(NAMESPACE, URL);
-    }
-
     public ItemsDomain getItemsAoNuById(String id) {
-        return ItemsAoNuService.getInstance().getItemsAoNuById(NAMESPACE,URL,id);
+        return ItemsAoNuService.getInstance().getItemsAoNuById(NAMESPACE, URL, id);
     }
 }
+
 

@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\WcfService1",
+    "\\WcfService1\\App_Code",
+    "\\WcfService1\\bin",
     "\\WcfService1\\Models",
     "\\WcfService1\\Services"
   ],

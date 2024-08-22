@@ -96,6 +96,13 @@ namespace WcfService1
         [OperationContract]
         bool RemoveCart(string id, string idProduct);
 
+      
+        [OperationContract]
+        List<ItemsDomain> GetAllItems();
+        [OperationContract]
+        List<ItemsDomain> SearchItems(string searchText);
+
+
         [OperationContract]
         bool DeleteCart(string id);
 
